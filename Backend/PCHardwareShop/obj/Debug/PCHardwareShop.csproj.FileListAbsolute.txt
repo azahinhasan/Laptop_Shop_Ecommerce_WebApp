@@ -1,0 +1,214 @@
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\obj\Debug\PCHardwareShop.csprojAssemblyReference.cache
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\obj\Debug\PCHardwareShop.csproj.CoreCompileInputs.cache
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\PCHardwareShop.dll.config
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\PCHardwareShop.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\PCHardwareShop.pdb
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\csc.exe
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\csc.exe.config
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\csc.rsp
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\csi.exe
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\csi.exe.config
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\csi.rsp
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.AppContext.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Console.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.IO.Compression.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Net.Http.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Net.Sockets.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.ValueTuple.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Xml.XPath.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\vbc.exe
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\vbc.exe.config
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\vbc.rsp
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\VBCSCompiler.exe
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\EntityFramework.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\EntityFramework.SqlServer.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.AspNetCore.Cors.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.AspNetCore.Http.Extensions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Extensions.Options.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Newtonsoft.Json.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Buffers.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.ComponentModel.Annotations.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Memory.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Net.Http.Formatting.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Numerics.Vectors.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Text.Encodings.Web.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Web.Http.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Web.Http.WebHost.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\EntityFramework.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\EntityFramework.SqlServer.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.AspNetCore.Cors.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.AspNetCore.Http.Extensions.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Extensions.Options.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Buffers.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Memory.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Numerics.Vectors.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Text.Encodings.Web.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Newtonsoft.Json.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Net.Http.Formatting.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Web.Http.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Web.Http.WebHost.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\obj\Debug\PCHardwareShop.csproj.CopyComplete
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\obj\Debug\PCHardwareShop.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\obj\Debug\PCHardwareShop.pdb
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Web.Cors.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Web.Http.Cors.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\Pc hardware Shop\PCHardwareShop\PCHardwareShop\bin\System.Web.Http.Cors.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\PCHardwareShop.dll.config
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\PCHardwareShop.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\PCHardwareShop.pdb
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\csc.exe
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\csc.exe.config
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\csc.rsp
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\csi.exe
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\csi.exe.config
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\csi.rsp
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.AppContext.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Console.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.IO.Compression.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Net.Http.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Net.Sockets.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.ValueTuple.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Xml.XPath.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\vbc.exe
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\vbc.exe.config
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\vbc.rsp
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\VBCSCompiler.exe
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\EntityFramework.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\EntityFramework.SqlServer.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.AspNetCore.Cors.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.AspNetCore.Http.Extensions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Extensions.Options.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Newtonsoft.Json.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Buffers.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.ComponentModel.Annotations.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Memory.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Net.Http.Formatting.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Numerics.Vectors.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Text.Encodings.Web.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Web.Cors.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Web.Http.Cors.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Web.Http.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Web.Http.WebHost.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\EntityFramework.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\EntityFramework.SqlServer.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.AspNetCore.Cors.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.AspNetCore.Http.Extensions.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Extensions.Options.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Buffers.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Memory.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Numerics.Vectors.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Text.Encodings.Web.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Web.Http.Cors.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Newtonsoft.Json.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Net.Http.Formatting.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Web.Http.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Web.Http.WebHost.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\obj\Debug\PCHardwareShop.csprojAssemblyReference.cache
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\obj\Debug\PCHardwareShop.csproj.CoreCompileInputs.cache
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\obj\Debug\PCHardwareShop.csproj.CopyComplete
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\obj\Debug\PCHardwareShop.dll
+C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\obj\Debug\PCHardwareShop.pdb

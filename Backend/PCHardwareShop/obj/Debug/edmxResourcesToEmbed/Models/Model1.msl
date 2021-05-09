@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PcHardwareShopModelStoreContainer" CdmEntityContainer="PcHardwareShopEntities2">
+    <EntitySetMapping Name="Brands">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.Brand">
+        <MappingFragment StoreEntitySet="Brands">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="bName" ColumnName="bName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="cName" ColumnName="cName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductCategoryLinks">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.ProductCategoryLink">
+        <MappingFragment StoreEntitySet="ProductCategoryLink">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="pID" ColumnName="pID" />
+          <ScalarProperty Name="pCategory" ColumnName="pCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Pic3" ColumnName="Pic3" />
+          <ScalarProperty Name="Pic2" ColumnName="Pic2" />
+          <ScalarProperty Name="MainPic" ColumnName="MainPic" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="pName" ColumnName="pName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="SpecificationID" ColumnName="SpecificationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductSpecifications">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.ProductSpecification">
+        <MappingFragment StoreEntitySet="ProductSpecification">
+          <ScalarProperty Name="SpecificationID" ColumnName="SpecificationID" />
+          <ScalarProperty Name="Processor" ColumnName="Processor" />
+          <ScalarProperty Name="Colors" ColumnName="Colors" />
+          <ScalarProperty Name="Display" ColumnName="Display" />
+          <ScalarProperty Name="Memory" ColumnName="Memory" />
+          <ScalarProperty Name="Storage" ColumnName="Storage" />
+          <ScalarProperty Name="Graphics" ColumnName="Graphics" />
+          <ScalarProperty Name="OS" ColumnName="OS" />
+          <ScalarProperty Name="Battery" ColumnName="Battery" />
+          <ScalarProperty Name="Adapter" ColumnName="Adapter" />
+          <ScalarProperty Name="Audio" ColumnName="Audio" />
+          <ScalarProperty Name="Keyboard" ColumnName="Keyboard" />
+          <ScalarProperty Name="WebCam" ColumnName="WebCam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

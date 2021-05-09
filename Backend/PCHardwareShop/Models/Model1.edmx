@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PcHardwareShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductCategoryLink">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pID" Type="int" Nullable="false" />
+          <Property Name="pCategory" Type="int" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pName" Type="varchar" MaxLength="500" />
+          <Property Name="Price" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="500" />
+          <Property Name="BrandID" Type="int" />
+          <Property Name="SpecificationID" Type="int" />
+          <Property Name="MainPic" Type="varchar" MaxLength="500" />
+          <Property Name="Pic2" Type="varchar" MaxLength="50" />
+          <Property Name="Pic3" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductSpecification">
+          <Key>
+            <PropertyRef Name="SpecificationID" />
+          </Key>
+          <Property Name="SpecificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Processor" Type="varchar" MaxLength="500" />
+          <Property Name="Colors" Type="varchar" MaxLength="500" />
+          <Property Name="Display" Type="varchar" MaxLength="500" />
+          <Property Name="Memory" Type="varchar" MaxLength="500" />
+          <Property Name="Storage" Type="varchar" MaxLength="500" />
+          <Property Name="Graphics" Type="varchar" MaxLength="500" />
+          <Property Name="OS" Type="varchar" MaxLength="500" />
+          <Property Name="Battery" Type="varchar" MaxLength="500" />
+          <Property Name="Adapter" Type="varchar" MaxLength="500" />
+          <Property Name="Audio" Type="varchar" MaxLength="500" />
+          <Property Name="Keyboard" Type="varchar" MaxLength="500" />
+          <Property Name="WebCam" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK_ProductCategoryLink_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="ProductCategoryLink" Type="Self.ProductCategoryLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductCategoryLink">
+              <PropertyRef Name="pCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductCategoryLink_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="ProductCategoryLink" Type="Self.ProductCategoryLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductCategoryLink">
+              <PropertyRef Name="pID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Brands">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_ProductSpecification">
+          <End Role="ProductSpecification" Type="Self.ProductSpecification" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductSpecification">
+              <PropertyRef Name="SpecificationID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="SpecificationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PcHardwareShopModelStoreContainer">
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCategoryLink" EntityType="Self.ProductCategoryLink" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductSpecification" EntityType="Self.ProductSpecification" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ProductCategoryLink_Category" Association="Self.FK_ProductCategoryLink_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="ProductCategoryLink" EntitySet="ProductCategoryLink" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductCategoryLink_Products" Association="Self.FK_ProductCategoryLink_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductCategoryLink" EntitySet="ProductCategoryLink" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Brands" Association="Self.FK_Products_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_ProductSpecification" Association="Self.FK_Products_ProductSpecification">
+            <End Role="ProductSpecification" EntitySet="ProductSpecification" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PcHardwareShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Products_Brands" FromRole="Brands" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProductCategoryLinks" Relationship="Self.FK_ProductCategoryLink_Category" FromRole="Category" ToRole="ProductCategoryLink" />
+        </EntityType>
+        <EntityType Name="ProductCategoryLink">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pID" Type="Int32" Nullable="false" />
+          <Property Name="pCategory" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_ProductCategoryLink_Category" FromRole="ProductCategoryLink" ToRole="Category" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ProductCategoryLink_Products" FromRole="ProductCategoryLink" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="String" Nullable="true" />
+          <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BrandID" Type="Int32" />
+          <Property Name="SpecificationID" Type="Int32" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_Products_Brands" FromRole="Products" ToRole="Brands" />
+          <NavigationProperty Name="ProductCategoryLinks" Relationship="Self.FK_ProductCategoryLink_Products" FromRole="Products" ToRole="ProductCategoryLink" />
+          <NavigationProperty Name="ProductSpecification" Relationship="Self.FK_Products_ProductSpecification" FromRole="Products" ToRole="ProductSpecification" />
+          <Property Name="MainPic" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Pic2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pic3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProductSpecification">
+          <Key>
+            <PropertyRef Name="SpecificationID" />
+          </Key>
+          <Property Name="SpecificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Processor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Colors" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Display" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Memory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Storage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Graphics" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Battery" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Adapter" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Audio" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Keyboard" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="WebCam" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductSpecification" FromRole="ProductSpecification" ToRole="Products" />
+        </EntityType>
+        <Association Name="FK_Products_Brands">
+          <End Role="Brands" Type="Self.Brand" Multiplicity="1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductCategoryLink_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="ProductCategoryLink" Type="Self.ProductCategoryLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductCategoryLink">
+              <PropertyRef Name="pCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductCategoryLink_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductCategoryLink" Type="Self.ProductCategoryLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductCategoryLink">
+              <PropertyRef Name="pID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_ProductSpecification">
+          <End Role="ProductSpecification" Type="Self.ProductSpecification" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductSpecification">
+              <PropertyRef Name="SpecificationID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="SpecificationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PcHardwareShopEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="ProductCategoryLinks" EntityType="Self.ProductCategoryLink" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductSpecifications" EntityType="Self.ProductSpecification" />
+          <AssociationSet Name="FK_Products_Brands" Association="Self.FK_Products_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductCategoryLink_Category" Association="Self.FK_ProductCategoryLink_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="ProductCategoryLink" EntitySet="ProductCategoryLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductCategoryLink_Products" Association="Self.FK_ProductCategoryLink_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductCategoryLink" EntitySet="ProductCategoryLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_ProductSpecification" Association="Self.FK_Products_ProductSpecification">
+            <End Role="ProductSpecification" EntitySet="ProductSpecifications" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PcHardwareShopModelStoreContainer" CdmEntityContainer="PcHardwareShopEntities2">
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="PcHardwareShopModel.Brand">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="bName" ColumnName="bName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="PcHardwareShopModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="cName" ColumnName="cName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategoryLinks">
+            <EntityTypeMapping TypeName="PcHardwareShopModel.ProductCategoryLink">
+              <MappingFragment StoreEntitySet="ProductCategoryLink">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="pID" ColumnName="pID" />
+                <ScalarProperty Name="pCategory" ColumnName="pCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="PcHardwareShopModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Pic3" ColumnName="Pic3" />
+                <ScalarProperty Name="Pic2" ColumnName="Pic2" />
+                <ScalarProperty Name="MainPic" ColumnName="MainPic" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="pName" ColumnName="pName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="SpecificationID" ColumnName="SpecificationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductSpecifications">
+            <EntityTypeMapping TypeName="PcHardwareShopModel.ProductSpecification">
+              <MappingFragment StoreEntitySet="ProductSpecification">
+                <ScalarProperty Name="SpecificationID" ColumnName="SpecificationID" />
+                <ScalarProperty Name="Processor" ColumnName="Processor" />
+                <ScalarProperty Name="Colors" ColumnName="Colors" />
+                <ScalarProperty Name="Display" ColumnName="Display" />
+                <ScalarProperty Name="Memory" ColumnName="Memory" />
+                <ScalarProperty Name="Storage" ColumnName="Storage" />
+                <ScalarProperty Name="Graphics" ColumnName="Graphics" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="Battery" ColumnName="Battery" />
+                <ScalarProperty Name="Adapter" ColumnName="Adapter" />
+                <ScalarProperty Name="Audio" ColumnName="Audio" />
+                <ScalarProperty Name="Keyboard" ColumnName="Keyboard" />
+                <ScalarProperty Name="WebCam" ColumnName="WebCam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
