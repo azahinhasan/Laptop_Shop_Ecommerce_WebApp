@@ -28,7 +28,7 @@ namespace PCHardwareShop.Controllers
             data.ID = id;
             context.Entry(data).State = System.Data.Entity.EntityState.Modified;
             context.SaveChanges();
-            return Ok(data);
+            return Ok(context.ProductCategoryLinks.Find(id));
         }
 
         [Route("api/products/laptop/{id}"),HttpDelete]
