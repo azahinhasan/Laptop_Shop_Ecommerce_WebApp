@@ -1,0 +1,27 @@
+.navBar ul {
+    list-style: none;
+    margin : 0;
+    padding: 0%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.navBar li{
+    display: inline-block;
+    margin: 20px;
+
+}
+
+.navBar a{
+    text-decoration: none;
+    color: rgb(72, 92, 155);
+
+}
+
+.navBarlog a:hover,
+.navBar a:active,
+.navBar a.active{
+    color: rgb(72, 92, 155);
+    border-bottom: 3px solid rgb(72, 92, 155);
+    
+}

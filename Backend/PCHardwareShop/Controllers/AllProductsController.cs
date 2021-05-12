@@ -16,10 +16,23 @@ namespace PCHardwareShop.Controllers
     {
         PcHardwareShopEntities2 context = new PcHardwareShopEntities2();
 
-        [Route("api/products/laptop"),HttpGet]
+        [Route("api/products/latop1"),HttpGet]
         public IHttpActionResult Get()
         {
-            return Ok(context.ProductCategoryLinks.Where(x => x.Category.cName == "Laptop").ToList());
+            return Ok(context.ProductCategoryLinks.Where(x => x.Category.cName == "SSD").ToList());
+        }
+
+        [Route("api/products/{category}/{id}"), HttpGet]
+        public IHttpActionResult GetInfo([FromUri] string category,[FromUri] int id)
+        {
+            return Ok(context.ProductCategoryLinks.Where(x => x.ID == id && x.Category.cName == category).ToList());
+        }
+
+        [Route("api/products/{category}"), HttpGet]
+        public IHttpActionResult productList([FromUri]string category)
+        {
+            return Ok(context.ProductCategoryLinks.Where(x => x.Category.cName == category).ToList());
+            //return Ok(context.ProductCategoryLinks.Where(x => x.Category.cName == "Laptop").ToList());
         }
 
         [Route("api/products/laptop/{id}")]

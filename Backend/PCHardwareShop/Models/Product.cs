@@ -32,12 +32,12 @@ namespace PCHardwareShop.Models
         public string Pic2 { get; set; }
         public string Pic3 { get; set; }
 
-        [JsonIgnore, XmlIgnore]
+       // [JsonIgnore, XmlIgnore]
         public virtual Brand Brand { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore, XmlIgnore]
         public virtual ICollection<ProductCategoryLink> ProductCategoryLinks { get; set; }
-        [JsonIgnore, XmlIgnore]
+        //[JsonIgnore, XmlIgnore]
         public virtual ProductSpecification ProductSpecification { get; set; }
     }
 }

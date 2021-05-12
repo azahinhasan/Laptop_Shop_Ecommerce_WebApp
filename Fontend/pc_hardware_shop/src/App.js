@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {  Component } from 'react';
+import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Classes from './App.css';
+import HomePage from './components/homePage';
+import ProductsList from './components/productsList';
+import ProductInfo from './components/productInfo';
+import NavBar from './components/navBar';
+class App extends Component {
+  
+
+  render() {
+
+    return (
+      <div className={Classes.App}>
+        <p >Heloo</p>
+
+        <NavBar/>
+        <Switch>
+            <Route path="/home"  component={HomePage}/> 
+            <Route path="/list/:category" component={ProductsList}/> 
+            <Route path="/info/:category/:id" component={ProductInfo}/>
+            <Redirect to="/home" />
+        </Switch>
+
+      </div>
+      
+    );
+  }
 }
 
-export default App;
+export default withRouter(App); //withRouter will rendered tha page wehn route cnage
