@@ -43,31 +43,26 @@ const ProductsList = props =>{
       let pageData ='';
       if(showInfo == false){
         pageData = (
-          <table className={classes.customers}>
-            <tr>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Status</th>
-              <th>Brand</th>
-            </tr>
-              {
-                data.map(data =>{
-                  return(
-                    <tr key={data.Product.id}>
-                      <td><a onClick={()=>showInfoHandeler(data.ID)}>{data.Product.pName}</a></td>
-                      <td>{data.Product.Price}</td>
-                      <td>{data.Product.Status}</td>
-                      <td>{data.Product.Brand.bName}</td>
-                    </tr>
-                  )
-                })
-              }
-          </table>
+
+          <div className={classes.productLists}>
+            {
+              data.map(data =>{
+                return(
+                  <div key={data.Product.id} onClick={()=>showInfoHandeler(data.ID)}  className={classes.productListData}>
+                    
+                    <img className={classes.mainImage} src={require('../Content/LeptopImg/'+data.Product.MainPic).default} />
+                    <div>{data.Product.pName}</div>
+                    <div>{data.Product.Price}</div>
+                    <div>{data.Product.Status}</div>
+                    <div>{data.Product.Brand.bName}</div>
+                  </div>
+                )
+              })
+            }
+        </div>
         )
       }else{
-        //setShowInfo(false);
         const link = "/info/"+category+"/"+storeId;
-        //const link = "/info/"+storeId;
         pageData = (
           <Switch>
               <Redirect to={link}/> 
@@ -78,7 +73,7 @@ const ProductsList = props =>{
 
         return (
           <div className="">
-              <p>ProductsList</p>
+              <h2>Result of : {category} </h2>
               {pageData}
       
           </div>

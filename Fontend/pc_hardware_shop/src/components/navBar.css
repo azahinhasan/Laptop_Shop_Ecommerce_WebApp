@@ -1,3 +1,5 @@
+
+
 .navBar ul {
     list-style: none;
     margin : 0;
@@ -6,7 +8,7 @@
     font-weight: bold;
 }
 
-.navBar li{
+/* .navBar li{
     display: inline-block;
     margin: 20px;
 
@@ -24,4 +26,73 @@
     color: rgb(72, 92, 155);
     border-bottom: 3px solid rgb(72, 92, 155);
     
+}
+*/
+
+.navbar {
+    overflow: hidden;
+    background-color: rgb(66, 1, 128);
+  }
+  
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  } 
+  
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: rgb(29, 3, 148);
+  }
+  
+  .dropdowncontent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(4, 60, 165, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdowncontent a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdowncontent a:hover {
+    background-color: #ddd;
+  }
+  
+  .dropdown:hover .dropdowncontent {
+    display: block;
+  }
+
+  
+.SiteName{
+    font-size: 20px;
+    margin-right: 20px;
+    font-weight: bold;
+    text-decoration: underline;
 }

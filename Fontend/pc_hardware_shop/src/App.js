@@ -13,8 +13,6 @@ class App extends Component {
 
     return (
       <div className={Classes.App}>
-        <p >Heloo</p>
-
         <NavBar/>
         <Switch>
             <Route path="/home"  component={HomePage}/> 
