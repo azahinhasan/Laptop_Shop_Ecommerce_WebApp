@@ -44,14 +44,38 @@ const ProductsInfo = props =>{
 
           let val=[...JSON.parse(localStorage.getItem("CartData"))];
 
-          val.map(data=>{
-            console.log(data[0].ID);
-          })
+
+          
+          //var index = val.indexOf(null);
+
+        let temp = 0;
+        let oldQuantity = 0;
+
+        var index = val.findIndex(e=>e[0].ID==data[0].ID);
+          console.log(index);
+          if (index > -1) {
+            let findOld = [...val.splice(index, 1)];
+            findOld.map(e=>{
+                oldQuantity=e[1].quantity;
+            })    
+
+           // setQuantity(parseInt(oldQuantity)+parseInt(quantity));
+            //console.log(quantity,'wuandddddddd');
+
+            val.splice(index, 1);
+          }
+
+
+        //   console.log(data[0].ID);
+
+         // localStorage.setItem("CartData", JSON.stringify(val));
+
+         
           
 
-          // let newData=[...data, {quantity:quantity}]
-          // let val2=[...val,newData];
-          // localStorage.setItem("CartData", JSON.stringify(val2));
+          let newData=[...data, {quantity:quantity}]
+          let val2=[...val,newData];
+          localStorage.setItem("CartData", JSON.stringify(val2));
 
           console.log(JSON.parse(localStorage.getItem("CartData"))," Carttt");
 

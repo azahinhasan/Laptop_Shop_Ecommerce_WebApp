@@ -5,33 +5,34 @@ import {Route,Switch,withRouter,Redirect,useParams,useHistory} from 'react-route
 
 const Cart = props =>{
     const [cart, setCart] = useState([JSON.parse(localStorage.getItem("CartData"))]);
-
-
+    let totalSum=0;
      console.log(cart);
 
 
         let pageData = '';
 
         if(cart!=''){
-            pageData=( <table>
+            pageData=( <table  className={classes.customers}>
                     {
+                        
                      cart.map(data=>{
                             return(
                                 data.map((data,i)=>{
-                                    
+                                    totalSum= (parseInt(data[0].Product.Price.replace(/,/g, '')) * data[1].quantity)+totalSum;
                                     if(data!=null){
-                                        console.log(data, 'dddd');
                                         return(
-                                        
-                                            <tr>
+                                            <tr key={data[0].ID}>
                                                 <td>{data[0].Product.pName}</td>
                                                 <td>{data[0].Product.Price}</td>
                                                 <td>{data[1].quantity}</td>
-                                                
+                                                <td>
+                                                    {
+                                                    parseInt(data[0].Product.Price.replace(/,/g, '')) * data[1].quantity
+                                                    
+                                                    }
+                                                </td>
+                                                <td>*</td>
                                             </tr>
-                                                
-                                        
-                                                
                                         
                                         )
                                     }
@@ -39,6 +40,14 @@ const Cart = props =>{
                             )
                         })
                     }
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Total: </td>
+                        <td>{totalSum}</td>
+                        <td></td>
+                    </tr>
                 </table>
             )
         }else{
