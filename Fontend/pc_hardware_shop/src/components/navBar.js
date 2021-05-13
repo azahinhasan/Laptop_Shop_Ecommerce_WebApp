@@ -32,10 +32,11 @@ render() {
                     <button class={classes.dropbtn}>Leptop Components</button>
                     <div class={classes.dropdowncontent}>
                     <Link to={{pathname:'/list/SSD'}}>SSD</Link>
-                    <Link to={{pathname:'/list/SSD'}}>SSD</Link>
-                    <Link to={{pathname:'/list/SSD'}}>SSD</Link>
+                    <Link to={{pathname:'/list/RAM'}}>RAM</Link>
+                    <Link to={{pathname:'/list/SSD'}}>HDD</Link>
                     </div>
                 </div> 
+                <Link to={{pathname:'/user/cart'}}>Cart</Link>
         </div>  
         
         </div> 

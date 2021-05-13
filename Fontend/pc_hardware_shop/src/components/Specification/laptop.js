@@ -6,7 +6,7 @@
 
 
 
-    const ProductsInfo = props =>{
+    const LEPTOP = props =>{
 
         const [api, setApi] = useState("http://localhost:3819/api/products");
         const [data, setData] = useState([]);
@@ -72,7 +72,7 @@
         );
     } 
 
-    export default withRouter(ProductsInfo);
+    export default withRouter(LEPTOP);
 
 
 

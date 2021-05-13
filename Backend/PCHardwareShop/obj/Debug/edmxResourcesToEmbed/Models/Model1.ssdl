@@ -41,6 +41,7 @@
       <PropertyRef Name="SpecificationID" />
     </Key>
     <Property Name="SpecificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Manufacturing_Warranty" Type="varchar" MaxLength="50" />
     <Property Name="Processor" Type="varchar" MaxLength="500" />
     <Property Name="Colors" Type="varchar" MaxLength="500" />
     <Property Name="Display" Type="varchar" MaxLength="500" />
@@ -53,6 +54,20 @@
     <Property Name="Audio" Type="varchar" MaxLength="500" />
     <Property Name="Keyboard" Type="varchar" MaxLength="500" />
     <Property Name="WebCam" Type="varchar" MaxLength="500" />
+    <Property Name="Capacity" Type="varchar" MaxLength="50" />
+    <Property Name="Form_Factor" Type="varchar" MaxLength="50" />
+    <Property Name="Flash_Type" Type="varchar" MaxLength="50" />
+    <Property Name="Interface" Type="varchar" MaxLength="50" />
+    <Property Name="Sequential_R_W" Type="varchar" MaxLength="50" />
+    <Property Name="MTBF" Type="varchar" MaxLength="50" />
+    <Property Name="Operating_Temperature" Type="varchar" MaxLength="50" />
+    <Property Name="Storage_Temperature" Type="varchar" MaxLength="50" />
+    <Property Name="Ram_Type" Type="varchar" MaxLength="50" />
+    <Property Name="Ram_Capacity" Type="varchar" MaxLength="50" />
+    <Property Name="Ram_Frequency" Type="varchar" MaxLength="50" />
+    <Property Name="Ram_Operating_voltage" Type="varchar" MaxLength="50" />
+    <Property Name="Ram_Latency" Type="varchar" MaxLength="50" />
+    <Property Name="Ram_Pin" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_ProductCategoryLink_Category">
     <End Role="Category" Type="Self.Category" Multiplicity="0..1" />

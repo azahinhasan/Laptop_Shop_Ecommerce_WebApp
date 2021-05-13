@@ -3,27 +3,82 @@ import {Route,Switch,withRouter,useParams} from 'react-router-dom';
 import axios from 'axios';
 import classes from './productsList.css';
 import LeptopSpacification from './Specification/laptop';
-
-
+import SSDSpacification from './Specification/SSD';
+import RAMSpacification from './Specification/RAM';
 const ProductsInfo = props =>{
 
         const [api, setApi] = useState("http://localhost:3819/api/products");
         const [data, setData] = useState([]);
+        // const [cart, setCart] = useState([...JSON.parse(localStorage.getItem("CartData"))]);
+        const [cart, setCart] = useState([]);
+        const [quantity, setQuantity] = useState(1);
         const [imageName, setImageName] = useState('a.jpg');
         const { category,id } = useParams();
        // const {category} = useParams();
 //props.match.params.id
 
+        try{
+         // setCart(...JSON.parse(localStorage.getItem("CartData")));
+        }catch(error){
+
+        }
+
         useEffect(() => { 
         console.log(id);
+        
         //const ID = localStorage.getItem('productID');
           axios.get(api+'/'+category+'/'+id).then(result =>{
             //console.log(result);
             setData(result.data);
             setImageName(result.data[0].Product.MainPic);
-            console.log(imageName,'dcddddddd');
+            //console.log(data[0].Product,'dcddddddd');
           });
       },[]);
+
+
+
+      const addToCartHandler=()=>{
+
+        try{
+
+
+          let val=[...JSON.parse(localStorage.getItem("CartData"))];
+
+          val.map(data=>{
+            console.log(data[0].ID);
+          })
+          
+
+          // let newData=[...data, {quantity:quantity}]
+          // let val2=[...val,newData];
+          // localStorage.setItem("CartData", JSON.stringify(val2));
+
+          console.log(JSON.parse(localStorage.getItem("CartData"))," Carttt");
+
+        }catch(error){
+          console.log(error);
+
+        // let val=[JSON.parse(localStorage.getItem("CartData"))];
+        // let newData=[...data, {quantity:quantity}]
+        // let val2=[...val,newData];
+        // localStorage.setItem("CartData", JSON.stringify(val2));
+
+        console.log(JSON.parse(localStorage.getItem("CartData"))," Carttt");
+        }
+
+      }
+
+      let specification = null;
+
+      if(category=='Laptop'){
+        specification=<LeptopSpacification/>
+      }else if(category=='SSD'){
+        specification=<SSDSpacification/>
+      }else if(category=='RAM'){
+        specification=<RAMSpacification/>
+      }
+
+
 
         return (
           <div className={classes.productInfo}>
@@ -72,9 +127,13 @@ const ProductsInfo = props =>{
                 }
             </table>
             <br/>
+            <input min='1' type='number' placeholder="Quantity(Defult 1)" onChange={(event)=>setQuantity(event.target.value)}/>
+            <button onClick={addToCartHandler}>ADD TO Cart</button>
+            <br/>
             <h2>Specification</h2>
             <br/>
-              <LeptopSpacification />
+
+              {specification}
               <br/>
           </div>
         );

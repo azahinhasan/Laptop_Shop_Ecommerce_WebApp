@@ -17,7 +17,6 @@ namespace PCHardwareShop.Models
     {
         public int ID { get; set; }
         public string bName { get; set; }
-
         [JsonIgnore, XmlIgnore]
         public virtual Product Product { get; set; }
     }

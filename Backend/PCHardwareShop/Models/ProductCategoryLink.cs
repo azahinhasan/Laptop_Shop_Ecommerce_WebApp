@@ -6,8 +6,6 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using Newtonsoft.Json;
-using System.Xml.Serialization;
 
 namespace PCHardwareShop.Models
 {
@@ -19,9 +17,8 @@ namespace PCHardwareShop.Models
         public int ID { get; set; }
         public int pID { get; set; }
         public Nullable<int> pCategory { get; set; }
-        //[JsonIgnore, XmlIgnore]
+    
         public virtual Category Category { get; set; }
-       // [JsonIgnore, XmlIgnore]
         public virtual Product Product { get; set; }
     }
 }

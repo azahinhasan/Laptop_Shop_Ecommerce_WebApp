@@ -6,7 +6,6 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
 using Newtonsoft.Json;
 using System.Xml.Serialization;
 namespace PCHardwareShop.Models
@@ -35,9 +34,24 @@ namespace PCHardwareShop.Models
         public string Audio { get; set; }
         public string Keyboard { get; set; }
         public string WebCam { get; set; }
-
-        [JsonIgnore, XmlIgnore]
+        public string Manufacturing_Warranty { get; set; }
+        public string Capacity { get; set; }
+        public string Form_Factor { get; set; }
+        public string Flash_Type { get; set; }
+        public string Interface { get; set; }
+        public string Sequential_R_W { get; set; }
+        public string MTBF { get; set; }
+        public string Operating_Temperature { get; set; }
+        public string Storage_Temperature { get; set; }
+        public string Ram_Type { get; set; }
+        public string Ram_Capacity { get; set; }
+        public string Ram_Frequency { get; set; }
+        public string Ram_Operating_voltage { get; set; }
+        public string Ram_Latency { get; set; }
+        public string Ram_Pin { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore, XmlIgnore]
         public virtual ICollection<Product> Products { get; set; }
     }
 }

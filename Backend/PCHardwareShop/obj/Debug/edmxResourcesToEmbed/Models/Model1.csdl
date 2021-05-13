@@ -32,7 +32,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="pName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="Price" Type="String" Nullable="true" />
+    <Property Name="Price" Type="String" Nullable="true" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="BrandID" Type="Int32" />
     <Property Name="SpecificationID" Type="Int32" />
@@ -61,6 +61,21 @@
     <Property Name="Keyboard" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="WebCam" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductSpecification" FromRole="ProductSpecification" ToRole="Products" />
+    <Property Name="Manufacturing_Warranty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Capacity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Form_Factor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Flash_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Interface" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sequential_R_W" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MTBF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Operating_Temperature" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Storage_Temperature" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ram_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ram_Capacity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ram_Frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ram_Operating_voltage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ram_Latency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ram_Pin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_Products_Brands">
     <End Role="Brands" Type="Self.Brand" Multiplicity="1" />

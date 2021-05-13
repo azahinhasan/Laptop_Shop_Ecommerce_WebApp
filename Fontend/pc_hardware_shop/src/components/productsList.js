@@ -10,6 +10,10 @@ const ProductsList = props =>{
         const [data, setData] = useState([]);
         const [showInfo, setShowInfo] = useState(false);
         const [storeId, setStoreId] = useState('');
+        const [filterByBrand, setFilterByBrand] = useState('ALL');
+        const [filterByStatus, setFilterByStatus] = useState('ALL');
+        const [filterByMaxPrice, setFilterByMaxPrice] = useState(500000);
+        const [filterByMinPrice, setFilterByMinPrice] = useState(0);
         const {category} = useParams();
         const history = useHistory()
         
@@ -40,23 +44,83 @@ const ProductsList = props =>{
 
       }
 
+      const FinterByBrand=(e)=>{
+        setFilterByBrand(e);
+      }
+      const FinterByStatus=(e)=>{
+        setFilterByStatus(e);
+      }
+      const FinterByMinPrice=(e)=>{
+        
+        if(e!=''){
+          setFilterByMinPrice(e);
+        }else{
+          setFilterByMinPrice(0);
+        }
+        
+      }
+      const FinterByMaxPrice=(e)=>{
+        if(e!=''){
+          setFilterByMaxPrice(e);
+        }else{
+          setFilterByMaxPrice(5000000);
+        }
+      }
+
       let pageData ='';
       if(showInfo == false){
         pageData = (
 
           <div className={classes.productLists}>
             {
-              data.map(data =>{
-                return(
-                  <div key={data.Product.id} onClick={()=>showInfoHandeler(data.ID)}  className={classes.productListData}>
-                    
-                    <img className={classes.mainImage} src={require('../Content/LeptopImg/'+data.Product.MainPic).default} />
-                    <div>{data.Product.pName}</div>
-                    <div>{data.Product.Price}</div>
-                    <div>{data.Product.Status}</div>
-                    <div>{data.Product.Brand.bName}</div>
-                  </div>
-                )
+              //&& filterByMaxPrice < parseInt(data.Product.Price.replace(/,/g, ''))   filterByMinPrice < parseFloat(data.Product.Price.replace(/,/g, '')) &&
+              data.map(data =>{ 
+                if(filterByMinPrice < parseFloat(data.Product.Price.replace(/,/g, '')) && filterByMaxPrice > parseInt(data.Product.Price.replace(/,/g, ''))){
+
+                  if(filterByBrand==data.Product.Brand.bName && filterByStatus==data.Product.Status){
+                    return(
+                      <div key={data.Product.id} onClick={()=>showInfoHandeler(data.ID)}  className={classes.productListData}>
+                        <img className={classes.mainImage} src={require('../Content/LeptopImg/'+data.Product.MainPic).default} />
+                        <div>{data.Product.pName}</div>
+                        <div>{data.Product.Price} BDT</div>
+                        <div>{data.Product.Status}</div>
+                        <div>{data.Product.Brand.bName}</div>
+                      </div>
+                    )
+                  }else if(filterByBrand=='ALL' && filterByStatus=='ALL'){
+                    return(
+                      <div key={data.Product.id} onClick={()=>showInfoHandeler(data.ID)}  className={classes.productListData}>
+                        <img className={classes.mainImage} src={require('../Content/LeptopImg/'+data.Product.MainPic).default} />
+                        <div>{data.Product.pName}</div>
+                        <div>{data.Product.Price} BDT</div>
+                        <div>{data.Product.Status}</div>
+                        <div>{data.Product.Brand.bName}</div>
+                      </div>
+                    )
+                  }else if(filterByBrand=='ALL' && filterByStatus==data.Product.Status){
+                    return(
+                      <div key={data.Product.id} onClick={()=>showInfoHandeler(data.ID)}  className={classes.productListData}>
+                        <img className={classes.mainImage} src={require('../Content/LeptopImg/'+data.Product.MainPic).default} />
+                        <div>{data.Product.pName}</div>
+                        <div>{data.Product.Price} BDT</div>
+                        <div>{data.Product.Status}</div>
+                        <div>{data.Product.Brand.bName}</div>
+                      </div>
+                    )
+                  }else if(filterByBrand==data.Product.Brand.bName && filterByStatus=='ALL'){
+                    return(
+                      <div key={data.Product.id} onClick={()=>showInfoHandeler(data.ID)}  className={classes.productListData}>
+                        <img className={classes.mainImage} src={require('../Content/LeptopImg/'+data.Product.MainPic).default} />
+                        <div>{data.Product.pName}</div>
+                        <div>{data.Product.Price} BDT</div>
+                        <div>{data.Product.Status}</div>
+                        <div>{data.Product.Brand.bName}</div>
+                      </div>
+                    )
+                  }
+                }
+              
+
               })
             }
         </div>
@@ -68,13 +132,45 @@ const ProductsList = props =>{
               <Redirect to={link}/> 
           </Switch>
         )
-     
       }
 
         return (
           <div className="">
               <h2>Result of : {category} </h2>
-              {pageData}
+
+            <div className={classes.FilterLIst}>
+              <div>Filter</div>
+              <span>Brand </span>
+              <select name="Brand" id="Brand" onChange={(event)=>FinterByBrand(event.target.value)}>
+              <option value="ALL">ALL</option>
+                <option value="RAZER">RAZER</option>
+                <option value="HP">HP</option>
+                <option value="ASUS">ASUS</option>
+                <option value="APPLE">APPLE</option>
+                <option value="DELL">DELL</option>
+                <option value="MSI">MSI</option>
+                <option value="LENOVO">LENOVO</option>
+                <option value="ACER">ACER</option>
+                <option value="Team">Team</option>
+                <option value="WESTERN_DIGITAL">WESTERN DIGITAL</option>
+                <option value="Antec">Antec</option>
+              </select>
+
+              
+              <span>Status </span>
+              <select name="Brand" id="Brand" onChange={(event)=>FinterByStatus(event.target.value)}>
+                <option value="ALL">ALL</option>
+                <option value="In Stock">In Stock</option>
+                <option value="Out Stock">Out Stock</option>
+                <option value="Up Coming">Up Coming</option>
+              </select>
+              <br/>
+              <span>Price Range </span>
+              <input type="number" placeholder='Min'  onChange={(event)=>FinterByMinPrice(event.target.value)}/>-
+              <input type="number" placeholder='Max'  onChange={(event)=>FinterByMaxPrice(event.target.value)}/>
+            </div>
+
+            {pageData}
       
           </div>
         );

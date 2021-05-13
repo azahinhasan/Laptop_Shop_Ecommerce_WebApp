@@ -46,6 +46,7 @@
             <PropertyRef Name="SpecificationID" />
           </Key>
           <Property Name="SpecificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Manufacturing_Warranty" Type="varchar" MaxLength="50" />
           <Property Name="Processor" Type="varchar" MaxLength="500" />
           <Property Name="Colors" Type="varchar" MaxLength="500" />
           <Property Name="Display" Type="varchar" MaxLength="500" />
@@ -58,6 +59,20 @@
           <Property Name="Audio" Type="varchar" MaxLength="500" />
           <Property Name="Keyboard" Type="varchar" MaxLength="500" />
           <Property Name="WebCam" Type="varchar" MaxLength="500" />
+          <Property Name="Capacity" Type="varchar" MaxLength="50" />
+          <Property Name="Form_Factor" Type="varchar" MaxLength="50" />
+          <Property Name="Flash_Type" Type="varchar" MaxLength="50" />
+          <Property Name="Interface" Type="varchar" MaxLength="50" />
+          <Property Name="Sequential_R_W" Type="varchar" MaxLength="50" />
+          <Property Name="MTBF" Type="varchar" MaxLength="50" />
+          <Property Name="Operating_Temperature" Type="varchar" MaxLength="50" />
+          <Property Name="Storage_Temperature" Type="varchar" MaxLength="50" />
+          <Property Name="Ram_Type" Type="varchar" MaxLength="50" />
+          <Property Name="Ram_Capacity" Type="varchar" MaxLength="50" />
+          <Property Name="Ram_Frequency" Type="varchar" MaxLength="50" />
+          <Property Name="Ram_Operating_voltage" Type="varchar" MaxLength="50" />
+          <Property Name="Ram_Latency" Type="varchar" MaxLength="50" />
+          <Property Name="Ram_Pin" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_ProductCategoryLink_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -166,7 +181,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="pName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="String" Nullable="true" />
+          <Property Name="Price" Type="String" Nullable="true" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="BrandID" Type="Int32" />
           <Property Name="SpecificationID" Type="Int32" />
@@ -195,6 +210,21 @@
           <Property Name="Keyboard" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="WebCam" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductSpecification" FromRole="ProductSpecification" ToRole="Products" />
+          <Property Name="Manufacturing_Warranty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Capacity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Form_Factor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Flash_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Interface" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sequential_R_W" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MTBF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Operating_Temperature" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Storage_Temperature" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ram_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ram_Capacity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ram_Frequency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ram_Operating_voltage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ram_Latency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ram_Pin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Products_Brands">
           <End Role="Brands" Type="Self.Brand" Multiplicity="1" />
@@ -316,6 +346,21 @@
           <EntitySetMapping Name="ProductSpecifications">
             <EntityTypeMapping TypeName="PcHardwareShopModel.ProductSpecification">
               <MappingFragment StoreEntitySet="ProductSpecification">
+                <ScalarProperty Name="Ram_Pin" ColumnName="Ram_Pin" />
+                <ScalarProperty Name="Ram_Latency" ColumnName="Ram_Latency" />
+                <ScalarProperty Name="Ram_Operating_voltage" ColumnName="Ram_Operating_voltage" />
+                <ScalarProperty Name="Ram_Frequency" ColumnName="Ram_Frequency" />
+                <ScalarProperty Name="Ram_Capacity" ColumnName="Ram_Capacity" />
+                <ScalarProperty Name="Ram_Type" ColumnName="Ram_Type" />
+                <ScalarProperty Name="Storage_Temperature" ColumnName="Storage_Temperature" />
+                <ScalarProperty Name="Operating_Temperature" ColumnName="Operating_Temperature" />
+                <ScalarProperty Name="MTBF" ColumnName="MTBF" />
+                <ScalarProperty Name="Sequential_R_W" ColumnName="Sequential_R_W" />
+                <ScalarProperty Name="Interface" ColumnName="Interface" />
+                <ScalarProperty Name="Flash_Type" ColumnName="Flash_Type" />
+                <ScalarProperty Name="Form_Factor" ColumnName="Form_Factor" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Manufacturing_Warranty" ColumnName="Manufacturing_Warranty" />
                 <ScalarProperty Name="SpecificationID" ColumnName="SpecificationID" />
                 <ScalarProperty Name="Processor" ColumnName="Processor" />
                 <ScalarProperty Name="Colors" ColumnName="Colors" />

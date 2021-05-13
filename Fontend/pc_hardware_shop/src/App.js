@@ -6,6 +6,7 @@ import HomePage from './components/homePage';
 import ProductsList from './components/productsList';
 import ProductInfo from './components/productInfo';
 import NavBar from './components/navBar';
+import Cart from './components/userCart';
 class App extends Component {
   
 
@@ -18,6 +19,7 @@ class App extends Component {
             <Route path="/home"  component={HomePage}/> 
             <Route path="/list/:category" component={ProductsList}/> 
             <Route path="/info/:category/:id" component={ProductInfo}/>
+            <Route path="/user/cart" component={Cart}/>
             <Redirect to="/home" />
         </Switch>
 

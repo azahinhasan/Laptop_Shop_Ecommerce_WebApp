@@ -57,11 +57,12 @@
 
 
 .productLists{
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
   display: flex;
   flex-flow: row wrap;
   width: 70%;
+  margin-left: 320px;
   /* border: 2px black solid; */
   
 }
@@ -82,4 +83,39 @@
 .productListData img{
   height: 200px;
   width: 200px;
+}
+
+.FilterLIst{
+  text-align: left;
+  border: 2px solid black;
+  width: 280px;
+  height:40%;
+  font-size: 20px;
+  padding: 5px 5px;
+  position: fixed;
+  margin-top: 13px;
+  
+}
+
+.FilterLIst div{
+  border: 2px solid black;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 5% 0;
+  margin-bottom: 18%;
+}
+
+.FilterLIst select{
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5% 0;
+  margin-bottom: 12%;
+}
+
+.FilterLIst input{
+  font-size: 15px;
+  font-weight: bold;
+  width: 72px;
+  margin: 5% 0;
 }
