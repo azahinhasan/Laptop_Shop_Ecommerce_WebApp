@@ -5,11 +5,54 @@ import {Route,Switch,withRouter,Redirect,useParams,useHistory} from 'react-route
 
 const Cart = props =>{
     const [cart, setCart] = useState([JSON.parse(localStorage.getItem("CartData"))]);
+    const [continueOrder,setContinueOrder]=useState(false);
     let totalSum=0;
      console.log(cart);
 
 
+        const deleteFromCart=(v)=>{
+            console.log(v,'ID')
+
+            let val=[...JSON.parse(localStorage.getItem("CartData"))];
+
+            var index = val.findIndex(e=>e[0].ID==v);
+            if (index > -1) { 
+                val.splice(index, 1);
+                console.log('de;eted');
+            }
+            localStorage.setItem("CartData", JSON.stringify(val));
+            //setCart(val);
+            window.location.reload(false);
+        }
+
+
+
         let pageData = '';
+        let userInfo='';
+
+        if(continueOrder==true){
+            userInfo=(
+                <table className={classes.customers}>
+                    <tr >
+                        <td>Phone</td>
+                        <td><input/></td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td><input/></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td><input/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td> <button>Confirm</button></td>
+                    </tr>
+                </table>
+
+            )
+        }
 
         if(cart!=''){
             pageData=( <table  className={classes.customers}>
@@ -31,7 +74,7 @@ const Cart = props =>{
                                                     
                                                     }
                                                 </td>
-                                                <td>*</td>
+                                                <td><button onClick={()=>deleteFromCart(data[0].ID)}>Delete</button></td>
                                             </tr>
                                         
                                         )
@@ -46,9 +89,11 @@ const Cart = props =>{
                         <td></td>
                         <td>Total: </td>
                         <td>{totalSum}</td>
-                        <td></td>
+                        <td><button onClick={()=>setContinueOrder(true)}>Continue</button></td>
                     </tr>
+
                 </table>
+
             )
         }else{
             pageData=( <p>Cart Is Empty!</p>)
@@ -56,11 +101,17 @@ const Cart = props =>{
         }
         return (
             
-          <div className="">
+        <div className="">
 
-        <p>Cart</p>
-                {pageData}
-          </div>
+            <h1>Your Cart</h1>
+            <br/>
+            {userInfo}
+            <br/>
+            <hr/>
+            <br/>
+            {pageData}
+        </div>
+
         );
 
        
