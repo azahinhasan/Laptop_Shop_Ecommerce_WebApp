@@ -36,7 +36,16 @@ render() {
                     <Link to={{pathname:'/list/SSD'}}>HDD</Link>
                     </div>
                 </div> 
+                <div className={classes.LoginSingnUp}>
                 <Link to={{pathname:'/user/cart'}}>Cart</Link>
+                {!localStorage.getItem("UserVerified")?
+                    <span>
+                        <Link to={{pathname:'/user/login'}}>LogIn</Link>
+                        <Link to={{pathname:''}}>SignUp</Link>
+                    </span>
+                : <Link to={{pathname:'/user/logout'}}>LogOut</Link>}
+                  </div>
+
         </div>  
         
         </div> 

@@ -78,6 +78,7 @@
     <EntitySetMapping Name="AllOrders">
       <EntityTypeMapping TypeName="PcHardwareShopModel.AllOrder">
         <MappingFragment StoreEntitySet="AllOrders">
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="ProductCatagoryLinkedID" ColumnName="ProductCatagoryLinkedID" />
           <ScalarProperty Name="OrderdUserID" ColumnName="OrderdUserID" />
@@ -88,6 +89,7 @@
     <EntitySetMapping Name="CustomerInfoes">
       <EntityTypeMapping TypeName="PcHardwareShopModel.CustomerInfo">
         <MappingFragment StoreEntitySet="CustomerInfo">
+          <ScalarProperty Name="LoginTableID" ColumnName="LoginTableID" />
           <ScalarProperty Name="PostCode" ColumnName="PostCode" />
           <ScalarProperty Name="Country" ColumnName="Country" />
           <ScalarProperty Name="State" ColumnName="State" />
@@ -116,9 +118,20 @@
     <EntitySetMapping Name="PromoCodes">
       <EntityTypeMapping TypeName="PcHardwareShopModel.PromoCode">
         <MappingFragment StoreEntitySet="PromoCodes">
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
           <ScalarProperty Name="OfferInPercentage" ColumnName="OfferInPercentage" />
           <ScalarProperty Name="UsageLeft" ColumnName="UsageLeft" />
           <ScalarProperty Name="PromoCode1" ColumnName="PromoCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLoginTables">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.UserLoginTable">
+        <MappingFragment StoreEntitySet="UserLoginTable">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

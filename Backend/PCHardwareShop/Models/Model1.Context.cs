@@ -34,5 +34,6 @@ namespace PCHardwareShop.Models
         public virtual DbSet<CustomerInfo> CustomerInfoes { get; set; }
         public virtual DbSet<OrderdUserInfo> OrderdUserInfoes { get; set; }
         public virtual DbSet<PromoCode> PromoCodes { get; set; }
+        public virtual DbSet<UserLoginTable> UserLoginTables { get; set; }
     }
 }

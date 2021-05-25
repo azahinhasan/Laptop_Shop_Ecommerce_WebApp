@@ -19,14 +19,17 @@ const ConfirmOrder = props =>{
     const [OrderInProgress,setOrderInProgress]=useState(false);
     const [OrderDone,setOrderDone]=useState(false);
     const [errorMsg,setErrorMsg]=useState('');
+    const [promoErrorMsg,setPromoErrorMsg]=useState('');
+    const [prmoCode,setPromoCode]=useState('');
+    const [prmoCodeOffer,setPromoCodeOffer]=useState(0);
 
     const confirmOrderHandler=()=>{
-
         if (window.confirm('Do you Want to Confirm the ORDER?')) {
             if(Name==''||Phone==''||City==''||State==''||Country==''||PostCode==''){
                 setErrorMsg('Fill UP All Text Box');
             }else{
                 setErrorMsg('');
+                setPromoErrorMsg('');
             setOrderInProgress(true);
             axios.post('http://localhost:3819/api/orderconfirm',{
                 Name:Name,
@@ -50,9 +53,7 @@ const ConfirmOrder = props =>{
                             ProductCatagoryLinkedID:id
                         })
                     }
-
                 }
-
                 setOrderInProgress(false);
                 setOrderDone(true);
                 
@@ -63,13 +64,32 @@ const ConfirmOrder = props =>{
     }
 
 
+    const promoCodeVerify=()=>{
+        axios.get('http://localhost:3819/api/promocodeverify/'+prmoCode,{
+        }).then(r=>{
+            console.log(r.data);
+            if(r.data!='NotValid' || r.data!='AlreadyUsed'){
+                setPromoErrorMsg('');
+                setPromoCodeOffer(r.data.OfferInPercentage);
+            }else if(r.data=='AlreadyUsed'){
+                setPromoErrorMsg('PromoCode Already Used!');
+            }else if(r.data=='TimeExpired'){
+                setPromoErrorMsg('PromoCode Time Expired!');
+            }else{
+                setPromoErrorMsg('PromoCode is not Valid!');
+            }
+            
+        }).catch(e=>{
+            console.log(e);
+        })
+    }
         let pageData="";
         if(!OrderDone){
             pageData=(
                 <div>
                     <h2>Your InforMation</h2>
 
-                    <table className={classes.customers}>
+                    <table className={classes.table}>
                         <tr>
                             <td>Name</td>
                             <td><input onChange={(event)=>setName(event.target.value)}/></td>
@@ -97,12 +117,10 @@ const ConfirmOrder = props =>{
                     </table>
 
                     <br/>
-                    {OrderInProgress?<p>Loding...</p>:<button onClick={confirmOrderHandler}>Confirm Order</button>}
-                    <br/>
                     <p style={{color:'red'}}>{errorMsg}</p>
                     <br/>
                     <h2>Your Orders</h2>
-                    <table  className={classes.customers}>
+                    <table  className={classes.table}>
                     {cart.map(data=>{
                         return(
                             data.map((data,i)=>{
@@ -114,23 +132,38 @@ const ConfirmOrder = props =>{
                                             <td>{data[0].Product.Price}</td>
                                             <td>{data[1].quantity}</td>
                                             <td>
-                                                {
-                                                parseInt(data[0].Product.Price.replace(/,/g, '')) * data[1].quantity
-                                                
-                                                }
+                                                {parseInt(data[0].Product.Price.replace(/,/g, '')) * data[1].quantity}
                                             </td>
                                         </tr>
-
                             )}}))})}
+                        
+                        {
+                            prmoCodeOffer==0?null:
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Offer: </td>
+                                <td>{(totalSum*prmoCodeOffer)/100}</td>
+                            </tr>
+                        }
                         <tr>
                             <td></td>
-                            <td></td>
+                            <td><p style={{color:'red'}}>{promoErrorMsg}</p></td>
                             <td>Total: </td>
-                            <td>{totalSum}</td>
+                            <td>{totalSum-(totalSum*prmoCodeOffer)/100}</td>
                         </tr>
                     </table>
+
+
+
                     <br/>
                     <Link to={{pathname:'/user/cart'}}>Edit Orders</Link>
+                    <br/>
+                    <br/>
+                    <input placeholder="Promo Code" onChange={(event)=>setPromoCode(event.target.value)}/>
+                    <button onClick={promoCodeVerify}>Save</button>
+                    <br/>
+                    {OrderInProgress?<p>Loding...</p>:<button onClick={confirmOrderHandler}>Confirm Order</button>}
                 </div>
             )
         }else{

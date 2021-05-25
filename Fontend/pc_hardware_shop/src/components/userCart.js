@@ -55,7 +55,7 @@ const Cart = props =>{
 
         }
         if(cart!=''){
-            pageData=( <table  className={classes.customers}>
+            pageData=( <table  className={classes.table}>
                     {
                         
                     cart.map(data=>{
@@ -106,7 +106,6 @@ const Cart = props =>{
 
             <h1>Your Cart</h1>
             <br/>
-
             <hr/>
             <br/>
             {pageData}

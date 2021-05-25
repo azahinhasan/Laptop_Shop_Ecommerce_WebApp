@@ -7,7 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
 namespace PCHardwareShop.Models
 {
     using System;
@@ -19,9 +18,9 @@ namespace PCHardwareShop.Models
         public Nullable<int> OrderdUserID { get; set; }
         public Nullable<int> ProductCatagoryLinkedID { get; set; }
         public Nullable<int> Quantity { get; set; }
-
+        public Nullable<System.DateTime> ExpiryDate { get; set; }
+    
         public virtual OrderdUserInfo OrderdUserInfo { get; set; }
-
         public virtual ProductCategoryLink ProductCategoryLink { get; set; }
     }
 }

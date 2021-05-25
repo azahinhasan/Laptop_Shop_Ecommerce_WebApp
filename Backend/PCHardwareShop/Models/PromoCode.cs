@@ -18,5 +18,6 @@ namespace PCHardwareShop.Models
         public string PromoCode1 { get; set; }
         public Nullable<int> UsageLeft { get; set; }
         public Nullable<int> OfferInPercentage { get; set; }
+        public Nullable<System.DateTime> ExpiryDate { get; set; }
     }
 }

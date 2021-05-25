@@ -8,6 +8,7 @@
     <Property Name="OrderdUserID" Type="int" />
     <Property Name="ProductCatagoryLinkedID" Type="int" />
     <Property Name="Quantity" Type="int" />
+    <Property Name="ExpiryDate" Type="date" />
   </EntityType>
   <EntityType Name="Brands">
     <Key>
@@ -36,6 +37,7 @@
     <Property Name="State" Type="varchar" MaxLength="50" />
     <Property Name="Country" Type="varchar" MaxLength="50" />
     <Property Name="PostCode" Type="varchar" MaxLength="50" />
+    <Property Name="LoginTableID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OrderdUserInfo">
     <Key>
@@ -112,6 +114,16 @@
     <Property Name="PromoCode" Type="varchar" MaxLength="500" />
     <Property Name="UsageLeft" Type="int" />
     <Property Name="OfferInPercentage" Type="int" />
+    <Property Name="ExpiryDate" Type="date" />
+  </EntityType>
+  <EntityType Name="UserLoginTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Type" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_AllOrders_OrderdUserInfo">
     <End Role="OrderdUserInfo" Type="Self.OrderdUserInfo" Multiplicity="0..1" />
@@ -134,6 +146,18 @@
       </Principal>
       <Dependent Role="AllOrders">
         <PropertyRef Name="ProductCatagoryLinkedID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerInfo_UserLoginTable">
+    <End Role="UserLoginTable" Type="Self.UserLoginTable" Multiplicity="1" />
+    <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLoginTable">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CustomerInfo">
+        <PropertyRef Name="LoginTableID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -195,6 +219,7 @@
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductSpecification" EntityType="Self.ProductSpecification" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PromoCodes" EntityType="Self.PromoCodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLoginTable" EntityType="Self.UserLoginTable" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_AllOrders_OrderdUserInfo" Association="Self.FK_AllOrders_OrderdUserInfo">
       <End Role="OrderdUserInfo" EntitySet="OrderdUserInfo" />
       <End Role="AllOrders" EntitySet="AllOrders" />
@@ -202,6 +227,10 @@
     <AssociationSet Name="FK_AllOrders_ProductCategoryLink" Association="Self.FK_AllOrders_ProductCategoryLink">
       <End Role="ProductCategoryLink" EntitySet="ProductCategoryLink" />
       <End Role="AllOrders" EntitySet="AllOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerInfo_UserLoginTable" Association="Self.FK_CustomerInfo_UserLoginTable">
+      <End Role="UserLoginTable" EntitySet="UserLoginTable" />
+      <End Role="CustomerInfo" EntitySet="CustomerInfo" />
     </AssociationSet>
     <AssociationSet Name="FK_ProductCategoryLink_Category" Association="Self.FK_ProductCategoryLink_Category">
       <End Role="Category" EntitySet="Category" />

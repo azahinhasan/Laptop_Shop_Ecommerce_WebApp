@@ -9,6 +9,8 @@ import NavBar from './components/navBar';
 import Cart from './components/userCart';
 import ConfirmOrderBy from './components/confirmOrderBy';
 import ConfirmOrder from './components/confirmOrder';
+import Login from './components/loginPage';
+import Logout from './components/logOut';
 class App extends Component {
   
 
@@ -24,6 +26,8 @@ class App extends Component {
             <Route path="/user/cart" component={Cart}/>
             <Route path="/user/confirmorderBy" component={ConfirmOrderBy}/>
             <Route path="/user/confirmorder/finalstage" component={ConfirmOrder}/>
+            <Route path="/user/login" component={Login}/>
+            <Route path="/user/logout" component={Logout}/>
             <Redirect to="/home" />
         </Switch>
 

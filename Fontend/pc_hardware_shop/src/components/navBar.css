@@ -96,3 +96,8 @@
     font-weight: bold;
     text-decoration: underline;
 }
+
+.LoginSingnUp{
+  position: relative;
+  left: 10%;
+}

@@ -83,6 +83,25 @@ namespace PCHardwareShop.Controllers
             return Ok("OK");
         }
 
+        [Route("api/promocodeverify/{promoCode}"), HttpGet]
+        public IHttpActionResult Get([FromUri]string promoCode)
+        {
+            var data = context.PromoCodes.Where(x => x.PromoCode1 == promoCode).FirstOrDefault();
+            if (data == null)
+            {
+                //task: will verify the time/date and how many time he can usage
+                return Ok("NotValid");
+            }
+            if (data.UsageLeft<=0)
+            {
+                return Ok("AlreadyUsed");
+            }
+            if (data.ExpiryDate<DateTime.Today)
+            {
+                return Ok("TimeExpired");
+            }
+            return Ok(data) ;
+        }
 
     }
 }

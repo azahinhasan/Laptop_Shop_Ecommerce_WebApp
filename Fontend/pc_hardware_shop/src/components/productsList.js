@@ -1,7 +1,7 @@
-import React, { useState,useEffect,useReducer, useRef,useMemo } from 'react';
+import React, { useState,useEffect} from 'react';
 import axios from 'axios';
 import classes from './productsList.css';
-import {Route,Switch,withRouter,Redirect,useParams,useHistory} from 'react-router-dom';
+import {Route,Switch,withRouter,Redirect,useParams,useHistory,Link} from 'react-router-dom';
 import ProductInfo from './productInfo';
 
 const ProductsList = props =>{
@@ -125,7 +125,8 @@ const ProductsList = props =>{
             }
         </div>
         )
-      }else{
+      }
+      else{
         const link = "/info/"+category+"/"+storeId;
         pageData = (
           <Switch>
@@ -170,8 +171,11 @@ const ProductsList = props =>{
               <input type="number" placeholder='Max'  onChange={(event)=>FinterByMaxPrice(event.target.value)}/>
             </div>
 
-            {pageData}
-      
+
+            {/* <Link to={{pathname:'/info/'+'SSD'+'/'+storeId}}>  */}
+              {pageData}
+            {/* </Link> */}
+           
           </div>
         );
     } 
