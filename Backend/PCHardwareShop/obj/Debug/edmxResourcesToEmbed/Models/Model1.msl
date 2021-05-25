@@ -75,5 +75,53 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="AllOrders">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.AllOrder">
+        <MappingFragment StoreEntitySet="AllOrders">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductCatagoryLinkedID" ColumnName="ProductCatagoryLinkedID" />
+          <ScalarProperty Name="OrderdUserID" ColumnName="OrderdUserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerInfoes">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.CustomerInfo">
+        <MappingFragment StoreEntitySet="CustomerInfo">
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderdUserInfoes">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.OrderdUserInfo">
+        <MappingFragment StoreEntitySet="OrderdUserInfo">
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PromoCodes">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.PromoCode">
+        <MappingFragment StoreEntitySet="PromoCodes">
+          <ScalarProperty Name="OfferInPercentage" ColumnName="OfferInPercentage" />
+          <ScalarProperty Name="UsageLeft" ColumnName="UsageLeft" />
+          <ScalarProperty Name="PromoCode1" ColumnName="PromoCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

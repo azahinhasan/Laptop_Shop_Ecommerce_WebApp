@@ -30,5 +30,9 @@ namespace PCHardwareShop.Models
         public virtual DbSet<ProductCategoryLink> ProductCategoryLinks { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductSpecification> ProductSpecifications { get; set; }
+        public virtual DbSet<AllOrder> AllOrders { get; set; }
+        public virtual DbSet<CustomerInfo> CustomerInfoes { get; set; }
+        public virtual DbSet<OrderdUserInfo> OrderdUserInfoes { get; set; }
+        public virtual DbSet<PromoCode> PromoCodes { get; set; }
     }
 }

@@ -14,8 +14,6 @@ const ProductsInfo = props =>{
         const [quantity, setQuantity] = useState(1);
         const [imageName, setImageName] = useState('a.jpg');
         const { category,id } = useParams();
-       // const {category} = useParams();
-//props.match.params.id
 
         try{
          // setCart(...JSON.parse(localStorage.getItem("CartData")));
@@ -43,8 +41,7 @@ const ProductsInfo = props =>{
 
 
           let val=[...JSON.parse(localStorage.getItem("CartData"))];
-
-
+          console.log(val);
           
           //var index = val.indexOf(null);
 
@@ -52,7 +49,7 @@ const ProductsInfo = props =>{
         let oldQuantity = 0;
 
         var index = val.findIndex(e=>e[0].ID==data[0].ID);
-          console.log(index);
+          //console.log(index);
           if (index > -1) {
             let findOld = [...val.splice(index, 1)];
             findOld.map(e=>{
@@ -65,13 +62,10 @@ const ProductsInfo = props =>{
             val.splice(index, 1);
           }
 
-
         //   console.log(data[0].ID);
 
          // localStorage.setItem("CartData", JSON.stringify(val));
 
-         
-          
 
           let newData=[...data, {quantity:quantity}]
           let val2=[...val,newData];
@@ -80,14 +74,21 @@ const ProductsInfo = props =>{
           console.log(JSON.parse(localStorage.getItem("CartData"))," Carttt");
 
         }catch(error){
-          console.log(error);
 
-        // let val=[JSON.parse(localStorage.getItem("CartData"))];
-        // let newData=[...data, {quantity:quantity}]
-        // let val2=[...val,newData];
-        // localStorage.setItem("CartData", JSON.stringify(val2));
+        //console.log(error);
+        let val=[JSON.parse(localStorage.getItem("CartData"))];
+        let newData=[...data, {quantity:quantity}]
+        let val2=[...val,newData];
 
-        console.log(JSON.parse(localStorage.getItem("CartData"))," Carttt");
+        var index = val2.findIndex(e=>e==null);
+        console.log(index,'index');
+        if (index > -1) {
+          val2.splice(index, 1);
+        }
+
+        localStorage.setItem("CartData", JSON.stringify(val2));
+
+        //console.log(JSON.parse(localStorage.getItem("CartData"))," Carttt");
         }
 
       }
@@ -151,8 +152,9 @@ const ProductsInfo = props =>{
                 }
             </table>
             <br/>
-            <input min='1' type='number' placeholder="Quantity(Defult 1)" onChange={(event)=>setQuantity(event.target.value)}/>
-            <button onClick={addToCartHandler}>ADD TO Cart</button>
+            <input className={classes.quantity} min='1' type='number'  placeholder="Quantity(Defult 1)" onChange={(event)=>setQuantity(event.target.value)}/>
+            <br/>
+            <button className={classes.button} onClick={addToCartHandler}>ADD</button>
             <br/>
             <h2>Specification</h2>
             <br/>

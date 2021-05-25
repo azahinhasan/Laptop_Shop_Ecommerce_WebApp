@@ -12,18 +12,11 @@ namespace PCHardwareShop.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class PromoCode
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
-        {
-            this.ProductCategoryLinks = new HashSet<ProductCategoryLink>();
-        }
-    
         public int ID { get; set; }
-        public string cName { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductCategoryLink> ProductCategoryLinks { get; set; }
+        public string PromoCode1 { get; set; }
+        public Nullable<int> UsageLeft { get; set; }
+        public Nullable<int> OfferInPercentage { get; set; }
     }
 }

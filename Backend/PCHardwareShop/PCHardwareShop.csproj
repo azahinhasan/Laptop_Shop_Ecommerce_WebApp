@@ -167,12 +167,28 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AllOrder.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Brand.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\connectBrandWithMeataData.cs" />
+    <Compile Include="Models\connectCategoryToMetaData.cs" />
+    <Compile Include="Models\connectProductSpecificationToMeataData.cs" />
+    <Compile Include="Models\connectProductWithMeataData.cs" />
+    <Compile Include="Models\CustomerInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MetaData\AllOrderMetaData.cs" />
+    <Compile Include="Models\MetaData\BrandMetaData.cs" />
+    <Compile Include="Models\MetaData\CategoryMetaData.cs" />
+    <Compile Include="Models\connectAllOrderToMetaData.cs" />
+    <Compile Include="Models\MetaData\ProductMeta.cs" />
+    <Compile Include="Models\MetaData\ProductSpecificationMetaData.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -188,6 +204,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderdUserInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -195,6 +214,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductSpecification.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PromoCode.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

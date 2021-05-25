@@ -7,6 +7,8 @@ import ProductsList from './components/productsList';
 import ProductInfo from './components/productInfo';
 import NavBar from './components/navBar';
 import Cart from './components/userCart';
+import ConfirmOrderBy from './components/confirmOrderBy';
+import ConfirmOrder from './components/confirmOrder';
 class App extends Component {
   
 
@@ -20,6 +22,8 @@ class App extends Component {
             <Route path="/list/:category" component={ProductsList}/> 
             <Route path="/info/:category/:id" component={ProductInfo}/>
             <Route path="/user/cart" component={Cart}/>
+            <Route path="/user/confirmorderBy" component={ConfirmOrderBy}/>
+            <Route path="/user/confirmorder/finalstage" component={ConfirmOrder}/>
             <Redirect to="/home" />
         </Switch>
 

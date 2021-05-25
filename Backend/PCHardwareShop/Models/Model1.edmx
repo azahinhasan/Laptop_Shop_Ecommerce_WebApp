@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="PcHardwareShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AllOrders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderdUserID" Type="int" />
+          <Property Name="ProductCatagoryLinkedID" Type="int" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
         <EntityType Name="Brands">
           <Key>
             <PropertyRef Name="ID" />
@@ -18,6 +27,32 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CustomerInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="PostCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OrderdUserInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="PostCode" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ProductCategoryLink">
           <Key>
@@ -74,6 +109,39 @@
           <Property Name="Ram_Latency" Type="varchar" MaxLength="50" />
           <Property Name="Ram_Pin" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="PromoCodes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PromoCode" Type="varchar" MaxLength="500" />
+          <Property Name="UsageLeft" Type="int" />
+          <Property Name="OfferInPercentage" Type="int" />
+        </EntityType>
+        <Association Name="FK_AllOrders_OrderdUserInfo">
+          <End Role="OrderdUserInfo" Type="Self.OrderdUserInfo" Multiplicity="0..1" />
+          <End Role="AllOrders" Type="Self.AllOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderdUserInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AllOrders">
+              <PropertyRef Name="OrderdUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AllOrders_ProductCategoryLink">
+          <End Role="ProductCategoryLink" Type="Self.ProductCategoryLink" Multiplicity="0..1" />
+          <End Role="AllOrders" Type="Self.AllOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategoryLink">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AllOrders">
+              <PropertyRef Name="ProductCatagoryLinkedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ProductCategoryLink_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="ProductCategoryLink" Type="Self.ProductCategoryLink" Multiplicity="*" />
@@ -123,11 +191,23 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PcHardwareShopModelStoreContainer">
+          <EntitySet Name="AllOrders" EntityType="Self.AllOrders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderdUserInfo" EntityType="Self.OrderdUserInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductCategoryLink" EntityType="Self.ProductCategoryLink" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductSpecification" EntityType="Self.ProductSpecification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PromoCodes" EntityType="Self.PromoCodes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AllOrders_OrderdUserInfo" Association="Self.FK_AllOrders_OrderdUserInfo">
+            <End Role="OrderdUserInfo" EntitySet="OrderdUserInfo" />
+            <End Role="AllOrders" EntitySet="AllOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AllOrders_ProductCategoryLink" Association="Self.FK_AllOrders_ProductCategoryLink">
+            <End Role="ProductCategoryLink" EntitySet="ProductCategoryLink" />
+            <End Role="AllOrders" EntitySet="AllOrders" />
+          </AssociationSet>
           <AssociationSet Name="FK_ProductCategoryLink_Category" Association="Self.FK_ProductCategoryLink_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="ProductCategoryLink" EntitySet="ProductCategoryLink" />
@@ -174,6 +254,7 @@
           <Property Name="pCategory" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="Self.FK_ProductCategoryLink_Category" FromRole="ProductCategoryLink" ToRole="Category" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ProductCategoryLink_Products" FromRole="ProductCategoryLink" ToRole="Products" />
+          <NavigationProperty Name="AllOrders" Relationship="PcHardwareShopModel.FK_AllOrders_ProductCategoryLink" FromRole="ProductCategoryLink" ToRole="AllOrder" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -296,7 +377,90 @@
             <End Role="ProductSpecification" EntitySet="ProductSpecifications" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="AllOrders" EntityType="PcHardwareShopModel.AllOrder" />
+          <EntitySet Name="CustomerInfoes" EntityType="PcHardwareShopModel.CustomerInfo" />
+          <EntitySet Name="OrderdUserInfoes" EntityType="PcHardwareShopModel.OrderdUserInfo" />
+          <EntitySet Name="PromoCodes" EntityType="PcHardwareShopModel.PromoCode" />
+          <AssociationSet Name="FK_AllOrders_OrderdUserInfo" Association="PcHardwareShopModel.FK_AllOrders_OrderdUserInfo">
+            <End Role="OrderdUserInfo" EntitySet="OrderdUserInfoes" />
+            <End Role="AllOrder" EntitySet="AllOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AllOrders_ProductCategoryLink" Association="PcHardwareShopModel.FK_AllOrders_ProductCategoryLink">
+            <End Role="ProductCategoryLink" EntitySet="ProductCategoryLinks" />
+            <End Role="AllOrder" EntitySet="AllOrders" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AllOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderdUserID" Type="Int32" />
+          <Property Name="ProductCatagoryLinkedID" Type="Int32" />
+          <NavigationProperty Name="OrderdUserInfo" Relationship="PcHardwareShopModel.FK_AllOrders_OrderdUserInfo" FromRole="AllOrder" ToRole="OrderdUserInfo" />
+          <NavigationProperty Name="ProductCategoryLink" Relationship="PcHardwareShopModel.FK_AllOrders_ProductCategoryLink" FromRole="AllOrder" ToRole="ProductCategoryLink" />
+          <Property Name="Quantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CustomerInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OrderdUserInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AllOrders" Relationship="PcHardwareShopModel.FK_AllOrders_OrderdUserInfo" FromRole="OrderdUserInfo" ToRole="AllOrder" />
+        </EntityType>
+        <EntityType Name="PromoCode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PromoCode1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UsageLeft" Type="Int32" />
+          <Property Name="OfferInPercentage" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_AllOrders_OrderdUserInfo">
+          <End Type="PcHardwareShopModel.OrderdUserInfo" Role="OrderdUserInfo" Multiplicity="0..1" />
+          <End Type="PcHardwareShopModel.AllOrder" Role="AllOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderdUserInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AllOrder">
+              <PropertyRef Name="OrderdUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AllOrders_ProductCategoryLink">
+          <End Type="PcHardwareShopModel.ProductCategoryLink" Role="ProductCategoryLink" Multiplicity="0..1" />
+          <End Type="PcHardwareShopModel.AllOrder" Role="AllOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategoryLink">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AllOrder">
+              <PropertyRef Name="ProductCatagoryLinkedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -374,6 +538,54 @@
                 <ScalarProperty Name="Audio" ColumnName="Audio" />
                 <ScalarProperty Name="Keyboard" ColumnName="Keyboard" />
                 <ScalarProperty Name="WebCam" ColumnName="WebCam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllOrders">
+            <EntityTypeMapping TypeName="PcHardwareShopModel.AllOrder">
+              <MappingFragment StoreEntitySet="AllOrders">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductCatagoryLinkedID" ColumnName="ProductCatagoryLinkedID" />
+                <ScalarProperty Name="OrderdUserID" ColumnName="OrderdUserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerInfoes">
+            <EntityTypeMapping TypeName="PcHardwareShopModel.CustomerInfo">
+              <MappingFragment StoreEntitySet="CustomerInfo">
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderdUserInfoes">
+            <EntityTypeMapping TypeName="PcHardwareShopModel.OrderdUserInfo">
+              <MappingFragment StoreEntitySet="OrderdUserInfo">
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PromoCodes">
+            <EntityTypeMapping TypeName="PcHardwareShopModel.PromoCode">
+              <MappingFragment StoreEntitySet="PromoCodes">
+                <ScalarProperty Name="OfferInPercentage" ColumnName="OfferInPercentage" />
+                <ScalarProperty Name="UsageLeft" ColumnName="UsageLeft" />
+                <ScalarProperty Name="PromoCode1" ColumnName="PromoCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

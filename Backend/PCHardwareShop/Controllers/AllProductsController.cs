@@ -66,5 +66,23 @@ namespace PCHardwareShop.Controllers
             context.SaveChanges();
             return Ok("Success");
         }
+
+        [Route("api/orderconfirm"),HttpPost]
+        public IHttpActionResult AddOrder([FromBody] OrderdUserInfo info)
+        {
+            context.OrderdUserInfoes.Add(info);
+            context.SaveChanges();
+            return Ok(info.ID);
+        }
+
+        [Route("api/orderconfirm/productlist"),HttpPost]
+        public IHttpActionResult AddOrderProduct([FromBody]AllOrder data)
+        {
+            context.AllOrders.Add(data);
+            context.SaveChanges();
+            return Ok("OK");
+        }
+
+
     }
 }

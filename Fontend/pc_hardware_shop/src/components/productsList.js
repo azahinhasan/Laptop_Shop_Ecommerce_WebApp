@@ -129,7 +129,7 @@ const ProductsList = props =>{
         const link = "/info/"+category+"/"+storeId;
         pageData = (
           <Switch>
-              <Redirect to={link}/> 
+              <Redirect to={{pathname:link}}/> 
           </Switch>
         )
       }

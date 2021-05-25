@@ -72,6 +72,7 @@
   border: 2px black solid;
   margin: 1%;
   border-radius: 5px;
+  /* flex: 1 1 45.5%; */
 }
 
 .productListData:hover{
@@ -118,4 +119,28 @@
   font-weight: bold;
   width: 72px;
   margin: 5% 0;
+}
+
+.quantity{
+  border:2px black solid;
+  width: 150px;
+  height: 50px;
+  font-size: 16px;
+  text-align: center;
+}
+.button{
+  border:2px black solid;
+  border-radius: 5px;
+  width: 100px;
+  height: 50px;
+  font-size: 18px;
+  margin-top: 10px;
+  padding: 15px 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.button:hover{
+  background-color: black;
+  color: white;
 }
