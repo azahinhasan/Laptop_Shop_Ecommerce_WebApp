@@ -89,7 +89,7 @@ namespace PCHardwareShop.Controllers
             var data = context.PromoCodes.Where(x => x.PromoCode1 == promoCode).FirstOrDefault();
             if (data == null)
             {
-                //task: will verify the time/date and how many time he can usage
+                //task: 
                 return Ok("NotValid");
             }
             if (data.UsageLeft<=0)
@@ -100,7 +100,12 @@ namespace PCHardwareShop.Controllers
             {
                 return Ok("TimeExpired");
             }
-            return Ok(data) ;
+
+            data.UsageLeft = data.UsageLeft-1;
+            context.Entry(data).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+
+            return Ok(data.OfferInPercentage) ;
         }
 
     }

@@ -90,7 +90,7 @@ const ConfirmOrder = props =>{
             console.log(r.data);
             if(r.data!='NotValid' || r.data!='AlreadyUsed'){
                 setPromoErrorMsg('');
-                setPromoCodeOffer(r.data.OfferInPercentage);
+                setPromoCodeOffer(Number(r.data));
             }else if(r.data=='AlreadyUsed'){
                 setPromoErrorMsg('PromoCode Already Used!');
             }else if(r.data=='TimeExpired'){
