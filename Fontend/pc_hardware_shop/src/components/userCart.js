@@ -28,32 +28,8 @@ const Cart = props =>{
 
 
         let pageData = '';
-        let userInfo='';
 
-        if(continueOrder==true){
-            // userInfo=(
-                // <table className={classes.customers}>
-                //     <tr >
-                //         <td>Phone</td>
-                //         <td><input/></td>
-                //     </tr>
-                //     <tr>
-                //         <td>Name</td>
-                //         <td><input/></td>
-                //     </tr>
-                //     <tr>
-                //         <td>Address</td>
-                //         <td><input/></td>
-                //     </tr>
-                //     <tr>
-                //         <td></td>
-                //         <td> <button>Confirm</button></td>
-                //     </tr>
-                // </table>
 
-            // )
-
-        }
         if(cart!=''){
             pageData=( <table  className={classes.table}>
                     {
@@ -90,7 +66,12 @@ const Cart = props =>{
                         <td>Total: </td>
                         <td>{totalSum}</td>
                         {/* <td><button onClick={()=>setContinueOrder(true)}>Continue</button></td> */}
-                        <td><Link to={{pathname:'/user/confirmorderby'}}>Continue</Link></td>
+                        <td>
+                            {Boolean(localStorage.getItem("UserVerified"))?
+                            <Link to={{pathname:'/user/confirmorder/finalstage'}}>Continue</Link>
+                            :<Link to={{pathname:'/user/confirmorderby'}}>Continue</Link>}
+                            
+                        </td>
                     </tr>
 
                 </table>

@@ -7,7 +7,7 @@ import classes from './productsList.css';
 
 const SignUp = props =>{
 
-        const [ipAddress, setIpAddress] = useState("");
+        const [errorMsg, setErrorMsg] = useState("");
         const [ipAddressDetails, setIpAddressDetails] = useState("");
         const [Name,setName]=useState('');
         const [Phone,setPhone]=useState('');
@@ -17,8 +17,33 @@ const SignUp = props =>{
         const [PostCode,setPostCode]=useState('');
         const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
-        const [gender, setGender] = useState("");
+        const [Gender, setGender] = useState("");
 
+        const SignUpHandler=()=>{
+            axios.post('http://localhost:3819/api/signup',{
+                Email:email,
+                Password:password,
+                Type:'Customer'
+            }).then(r=>{
+                console.log(r.data);
+                axios.post('http://localhost:3819/api/signup/customer',{
+                    Name:Name,
+                    Email:email,
+                    Phone:Phone,
+                    Gender:Gender,
+                    City:City,
+                    State:State,
+                    Country:Country,
+                    PostCode:PostCode,
+                    LoginTableID:r.data
+
+                }).then(s=>{
+                    if(s.data=='OK'){
+                        console.log('Sucess')
+                    }
+                })
+            })
+        }
         return (
             <div className="">
                 <table className={classes.table}>
@@ -60,7 +85,7 @@ const SignUp = props =>{
                         </tr>
                         <tr>
                             <td></td>
-                            <td><button>Submit</button></td>
+                            <td><button onClick={SignUpHandler}>Submit</button></td>
                         </tr>
                 </table>
             </div>

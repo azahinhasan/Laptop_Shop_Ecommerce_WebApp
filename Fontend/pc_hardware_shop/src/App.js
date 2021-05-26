@@ -11,6 +11,7 @@ import ConfirmOrderBy from './components/confirmOrderBy';
 import ConfirmOrder from './components/confirmOrder';
 import Login from './components/loginPage';
 import Logout from './components/logOut';
+import SignUp from './components/signUp';
 class App extends Component {
   
 
@@ -28,6 +29,7 @@ class App extends Component {
             <Route path="/user/confirmorder/finalstage" component={ConfirmOrder}/>
             <Route path="/user/login" component={Login}/>
             <Route path="/user/logout" component={Logout}/>
+            <Route path="/user/signup" component={SignUp}/>
             <Redirect to="/home" />
         </Switch>
 

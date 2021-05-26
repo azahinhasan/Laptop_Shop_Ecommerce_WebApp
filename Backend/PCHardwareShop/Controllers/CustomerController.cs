@@ -5,30 +5,20 @@ using System.Web;
 using System.Web.Http;
 using System.Web;
 using PCHardwareShop.Models;
+using PCHardwareShop.Repository;
 
 namespace PCHardwareShop.Controllers
 {
 
     public class CustomerController : ApiController
     {
-        PcHardwareShopEntities2 context = new PcHardwareShopEntities2();
+        CustomerRepo repo = new CustomerRepo();
 
-
-        [Route("api/login"), HttpPost]
-        public IHttpActionResult login([FromBody]UserLoginTable value)
+        [Route("api/loadCustomerInfo/{loginTableID}/{email}"), HttpGet]
+        public IHttpActionResult AddOrderProduct([FromUri]int loginTableID, [FromUri]string email)
         {
-
-
-            var data = context.UserLoginTables.Where(x => x.Email == value.Email && x.Password==value.Password).FirstOrDefault();
-         
-            if (data==null)
-            {
-                return Ok("InValid");
-            }
-
-            string[] temp = {data.ID.ToString(),data.Type,data.Email};
-
-            return Ok(temp);
+            return Ok(repo.loadCustomerInfo(loginTableID, email));
+            //return Ok(email);
         }
 
     }

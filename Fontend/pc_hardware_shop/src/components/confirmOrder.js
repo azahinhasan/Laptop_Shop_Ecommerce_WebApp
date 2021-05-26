@@ -23,6 +23,26 @@ const ConfirmOrder = props =>{
     const [prmoCode,setPromoCode]=useState('');
     const [prmoCodeOffer,setPromoCodeOffer]=useState(0);
 
+
+
+    useEffect(()=>{
+        if(Boolean(localStorage.getItem("UserVerified"))){
+           // axios.get('http://localhost:3819/api/loadCustomerInfo/'+Number(localStorage.getItem("LoginID"))+'/'+localStorage.getItem("Email")).then(r=>{
+            axios.get('http://localhost:3819/api/loadCustomerInfo/'+1+'/'+'a').then(r=>{
+                //console.log(r.data);
+                var temp = r.data;
+                setName(temp.Name);
+                setPhone(temp.Phone);
+                setCity(temp.City);
+                setPostCode(temp.PostCode);
+                setState(temp.State);
+                setCountry(temp.Country);
+                
+            })
+        }
+    },[])
+
+
     const confirmOrderHandler=()=>{
         if (window.confirm('Do you Want to Confirm the ORDER?')) {
             if(Name==''||Phone==''||City==''||State==''||Country==''||PostCode==''){
@@ -92,27 +112,27 @@ const ConfirmOrder = props =>{
                     <table className={classes.table}>
                         <tr>
                             <td>Name</td>
-                            <td><input onChange={(event)=>setName(event.target.value)}/></td>
+                            <td><input value={Name} onChange={(event)=>setName(event.target.value)}/></td>
                         </tr>
                         <tr>
                             <td>Phone</td>
-                            <td><input  onChange={(event)=>setPhone(event.target.value)}/></td>
+                            <td><input value={Phone}  onChange={(event)=>setPhone(event.target.value)}/></td>
                         </tr>
                         <tr>
                             <td>City</td>
-                            <td><input  onChange={(event)=>setCity(event.target.value)}/></td>
+                            <td><input value={City}  onChange={(event)=>setCity(event.target.value)}/></td>
                         </tr>
                         <tr>
                             <td>State</td>
-                            <td><input  onChange={(event)=>setState(event.target.value)}/></td>
+                            <td><input value={State}  onChange={(event)=>setState(event.target.value)}/></td>
                         </tr>
                         <tr>
                             <td>Country</td>
-                            <td><input  onChange={(event)=>setCountry(event.target.value)}/></td>
+                            <td><input value={Country}  onChange={(event)=>setCountry(event.target.value)}/></td>
                         </tr>
                         <tr>
                             <td>PostCode</td>
-                            <td><input  onChange={(event)=>setPostCode(event.target.value)}/></td>
+                            <td><input value={PostCode}  onChange={(event)=>setPostCode(event.target.value)}/></td>
                         </tr>
                     </table>
 

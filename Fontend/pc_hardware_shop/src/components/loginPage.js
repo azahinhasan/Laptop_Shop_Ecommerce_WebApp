@@ -13,15 +13,18 @@ const Login = () =>{
 
     useEffect(() => {
 
-    if(localStorage.getItem("UserVerified")){
+    if(localStorage.getItem("UserVerified")=='true'){
         setRedirctTo(true);
     }
+
     },[localStorage.getItem("UserVerified")]);
 
     useEffect(() => {
-        if(localStorage.getItem("UserVerified")){
+
+    if(localStorage.getItem("UserVerified")=='true'){
             setRedirctTo(true);
         }
+
     },[]);
 
     if(redirctTo){
@@ -37,7 +40,7 @@ const Login = () =>{
             if(r.data=='InValid'){
                 localStorage.setItem("UserVerified", false);
             }else{
-                localStorage.setItem("LoginID", r.data[0]);
+                localStorage.setItem("LoginID", Number(r.data[0]));
                 localStorage.setItem("Type", r.data[1]);
                 localStorage.setItem("Email", r.data[2]);
                 localStorage.setItem("UserVerified", true);
