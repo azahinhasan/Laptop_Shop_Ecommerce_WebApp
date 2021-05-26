@@ -7,7 +7,9 @@ import classes from './productsList.css';
 
 const SignUp = props =>{
 
+        const [sucessMsg, setSucessMsg] = useState("");
         const [errorMsg, setErrorMsg] = useState("");
+        const [errorMsgEmail, setErrorMsgEmail] = useState("");
         const [ipAddressDetails, setIpAddressDetails] = useState("");
         const [Name,setName]=useState('');
         const [Phone,setPhone]=useState('');
@@ -19,33 +21,55 @@ const SignUp = props =>{
         const [password, setPassword] = useState("");
         const [Gender, setGender] = useState("");
 
+        const FormValidation=()=>{
+            if(Name==''||Phone==''||City==''||State==''||Country==''||PostCode==''||email==''){
+                setErrorMsg('Fill UP All Text Box');
+                return false;
+            }else{
+                setErrorMsg('');
+                return true;
+            }
+        }
         const SignUpHandler=()=>{
-            axios.post('http://localhost:3819/api/signup',{
-                Email:email,
-                Password:password,
-                Type:'Customer'
-            }).then(r=>{
-                console.log(r.data);
-                axios.post('http://localhost:3819/api/signup/customer',{
-                    Name:Name,
+            if(FormValidation()){
+                axios.post('http://localhost:3819/api/signup',{
                     Email:email,
-                    Phone:Phone,
-                    Gender:Gender,
-                    City:City,
-                    State:State,
-                    Country:Country,
-                    PostCode:PostCode,
-                    LoginTableID:r.data
-
-                }).then(s=>{
-                    if(s.data=='OK'){
-                        console.log('Sucess')
+                    Password:password,
+                    Type:'Customer'
+                }).then(r=>{
+                    //console.log(r.data);
+                    if(r.data == 0){
+                        setErrorMsgEmail('Email Already Exist!');
+                    }else{
+                        setErrorMsgEmail('');
+                        axios.post('http://localhost:3819/api/signup/customer',{
+                            Name:Name,
+                            Email:email,
+                            Phone:Phone,
+                            Gender:Gender,
+                            City:City,
+                            State:State,
+                            Country:Country,
+                            PostCode:PostCode,
+                            LoginTableID:r.data
+                        }).then(s=>{
+                            if(s.data=='OK'){
+                                setSucessMsg("SignUp Success. Please Login In Now...");
+                            }
+                        })
                     }
                 })
-            })
         }
+    }
         return (
             <div className="">
+                <br/>
+                <h2>SignUp Page</h2>
+                <br/>
+                <p style={{color:'red'}}>{errorMsg}</p>
+                <p style={{color:'red'}}>{errorMsgEmail}</p>
+                <p style={{color:'green'}}>{sucessMsg}</p>
+                <br/>
                 <table className={classes.table}>
                         <tr>
                             <td>Email</td>
@@ -65,7 +89,12 @@ const SignUp = props =>{
                         </tr>
                         <tr>
                             <td>Gender</td>
-                            <td><input onChange={(event)=>setGender(event.target.value)}/></td>
+                            <td>
+                                <select onChange={(event)=>setGender(event.target.value)}>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>City</td>

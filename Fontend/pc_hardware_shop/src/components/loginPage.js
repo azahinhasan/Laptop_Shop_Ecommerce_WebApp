@@ -6,10 +6,11 @@ import {Redirect,Switch} from 'react-router-dom';
 
 const Login = () =>{
 
-
+    const [errorMsg, setErrorMsg] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [redirctTo, setRedirctTo] = useState(false);
+
 
     useEffect(() => {
 
@@ -37,9 +38,11 @@ const Login = () =>{
             Email:email,
             Password:password
         }).then(r=>{
-            if(r.data=='InValid'){
+            if(r.data[0]=='InValid'){
                 localStorage.setItem("UserVerified", false);
+                setErrorMsg("Wrong Email or Password!");
             }else{
+                setErrorMsg("");
                 localStorage.setItem("LoginID", Number(r.data[0]));
                 localStorage.setItem("Type", r.data[1]);
                 localStorage.setItem("Email", r.data[2]);
@@ -55,6 +58,8 @@ const Login = () =>{
     return (
     <div className="">
         <br/>
+        <h2>LogIn Page</h2>
+        <br/>
         <table className={classes.table}>
             <tr>
                 <td>Email:</td>
@@ -65,7 +70,8 @@ const Login = () =>{
                 <td><input  onChange={event=>setPassword(event.target.value)}/></td>
             </tr>
         </table>
-        
+        <br/>
+        <p style={{color:'red'}}>{errorMsg}</p>
         <br/>
         <button onClick={loginHendler}>LogIn</button>
     </div>

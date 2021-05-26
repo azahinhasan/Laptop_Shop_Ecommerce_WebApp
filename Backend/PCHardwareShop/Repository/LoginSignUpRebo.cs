@@ -20,7 +20,7 @@ namespace PCHardwareShop.Repository
 
             if (data == null)
             {
-                string[] temp1 = null;
+                string[] temp1 = {"InValid"};
 
                 return temp1;
             }
@@ -32,6 +32,11 @@ namespace PCHardwareShop.Repository
 
         public int signUpForLoginRepo(UserLoginTable data)
         {
+            var temp = context.UserLoginTables.Where(x => x.Email == data.Email).FirstOrDefault();
+            if (temp!=null)
+            {
+                return 0; //0 mean email already exist
+            }
             context.UserLoginTables.Add(data);
             context.SaveChanges();
             return data.ID;
