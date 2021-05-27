@@ -6,6 +6,7 @@ import axios from 'axios';
 //import GoogleMapReact from 'google-map-react';
 
 
+
 const ConfirmOrder = props =>{
     const [cart, setCart] = useState([JSON.parse(localStorage.getItem("CartData"))]);
     const [continueOrder,setContinueOrder]=useState(false);
@@ -188,7 +189,7 @@ const ConfirmOrder = props =>{
                     <br/>
                     <br/>
                     <input placeholder="Promo Code" disabled={prmoCodeOffer!=0?true:false} onChange={(event)=>setPromoCode(event.target.value)}/>
-                    <button onClick={promoCodeVerify(0)} disabled={prmoCodeOffer!=0?true:false}>Save</button>
+                    {/* <button onClick={()=>promoCodeVerify(0)} disabled={prmoCodeOffer!=0?true:false}>Save</button> */}
                     <br/>
                     {OrderInProgress?<p>Sending...</p>:<button onClick={confirmOrderHandler}>Confirm Order</button>}
                 </div>

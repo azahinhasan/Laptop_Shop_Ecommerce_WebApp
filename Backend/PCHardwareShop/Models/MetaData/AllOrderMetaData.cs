@@ -15,7 +15,7 @@ namespace PCHardwareShop.Models.MetaData
         public Nullable<int> Quantity { get; set; }
         [JsonIgnore, XmlIgnore]
         public virtual OrderdUserInfo OrderdUserInfo { get; set; }
-        [JsonIgnore, XmlIgnore]
+        //[JsonIgnore, XmlIgnore]
         public virtual ProductCategoryLink ProductCategoryLink { get; set; }
     }
 }

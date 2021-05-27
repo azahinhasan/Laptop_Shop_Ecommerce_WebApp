@@ -16,5 +16,7 @@ namespace PCHardwareShop.Repository
 
             return data[0];
         }
+
+
     }
 }
