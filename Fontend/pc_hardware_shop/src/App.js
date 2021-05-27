@@ -12,6 +12,7 @@ import ConfirmOrder from './components/confirmOrder';
 import Login from './components/loginPage';
 import Logout from './components/logOut';
 import SignUp from './components/signUp';
+import PrintPdf from './components/print/htmlToPdf';
 class App extends Component {
   
 
@@ -30,6 +31,7 @@ class App extends Component {
             <Route path="/user/login" component={Login}/>
             <Route path="/user/logout" component={Logout}/>
             <Route path="/user/signup" component={SignUp}/>
+            <Route path="/user/printReceipt" component={PrintPdf}/>
             <Redirect to="/home" />
         </Switch>
 

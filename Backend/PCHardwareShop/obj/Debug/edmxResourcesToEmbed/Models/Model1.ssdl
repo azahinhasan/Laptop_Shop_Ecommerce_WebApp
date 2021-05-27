@@ -50,6 +50,7 @@
     <Property Name="State" Type="varchar" MaxLength="50" />
     <Property Name="Country" Type="varchar" MaxLength="50" />
     <Property Name="PostCode" Type="varchar" MaxLength="50" />
+    <Property Name="PrmoCodeOffer" Type="int" />
   </EntityType>
   <EntityType Name="ProductCategoryLink">
     <Key>

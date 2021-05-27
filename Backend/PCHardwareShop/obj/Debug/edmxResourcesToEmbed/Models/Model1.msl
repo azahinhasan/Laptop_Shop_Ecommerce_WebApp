@@ -105,6 +105,7 @@
     <EntitySetMapping Name="OrderdUserInfoes">
       <EntityTypeMapping TypeName="PcHardwareShopModel.OrderdUserInfo">
         <MappingFragment StoreEntitySet="OrderdUserInfo">
+          <ScalarProperty Name="PrmoCodeOffer" ColumnName="PrmoCodeOffer" />
           <ScalarProperty Name="PostCode" ColumnName="PostCode" />
           <ScalarProperty Name="Country" ColumnName="Country" />
           <ScalarProperty Name="State" ColumnName="State" />

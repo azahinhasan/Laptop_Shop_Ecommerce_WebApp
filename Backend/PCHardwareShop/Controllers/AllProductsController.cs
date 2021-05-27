@@ -9,34 +9,34 @@ using PCHardwareShop.Models;
 
 namespace PCHardwareShop.Controllers
 {
-   // [RoutePrefix("")]
-    
-    
+    // [RoutePrefix("")]
+
+
     public class AllProductsController : ApiController
     {
         PcHardwareShopEntities2 context = new PcHardwareShopEntities2();
 
-        [Route("api/products/latop1"),HttpGet]
+        [Route("api/products/latop1"), HttpGet]
         public IHttpActionResult Get()
         {
             return Ok(context.ProductCategoryLinks.Where(x => x.Category.cName == "SSD").ToList());
         }
 
         [Route("api/products/{category}/{id}"), HttpGet]
-        public IHttpActionResult GetInfo([FromUri] string category,[FromUri] int id)
+        public IHttpActionResult GetInfo([FromUri] string category, [FromUri] int id)
         {
             return Ok(context.ProductCategoryLinks.Where(x => x.ID == id && x.Category.cName == category).ToList());
         }
 
         [Route("api/products/{category}"), HttpGet]
-        public IHttpActionResult productList([FromUri]string category)
+        public IHttpActionResult productList([FromUri] string category)
         {
             return Ok(context.ProductCategoryLinks.Where(x => x.Category.cName == category).ToList());
             //return Ok(context.ProductCategoryLinks.Where(x => x.Category.cName == "Laptop").ToList());
         }
 
         [Route("api/products/laptop/{id}")]
-        public IHttpActionResult Put([FromBody]ProductCategoryLink data,int id)
+        public IHttpActionResult Put([FromBody] ProductCategoryLink data, int id)
         {
             data.ID = id;
             context.Entry(data).State = System.Data.Entity.EntityState.Modified;
@@ -44,7 +44,7 @@ namespace PCHardwareShop.Controllers
             return Ok(context.ProductCategoryLinks.Find(id));
         }
 
-        [Route("api/products/laptop/{id}"),HttpDelete]
+        [Route("api/products/laptop/{id}"), HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             var data = context.ProductCategoryLinks.Find(id);
@@ -67,7 +67,7 @@ namespace PCHardwareShop.Controllers
             return Ok("Success");
         }
 
-        [Route("api/orderconfirm"),HttpPost]
+        [Route("api/orderconfirm"), HttpPost]
         public IHttpActionResult AddOrder([FromBody] OrderdUserInfo info)
         {
             context.OrderdUserInfoes.Add(info);
@@ -75,38 +75,46 @@ namespace PCHardwareShop.Controllers
             return Ok(info.ID);
         }
 
-        [Route("api/orderconfirm/productlist"),HttpPost]
-        public IHttpActionResult AddOrderProduct([FromBody]AllOrder data)
+        [Route("api/orderconfirm/productlist"), HttpPost]
+        public IHttpActionResult AddOrderProduct([FromBody] AllOrder data)
         {
             context.AllOrders.Add(data);
             context.SaveChanges();
             return Ok("OK");
         }
 
-        [Route("api/promocodeverify/{promoCode}"), HttpGet]
-        public IHttpActionResult Get([FromUri]string promoCode)
+        [Route("api/promocodeverify/{promoCode}/{type}"), HttpGet]
+        public IHttpActionResult Get([FromUri] string promoCode,[FromUri]int type)
         {
             var data = context.PromoCodes.Where(x => x.PromoCode1 == promoCode).FirstOrDefault();
-            if (data == null)
+            if (type == 0)
             {
-                //task: 
-                return Ok("NotValid");
+                if (data == null)
+                {
+                    //task: 
+                    return Ok("NotValid");
+                }
+                if (data.UsageLeft <= 0)
+                {
+                    return Ok("AlreadyUsed");
+                }
+                if (data.ExpiryDate < DateTime.Today)
+                {
+                    return Ok("TimeExpired");
+                }
             }
-            if (data.UsageLeft<=0)
+            if (type == 1)
             {
-                return Ok("AlreadyUsed");
-            }
-            if (data.ExpiryDate<DateTime.Today)
-            {
-                return Ok("TimeExpired");
+                data.UsageLeft = data.UsageLeft - 1;
+                context.Entry(data).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+
             }
 
-            data.UsageLeft = data.UsageLeft-1;
-            context.Entry(data).State = System.Data.Entity.EntityState.Modified;
-            context.SaveChanges();
-
-            return Ok(data.OfferInPercentage) ;
+            return Ok(data.OfferInPercentage);
         }
+
+
 
     }
 }

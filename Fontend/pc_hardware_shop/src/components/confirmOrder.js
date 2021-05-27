@@ -45,11 +45,16 @@ const ConfirmOrder = props =>{
 
     const confirmOrderHandler=()=>{
         if (window.confirm('Do you Want to Confirm the ORDER?')) {
-            if(Name==''||Phone==''||City==''||State==''||Country==''||PostCode==''){
+
+            if(Name===''||Phone===''||City===''||State===''||Country===''||PostCode===''){
                 setErrorMsg('Fill UP All Text Box');
             }else{
-                setErrorMsg('');
-                setPromoErrorMsg('');
+
+            if(prmoCodeOffer!==0){
+                promoCodeVerify(1);
+            }
+            setErrorMsg('');
+            setPromoErrorMsg('');
             setOrderInProgress(true);
             axios.post('http://localhost:3819/api/orderconfirm',{
                 Name:Name,
@@ -57,7 +62,8 @@ const ConfirmOrder = props =>{
                 City:City,
                 State:State,
                 Country:Country,
-                PostCode:PostCode
+                PostCode:PostCode,
+                PrmoCodeOffer:prmoCodeOffer
             }).then(result =>{
                 console.log(result);
                 if(result.data!= null){
@@ -84,13 +90,14 @@ const ConfirmOrder = props =>{
     }
 
 
-    const promoCodeVerify=()=>{
-        axios.get('http://localhost:3819/api/promocodeverify/'+prmoCode,{
+    const promoCodeVerify=(action)=>{
+        axios.get('http://localhost:3819/api/promocodeverify/'+prmoCode+'/'+action,{
         }).then(r=>{
-            console.log(r.data);
-            if(r.data!='NotValid' || r.data!='AlreadyUsed'){
+           //console.log(r.data);
+            if(r.data!=='NotValid' && r.data!=='AlreadyUsed'){
                 setPromoErrorMsg('');
                 setPromoCodeOffer(Number(r.data));
+                setPromoErrorMsg('PromoCode Applied');
             }else if(r.data=='AlreadyUsed'){
                 setPromoErrorMsg('PromoCode Already Used!');
             }else if(r.data=='TimeExpired'){
@@ -180,10 +187,10 @@ const ConfirmOrder = props =>{
                     <Link to={{pathname:'/user/cart'}}>Edit Orders</Link>
                     <br/>
                     <br/>
-                    <input placeholder="Promo Code" onChange={(event)=>setPromoCode(event.target.value)}/>
-                    <button onClick={promoCodeVerify}>Save</button>
+                    <input placeholder="Promo Code" disabled={prmoCodeOffer!=0?true:false} onChange={(event)=>setPromoCode(event.target.value)}/>
+                    <button onClick={promoCodeVerify(0)} disabled={prmoCodeOffer!=0?true:false}>Save</button>
                     <br/>
-                    {OrderInProgress?<p>Loding...</p>:<button onClick={confirmOrderHandler}>Confirm Order</button>}
+                    {OrderInProgress?<p>Sending...</p>:<button onClick={confirmOrderHandler}>Confirm Order</button>}
                 </div>
             )
         }else{
