@@ -12,7 +12,7 @@ import ConfirmOrder from './components/confirmOrder';
 import Login from './components/loginPage';
 import Logout from './components/logOut';
 import SignUp from './components/signUp';
-import PrintPdf from './components/print/htmlToPdf';
+import PrintPdf from './components/print/htmlToPdf2';
 class App extends Component {
   
 

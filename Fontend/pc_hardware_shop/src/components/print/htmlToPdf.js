@@ -4,7 +4,7 @@ import html2canvas from 'html2canvas';
 //npm install --save html2canvas //for sceenShort
 import React, { useState,useEffect} from 'react';
 import axios from 'axios';
-import classes from '../productsList.css';
+import classes from './htmlToPdf.css';
 
 const ToPdf=()=>{
 
@@ -14,11 +14,11 @@ const ToPdf=()=>{
     const exportPdf = () => {
         pageData();
         html2canvas(document.querySelector("#capture")).then(canvas => {
-            //document.body.appendChild(canvas);  // if you want see your screenshot in body.
+            document.body.appendChild(canvas);  // if you want see your screenshot in body.
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF();
-            pdf.addImage(imgData, 'PNG', 5, 0);
-            pdf.save("download.pdf"); 
+            pdf.addImage(imgData, 'PNG', -35, 5);
+            //pdf.save("download.pdf"); 
         });
         
     }

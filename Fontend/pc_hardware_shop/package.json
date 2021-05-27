@@ -59,6 +59,7 @@
     "react-refresh": "^0.8.3",
     "react-route": "^1.0.3",
     "react-router-dom": "^5.2.0",
+    "react-to-print": "^2.12.4",
     "resolve": "1.18.1",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^10.0.5",
