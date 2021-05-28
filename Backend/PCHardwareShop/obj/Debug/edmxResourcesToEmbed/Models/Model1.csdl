@@ -207,6 +207,7 @@
     <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="AllOrders" Relationship="PcHardwareShopModel.FK_AllOrders_OrderdUserInfo" FromRole="OrderdUserInfo" ToRole="AllOrder" />
     <Property Name="PrmoCodeOffer" Type="Int32" />
+    <Property Name="OrderedData" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="PromoCode">
     <Key>

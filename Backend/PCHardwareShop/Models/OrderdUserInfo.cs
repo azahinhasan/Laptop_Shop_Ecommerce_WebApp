@@ -28,6 +28,7 @@ namespace PCHardwareShop.Models
         public string Country { get; set; }
         public string PostCode { get; set; }
         public Nullable<int> PrmoCodeOffer { get; set; }
+        public string OrderedData { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AllOrder> AllOrders { get; set; }

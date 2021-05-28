@@ -82,7 +82,7 @@ render() {
         <table className={classes.table}>
             <tr>
                 <td>Order Data </td>
-                <td>{ Date().toLocaleString()}</td>
+                <td>{this.state.allData.OrderedData}</td>
                 <td>Order ID </td>
                 <td>{this.state.allData.ID}</td>
             </tr>
@@ -175,6 +175,7 @@ return (
         <h3>For any Qus call: 018XXXXXXXX</h3> 
     </div>
         <ComponentToPrint orderedID={orderedid} ref={componentRef} />
+        <br/>
         <button onClick={handlePrint}>Print this out!</button>
     </div>
     );

@@ -51,6 +51,7 @@
     <Property Name="Country" Type="varchar" MaxLength="50" />
     <Property Name="PostCode" Type="varchar" MaxLength="50" />
     <Property Name="PrmoCodeOffer" Type="int" />
+    <Property Name="OrderedData" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ProductCategoryLink">
     <Key>

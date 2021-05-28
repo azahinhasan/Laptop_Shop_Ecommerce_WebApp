@@ -65,7 +65,8 @@ const ConfirmOrder = props =>{
                 State:State,
                 Country:Country,
                 PostCode:PostCode,
-                PrmoCodeOffer:prmoCodeOffer
+                PrmoCodeOffer:prmoCodeOffer,
+                OrderedData:new Date().toLocaleString()
             }).then(result =>{
                 console.log(result);
 
