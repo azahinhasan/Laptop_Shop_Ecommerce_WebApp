@@ -1,0 +1,13 @@
+.homePage{
+    border:black 2px solid;
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.smallPic{
+    width: 200px;
+    margin: 5px;
+}
+.largePic{
+    width: 440px;
+}
