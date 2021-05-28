@@ -7,7 +7,8 @@ const ConfirmOrderBy = props =>{
         return (
         <div className="">
             <div>Do You Want To Login/SignUp?</div>
-            <a href="#">Login </a>|<a href="#"> SignUp</a>
+            <Link to={{pathname:'/user/login'}}>LogIn </Link>|
+                    <Link to={{pathname:'/user/signup'}}> SignUp</Link>
             <br/>
             <Link to={{pathname:'/user/confirmorder/finalstage'}}>I want to Continue without Login/SingUp</Link>
         </div>

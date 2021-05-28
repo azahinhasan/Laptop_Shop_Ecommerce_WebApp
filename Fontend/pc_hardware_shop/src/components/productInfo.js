@@ -10,7 +10,7 @@ const ProductsInfo = props =>{
         const [api, setApi] = useState("http://localhost:3819/api/products");
         const [data, setData] = useState([]);
         // const [cart, setCart] = useState([...JSON.parse(localStorage.getItem("CartData"))]);
-        const [cart, setCart] = useState([]);
+        const [sucessMsg, setSucessMsg] = useState([]);
         const [quantity, setQuantity] = useState(1);
         const [imageName, setImageName] = useState('a.jpg');
         const { category,id } = useParams();
@@ -37,9 +37,8 @@ const ProductsInfo = props =>{
 
       const addToCartHandler=()=>{
 
+        setSucessMsg("Product Is Added");
         try{
-
-
           let val=[...JSON.parse(localStorage.getItem("CartData"))];
           console.log(val);
           
@@ -51,6 +50,7 @@ const ProductsInfo = props =>{
         var index = val.findIndex(e=>e[0].ID==data[0].ID);
           //console.log(index);
           if (index > -1) {
+            setSucessMsg("Product Qunatity is Updated!");
             let findOld = [...val.splice(index, 1)];
             findOld.map(e=>{
                 oldQuantity=e[1].quantity;
@@ -151,6 +151,8 @@ const ProductsInfo = props =>{
                   })
                 }
             </table>
+            <br/>
+            <p style={{color:'red'}}>{sucessMsg}</p>
             <br/>
             <input className={classes.quantity} min='1' type='number'  placeholder="Quantity(Defult 1)" onChange={(event)=>setQuantity(event.target.value)}/>
             <br/>

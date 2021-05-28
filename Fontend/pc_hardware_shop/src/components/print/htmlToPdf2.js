@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef ,useEffect} from "react";
 import { render } from "react-dom";
 import { useReactToPrint } from "react-to-print";
 import classes from './htmlToPdf.css';
@@ -37,51 +37,45 @@ class ComponentToPrint extends React.Component {
     pageData=()=>{
 
         axios.get('http://localhost:3819/api/loadCustomerInfo/'+this.props.orderedID).then(r=>{
-            console.log(r.data.AllOrders,'print');
+           //console.log(r.data.AllOrders,'print');
            // setAllData(r.data);
             // setAllDataProduct(r.data.AllOrders);
             // setPrmoCodeOffert(r.data.PrmoCodeOffer);
 
+            
             this.setState({allDataProduct:r.data.AllOrders,allData:r.data,prmoCodeOffer:r.data.PrmoCodeOffer})
+            this.setState({allDataProduct:this.state.allData.AllOrders})
+            
+            if(this.state.allDataProduct.length==0){
+                this.pageData();
+            }
+            
             console.log(this.state.allDataProduct,'allDataProduct');
+            
         })
     }
 
     setupBeforeUnloadListener = () => {
-        window.addEventListener("beforeunload", (ev) => {
+        window.addEventListener("beforeunload", (ev) => 
+        {  
             ev.preventDefault();
-            return this.doSomethingBeforeUnload();
+            return ev.returnValue = 'Are you sure you want to close?';
         });
     };
 
     componentDidMount() {
         
         this.pageData();
-        console.log(this.props.allDataProduct,'componentDidMount')
-        if(this.props.allDataProduct== null){
-            console.log(this.props.orderedID,'pp');
-            //window.location.reload();;
-        }
-       
+        this.setupBeforeUnloadListener();
+    
     }
 
     componentDidUpdate(){
         this.setupBeforeUnloadListener();
-        //this.pageData();
-        if(this.props.allDataProduct== null){
-            console.log(this.props.orderedID,'pp');
-            //this.pageData();
-        }
-        console.log(this.props.allDataProduct,'componentDidUpdate')
     }
-    componentWillUnmount(){
-        this.setupBeforeUnloadListener();
-        this.pageData();
-        console.log(this.props.allDataProduct,'componentWillUnmount')
-    }
-    
 
-  render() {
+
+render() {
     return (
         <div  id="capture"> 
         <h2>Memo</h2>
@@ -165,6 +159,10 @@ const PrintToPDF = () => {
     //const {orderedid1} = useParams();
     //const orderedid=5;
     const componentRef = useRef();
+    useEffect(() => {
+        handlePrint();
+    }, [])
+
     const handlePrint = useReactToPrint({
     content: () => componentRef.current,
 });
