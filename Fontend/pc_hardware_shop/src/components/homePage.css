@@ -1,13 +1,29 @@
 .homePage{
-    border:black 2px solid;
+    /* border:black 2px solid; */
     width: 1000px;
     margin-right: auto;
     margin-left: auto;
+    margin-top: 80px;
+}
+img{
+    border-radius: 5px;
+    border:2px black solid;
 }
 .smallPic{
     width: 200px;
-    margin: 5px;
+    margin: 4px;
+    transition: 0.5s all ease-in-out;
+
 }
 .largePic{
     width: 440px;
+    transition: 0.5s all ease-in-out;
+}
+.largePic:hover{
+    transform: scale(1.05);
+
+}
+.smallPic:hover{
+    transform: scale(1.05);
+
 }
