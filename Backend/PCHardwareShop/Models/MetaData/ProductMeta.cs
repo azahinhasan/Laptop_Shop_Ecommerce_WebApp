@@ -9,6 +9,12 @@ namespace PCHardwareShop.Models.MetaData
 {
     public class ProductMeta
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ProductMeta()
+        {
+            this.ProductCategoryLinks = new HashSet<ProductCategoryLink>();
+        }
+
         public int ID { get; set; }
         public string pName { get; set; }
         public string Price { get; set; }

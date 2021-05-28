@@ -16,6 +16,6 @@ namespace PCHardwareShop.Models.MetaData
         [JsonIgnore, XmlIgnore]
         public virtual OrderdUserInfo OrderdUserInfo { get; set; }
         //[JsonIgnore, XmlIgnore]
-        public virtual ProductCategoryLink ProductCategoryLink { get; set; }
+        public virtual ProductCategoryLinkMeta ProductCategoryLink { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 import React, { useState,useEffect,useReducer, useRef,useMemo } from 'react';
 import classes from './productsList.css';
-import {Link} from 'react-router-dom';
+import {Link,Redirect} from 'react-router-dom';
 //useContext in the header
 import axios from 'axios';
 //import GoogleMapReact from 'google-map-react';
@@ -23,6 +23,7 @@ const ConfirmOrder = props =>{
     const [promoErrorMsg,setPromoErrorMsg]=useState('');
     const [prmoCode,setPromoCode]=useState('');
     const [prmoCodeOffer,setPromoCodeOffer]=useState(0);
+    const [orderUserId,setOrderUserId]=useState(0);
 
 
 
@@ -67,7 +68,9 @@ const ConfirmOrder = props =>{
                 PrmoCodeOffer:prmoCodeOffer
             }).then(result =>{
                 console.log(result);
+
                 if(result.data!= null){
+                    setOrderUserId(result.data);
                     for (var i = 0; i < cart[0].length; i++) {
                         let temp = cart[0][i];
                         let id=temp[0].ID;
@@ -90,6 +93,7 @@ const ConfirmOrder = props =>{
         }}
     }
 
+    
 
     const promoCodeVerify=(action)=>{
         axios.get('http://localhost:3819/api/promocodeverify/'+prmoCode+'/'+action,{
@@ -189,7 +193,7 @@ const ConfirmOrder = props =>{
                     <br/>
                     <br/>
                     <input placeholder="Promo Code" disabled={prmoCodeOffer!=0?true:false} onChange={(event)=>setPromoCode(event.target.value)}/>
-                    {/* <button onClick={()=>promoCodeVerify(0)} disabled={prmoCodeOffer!=0?true:false}>Save</button> */}
+                    <button onClick={()=>promoCodeVerify(0)} disabled={prmoCodeOffer!=0?true:false}>Save</button>
                     <br/>
                     {OrderInProgress?<p>Sending...</p>:<button onClick={confirmOrderHandler}>Confirm Order</button>}
                 </div>
@@ -197,11 +201,7 @@ const ConfirmOrder = props =>{
         }else{
             window.localStorage.removeItem("CartData");
             pageData=(
-                <div>
-                    <h1>Your Order Submitted..</h1>
-                    <h3>For any Qus call: 018XXXXXXXX</h3>
-                    {}
-                </div>
+                <Redirect to={"/user/printReceipt/"+orderUserId}/>
             )
         }
 

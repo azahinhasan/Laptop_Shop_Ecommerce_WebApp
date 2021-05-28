@@ -22,7 +22,7 @@ class App extends Component {
       <div className={Classes.App}>
         <NavBar/>
         <Switch>
-            <Route path="/home"  component={HomePage}/> 
+            <Route path="/home" component={HomePage}/> 
             <Route path="/list/:category" component={ProductsList}/> 
             <Route path="/info/:category/:id" component={ProductInfo}/>
             <Route path="/user/cart" component={Cart}/>
@@ -31,10 +31,9 @@ class App extends Component {
             <Route path="/user/login" component={Login}/>
             <Route path="/user/logout" component={Logout}/>
             <Route path="/user/signup" component={SignUp}/>
-            <Route path="/user/printReceipt" component={PrintPdf}/>
-            <Redirect to="/home" />
+            <Route path="/user/printReceipt/:orderedid" component={PrintPdf}/>
+            <Redirect to="/home"/>
         </Switch>
-
       </div>
       
     );

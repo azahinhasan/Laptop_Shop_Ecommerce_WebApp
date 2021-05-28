@@ -3,19 +3,22 @@ import { render } from "react-dom";
 import { useReactToPrint } from "react-to-print";
 import classes from './htmlToPdf.css';
 import axios from 'axios';
-
+import { useParams } from 'react-router';
+//import {withRouter,Redirect,useParams} from 'react-router-dom';
 
 class ComponentToPrint extends React.Component {
 
     // const [allData,setAllData]=useState([]);
     // const [allDataProduct,setAllDataProduct]=useState([]);
     // const [prmoCodeOffer,setPrmoCodeOffert]=useState(0);
-
+    //  {category} = useParams();
     state={
         allData:[],
         allDataProduct:[],
         prmoCodeOffer:0,
-        totalPrice:0
+        totalPrice:0,
+        
+    
     }
 
     exportPdf = () => {
@@ -33,22 +36,54 @@ class ComponentToPrint extends React.Component {
 
     pageData=()=>{
 
-        axios.get('http://localhost:3819/api/loadCustomerInfo/1017').then(r=>{
-            console.log(r.data);
-            console.log(r.data.AllOrders[0].ProductCategoryLink.Product.pName);
+        axios.get('http://localhost:3819/api/loadCustomerInfo/'+this.props.orderedID).then(r=>{
+            console.log(r.data.AllOrders,'print');
            // setAllData(r.data);
             // setAllDataProduct(r.data.AllOrders);
             // setPrmoCodeOffert(r.data.PrmoCodeOffer);
 
-            this.setState({allData:r.data,allDataProduct:r.data.AllOrders,prmoCodeOffer:r.data.PrmoCodeOffer})
-
+            this.setState({allDataProduct:r.data.AllOrders,allData:r.data,prmoCodeOffer:r.data.PrmoCodeOffer})
+            console.log(this.state.allDataProduct,'allDataProduct');
         })
     }
+
+    setupBeforeUnloadListener = () => {
+        window.addEventListener("beforeunload", (ev) => {
+            ev.preventDefault();
+            return this.doSomethingBeforeUnload();
+        });
+    };
+
+    componentDidMount() {
+        
+        this.pageData();
+        console.log(this.props.allDataProduct,'componentDidMount')
+        if(this.props.allDataProduct== null){
+            console.log(this.props.orderedID,'pp');
+            //window.location.reload();;
+        }
+       
+    }
+
+    componentDidUpdate(){
+        this.setupBeforeUnloadListener();
+        //this.pageData();
+        if(this.props.allDataProduct== null){
+            console.log(this.props.orderedID,'pp');
+            //this.pageData();
+        }
+        console.log(this.props.allDataProduct,'componentDidUpdate')
+    }
+    componentWillUnmount(){
+        this.setupBeforeUnloadListener();
+        this.pageData();
+        console.log(this.props.allDataProduct,'componentWillUnmount')
+    }
+    
 
   render() {
     return (
         <div  id="capture"> 
-         <button onClick={this.exportPdf}>Print</button>
         <h2>Memo</h2>
         <table className={classes.table}>
             <tr>
@@ -66,6 +101,7 @@ class ComponentToPrint extends React.Component {
 
         </table>
         <h3>Orderd Peoduct</h3>
+
         <table className={classes.table}>
             <tr>
                 <th>Product ID</th>
@@ -121,23 +157,31 @@ class ComponentToPrint extends React.Component {
         </table>
     </div>
     );
-  }
+    }
 }
 
-const Example = () => {
-  const componentRef = useRef();
-  const handlePrint = useReactToPrint({
+const PrintToPDF = () => {
+    const {orderedid} = useParams();
+    //const {orderedid1} = useParams();
+    //const orderedid=5;
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
     content: () => componentRef.current,
-  });
+});
 
-  return (
+
+return (
     <div>
-      <ComponentToPrint ref={componentRef} />
-      <button onClick={handlePrint}>Print this out!</button>
+    <div>
+        <h1>Your Order Submitted..</h1>
+        <h3>For any Qus call: 018XXXXXXXX</h3> 
     </div>
-  );
+        <ComponentToPrint orderedID={orderedid} ref={componentRef} />
+        <button onClick={handlePrint}>Print this out!</button>
+    </div>
+    );
 };
 
-render(<Example />, document.querySelector("#root"));
+//render(<PrintToPDF />, document.querySelector("#root"))
 
-export default Example;
+export default PrintToPDF; 

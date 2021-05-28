@@ -24,12 +24,14 @@ namespace PCHardwareShop.Models
         public int ID { get; set; }
         public int pID { get; set; }
         public Nullable<int> pCategory { get; set; }
-    
+     
         public virtual Category Category { get; set; }
+
         public virtual Product Product { get; set; }
+       // [JsonIgnore, XmlIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-        [JsonIgnore, XmlIgnore]
+
         public virtual ICollection<AllOrder> AllOrders { get; set; }
     }
 }

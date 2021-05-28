@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="PcHardwareShopModel.AllOrder" Width="1.5" PointX="7.375" PointY="1.125" />
         <EntityTypeShape EntityType="PcHardwareShopModel.CustomerInfo" Width="1.5" PointX="9.625" PointY="1.125" />
         <EntityTypeShape EntityType="PcHardwareShopModel.OrderdUserInfo" Width="1.5" PointX="7.25" PointY="4" />
-        <EntityTypeShape EntityType="PcHardwareShopModel.PromoCode" Width="1.5" PointX="17.125" PointY="2.375" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.PromoCode" Width="1.5" PointX="3" PointY="4.75" />
         <AssociationConnector Association="PcHardwareShopModel.FK_AllOrders_OrderdUserInfo" />
         <AssociationConnector Association="PcHardwareShopModel.FK_AllOrders_ProductCategoryLink" />
         <EntityTypeShape EntityType="PcHardwareShopModel.UserLoginTable" Width="1.5" PointX="9.625" PointY="4.875" />
