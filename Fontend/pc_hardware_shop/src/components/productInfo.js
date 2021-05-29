@@ -13,6 +13,8 @@ const ProductsInfo = props =>{
         const [sucessMsg, setSucessMsg] = useState([]);
         const [quantity, setQuantity] = useState(1);
         const [imageName, setImageName] = useState('a.jpg');
+        const [imageName2, setImageName2] = useState('a.jpg');
+        const [imageName3, setImageName3] = useState('a.jpg');
         const { category,id } = useParams();
 
         try{
@@ -29,6 +31,8 @@ const ProductsInfo = props =>{
             //console.log(result);
             setData(result.data);
             setImageName(result.data[0].Product.MainPic);
+            setImageName2(result.data[0].Product.Pic2);
+            setImageName3(result.data[0].Product.Pic3);
             //console.log(data[0].Product,'dcddddddd');
           });
       },[]);
@@ -109,8 +113,17 @@ const ProductsInfo = props =>{
           <div className={classes.productInfo}>
               <h1>Product Information</h1>
               <br/>
-              
+              <div className={classes.productImages}>
               <img className={classes.mainImage} src={require('../Content/LeptopImg/'+imageName).default} />
+              {
+                imageName2!=null?<img className={classes.otherImage} src={require('../Content/LeptopImg/'+imageName2).default} />:null
+              }
+              {
+                imageName3!=null?<img className={classes.otherImage} src={require('../Content/LeptopImg/'+imageName3).default} />:null
+              }
+              
+              </div>
+              
             <table className={classes.customers}>
               {/* <tr>
                 <th>Name</th>

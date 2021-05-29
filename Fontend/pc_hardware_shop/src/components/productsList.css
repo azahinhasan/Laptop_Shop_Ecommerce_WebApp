@@ -5,19 +5,23 @@
   align-items: center; */
 }
 
-.productInfo img{
+.mainImage{
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-.productInfo img:hover{
-  transform: scale(1.5);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.mainImage{
   width: 350px;
   height: 350px;
+}
+
+.otherImage{
+  margin: 10px;
+  width: 80px;
+  height: 80px;
+  transition: 0.8s all ease-in-out;
+}
+.otherImage:hover{
+  transform: scale(5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .customers {
