@@ -1,12 +1,12 @@
 import React, { useState,useEffect} from 'react';
-import axios from 'axios';
 import classes from './productsList.css';
-import {Route,Switch,withRouter,Redirect,useParams,useHistory,Link} from 'react-router-dom';
+import {Route,Switch,withRouter,Redirect,useParams,useHistory } from 'react-router-dom';
 import ProductInfo from './productInfo';
+import axios from '../api/axios';
 
 const ProductsList = props =>{
 
-        const [api, setApi] = useState("http://localhost:3819/api/products");
+       // const [api, setApi] = useState("http://localhost:3819/api/products");
         const [data, setData] = useState([]);
         const [showInfo, setShowInfo] = useState(false);
         const [storeId, setStoreId] = useState('');
@@ -17,19 +17,34 @@ const ProductsList = props =>{
         const {category} = useParams();
         const history = useHistory()
         
-        
         useEffect(() => {
 
-          axios.get(api+'/'+category).then(result =>{
-              //console.log(result);
-              setData(result.data);
-          });
+          // axios.get(api+'/'+category).then(result =>{
+          //     //console.log(result);
+          //     setData(result.data);
+          // });
+
+          axios.get('/products/'+category).then(result =>{
+            //console.log(result);
+            setData(result.data);
+
+        });
           
       },[]);
 
+      
+
+      const routeChange = (id) =>{ 
+
+        const link = "/info/"+category+"/"+id;
+        console.log(link)
+
+        history.push(link);
+      }
+
       useEffect(() => {
-        console.log(category);
-        axios.get(api+'/'+category).then(result =>{
+        console.log(category,' category');
+        axios.get('/products/'+category).then(result =>{
           //console.log(result);
           setData(result.data);
       });
@@ -89,7 +104,8 @@ const ProductsList = props =>{
                     )
                   }else if(filterByBrand=='ALL' && filterByStatus=='ALL'){
                     return(
-                      <div key={data.Product.id} onClick={()=>showInfoHandeler(data.ID)}  className={classes.productListData}>
+                      // <div key={data.Product.id} onClick={()=>showInfoHandeler(data.ID)}  className={classes.productListData}>
+                      <div key={data.Product.id} onClick={()=>routeChange(data.ID)}  className={classes.productListData}>
                         <img className={classes.mainImage} src={require('../Content/LeptopImg/'+data.Product.MainPic).default} />
                         <div>{data.Product.pName}</div>
                         <div>{data.Product.Price} BDT</div>
@@ -127,12 +143,12 @@ const ProductsList = props =>{
         )
       }
       else{
-        const link = "/info/"+category+"/"+storeId;
-        pageData = (
-          <Switch>
-              <Redirect to={{pathname:link}}/> 
-          </Switch>
-        )
+        // const link = "/info/"+category+"/"+storeId;
+        // pageData = (
+        //   <Switch>
+        //       <Redirect to={{pathname:link}}/> 
+        //   </Switch>
+        // )
       }
 
         return (

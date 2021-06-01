@@ -2,7 +2,7 @@ import React, { useState,useEffect,useReducer, useRef,useMemo } from 'react';
 import classes from './productsList.css';
 import {Link,Redirect} from 'react-router-dom';
 //useContext in the header
-import axios from 'axios';
+import axios from '../api/axios';
 //import GoogleMapReact from 'google-map-react';
 
 
@@ -30,7 +30,7 @@ const ConfirmOrder = props =>{
     useEffect(()=>{
         if(Boolean(localStorage.getItem("UserVerified"))){
            // axios.get('http://localhost:3819/api/loadCustomerInfo/'+Number(localStorage.getItem("LoginID"))+'/'+localStorage.getItem("Email")).then(r=>{
-            axios.get('http://localhost:3819/api/loadCustomerInfo/'+1+'/'+'a').then(r=>{
+            axios.get('/loadCustomerInfo/'+1+'/'+'a').then(r=>{
                 //console.log(r.data);
                 var temp = r.data;
                 setName(temp.Name);
@@ -58,7 +58,7 @@ const ConfirmOrder = props =>{
             setErrorMsg('');
             setPromoErrorMsg('');
             setOrderInProgress(true);
-            axios.post('http://localhost:3819/api/orderconfirm',{
+            axios.post('/orderconfirm',{
                 Name:Name,
                 Phone:Phone,
                 City:City,
@@ -78,7 +78,7 @@ const ConfirmOrder = props =>{
                         let quantity=Number(temp[1].quantity);
                         let orderUserId=result.data;
 
-                        axios.post('http://localhost:3819/api/orderconfirm/productlist',{
+                        axios.post('/orderconfirm/productlist',{
                             OrderdUserID:orderUserId,
                             Quantity:quantity,
                             ProductCatagoryLinkedID:id
@@ -97,7 +97,7 @@ const ConfirmOrder = props =>{
     
 
     const promoCodeVerify=(action)=>{
-        axios.get('http://localhost:3819/api/promocodeverify/'+prmoCode+'/'+action,{
+        axios.get('/promocodeverify/'+prmoCode+'/'+action,{
         }).then(r=>{
            //console.log(r.data);
             if(r.data!=='NotValid' && r.data!=='AlreadyUsed'){

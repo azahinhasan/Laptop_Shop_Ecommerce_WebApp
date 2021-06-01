@@ -1,6 +1,6 @@
 import React, { useState,useEffect} from 'react';
-import axios from 'axios';
 import classes from './productsList.css';
+import axios from '../api/axios';
 
 import {Redirect,Switch} from 'react-router-dom';
 
@@ -34,7 +34,7 @@ const Login = () =>{
 
     const loginHendler=()=>{
         
-        axios.post('http://localhost:3819/api/login',{
+        axios.post('/login',{
             Email:email,
             Password:password
         }).then(r=>{

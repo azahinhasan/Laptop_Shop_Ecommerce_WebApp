@@ -1,6 +1,6 @@
 import React, { useState,useEffect,useReducer } from 'react';
 import {Route,Switch,withRouter,useParams} from 'react-router-dom';
-import axios from 'axios';
+import axios from '../api/axios';
 import classes from './productsList.css';
 import LeptopSpacification from './Specification/laptop';
 import SSDSpacification from './Specification/SSD';
@@ -23,11 +23,15 @@ const ProductsInfo = props =>{
 
         }
 
+
+
+
+
         useEffect(() => { 
         console.log(id);
         
         //const ID = localStorage.getItem('productID');
-          axios.get(api+'/'+category+'/'+id).then(result =>{
+        axios.get('/products/'+category+'/'+id).then(result =>{
             //console.log(result);
             setData(result.data);
             setImageName(result.data[0].Product.MainPic);
@@ -35,7 +39,7 @@ const ProductsInfo = props =>{
             setImageName3(result.data[0].Product.Pic3);
             //console.log(data[0].Product,'dcddddddd');
           });
-      },[]);
+        },[]);
 
 
 

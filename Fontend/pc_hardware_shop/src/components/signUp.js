@@ -1,9 +1,9 @@
 import React, { useState,useEffect,useReducer, useRef,useMemo } from 'react';
 //useContext in the header
-import axios from 'axios';
+//import axios from 'axios';
 //import GoogleMapReact from 'google-map-react';
 import classes from './productsList.css';
-
+import axios from '../api/axios';
 
 const SignUp = props =>{
 
@@ -32,7 +32,7 @@ const SignUp = props =>{
         }
         const SignUpHandler=()=>{
             if(FormValidation()){
-                axios.post('http://localhost:3819/api/signup',{
+                axios.post('/signup',{
                     Email:email,
                     Password:password,
                     Type:'Customer'
@@ -42,7 +42,7 @@ const SignUp = props =>{
                         setErrorMsgEmail('Email Already Exist!');
                     }else{
                         setErrorMsgEmail('');
-                        axios.post('http://localhost:3819/api/signup/customer',{
+                        axios.post('/signup/customer',{
                             Name:Name,
                             Email:email,
                             Phone:Phone,
