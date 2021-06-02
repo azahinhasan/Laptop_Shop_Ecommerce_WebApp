@@ -1,20 +1,17 @@
 import React, { useState,useEffect,useReducer } from 'react';
 import {Route,Switch,withRouter,useParams} from 'react-router-dom';
-import axios from 'axios';
 import classes from '../productsList.css';
 //import GoogleMapReact from 'google-map-react';
-
+import axios from '../../api/axios';
 
 
 const RAM = props =>{
 
-    const [api, setApi] = useState("http://localhost:3819/api/products");
     const [data, setData] = useState([]);
     const { category,id } = useParams();
 
     useEffect(() => {
-        axios.get(api+'/'+category+'/'+id).then(result =>{
-        console.log(result);
+        axios.get('/products/'+category+'/'+id).then(result =>{
         setData(result.data);
         });
     },[]);

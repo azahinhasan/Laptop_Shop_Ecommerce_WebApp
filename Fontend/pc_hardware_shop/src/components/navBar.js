@@ -7,7 +7,7 @@ render() {
     return (
         <div className={classes.navBar}>
         {/* <nav>
-           
+        
             <ul>
                 <li className={classes.siteName}>TestSite</li>
                 <span className={classes.navOptions}>
@@ -20,7 +20,7 @@ render() {
                         <a href="#">Link 3</a>
                     </div>
                 </span>
-             
+            
             </ul>
         </nav> */}
 
@@ -33,18 +33,21 @@ render() {
                     <div class={classes.dropdowncontent}>
                     <Link to={{pathname:'/list/SSD'}}>SSD</Link>
                     <Link to={{pathname:'/list/RAM'}}>RAM</Link>
-                    <Link to={{pathname:'/list/SSD'}}>HDD</Link>
+                    <Link to={{pathname:'/list/HDD'}}>HDD</Link>
                     </div>
                 </div> 
                 <Link to={{pathname:'/user/cart'}}>Cart</Link>
+                <Link to={{pathname:'/user/EmployeeHOme/'}}>Employee</Link>
+
                 <div className={classes.LoginSingnUp}>
                 {localStorage.getItem("UserVerified")=='true'?
                     <Link to={{pathname:'/user/logout'}}>LogOut</Link>
                 : <span>
                     <Link to={{pathname:'/user/login'}}>LogIn</Link>
                     <Link to={{pathname:'/user/signup'}}>SignUp</Link>
-                 </span>}
-                  </div>
+                </span>}
+                
+            </div>
 
         </div>  
         

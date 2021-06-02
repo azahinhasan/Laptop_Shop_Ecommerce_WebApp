@@ -105,11 +105,11 @@ const ConfirmOrder = props =>{
                 setPromoCodeOffer(Number(r.data));
                 setPromoErrorMsg('PromoCode Applied');
             }else if(r.data=='AlreadyUsed'){
-                setPromoErrorMsg('PromoCode Already Used!');
+                setPromoErrorMsg('PromoCode '+r.data);
             }else if(r.data=='TimeExpired'){
-                setPromoErrorMsg('PromoCode Time Expired!');
+                setPromoErrorMsg('PromoCode '+r.data);
             }else{
-                setPromoErrorMsg('PromoCode is not Valid!');
+                setPromoErrorMsg('PromoCode '+r.data);
             }
             
         }).catch(e=>{

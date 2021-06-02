@@ -12,6 +12,7 @@ import ConfirmOrder from './components/confirmOrder';
 import Login from './components/loginPage';
 import Logout from './components/logOut';
 import SignUp from './components/signUp';
+import EmployeeHOme from './employeePart/employeeHome';
 import PrintPdf from './components/print/htmlToPdf2';
 class App extends Component {
   
@@ -32,6 +33,7 @@ class App extends Component {
             <Route path="/user/logout" component={Logout}/>
             <Route path="/user/signup" component={SignUp}/>
             <Route path="/user/printReceipt/:orderedid" component={PrintPdf}/>
+            <Route path="/user/EmployeeHOme/" component={EmployeeHOme}/>
             <Redirect to="/home"/>
         </Switch>
       </div>

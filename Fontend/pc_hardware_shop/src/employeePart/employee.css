@@ -1,0 +1,37 @@
+.SideBar{
+    text-align: left;
+    border: 2px solid black;
+    width: 280px;
+    height:40%;
+    font-size: 20px;
+    padding: 5px 5px;
+    position: fixed;
+    margin-top: 13px;
+    
+  }
+  
+  .SideBar div{
+    border: 2px solid black;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 5% 0;
+    margin-bottom: 18%;
+  }
+  
+  .SideBar select{
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5% 0;
+    margin-bottom: 12%;
+  }
+  
+  .SideBar input{
+    font-size: 15px;
+    font-weight: bold;
+    width: 72px;
+    margin: 5% 0;
+  }
+
+
+  

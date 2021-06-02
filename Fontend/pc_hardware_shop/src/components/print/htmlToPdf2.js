@@ -2,10 +2,9 @@ import React, { useRef ,useEffect} from "react";
 import { render } from "react-dom";
 import { useReactToPrint } from "react-to-print";
 import classes from './htmlToPdf.css';
-import axios from 'axios';
 import { useParams } from 'react-router';
 //import {withRouter,Redirect,useParams} from 'react-router-dom';
-
+import axios from '../../api/axios';
 class ComponentToPrint extends React.Component {
 
     // const [allData,setAllData]=useState([]);
@@ -36,7 +35,7 @@ class ComponentToPrint extends React.Component {
 
     pageData=()=>{
 
-        axios.get('http://localhost:3819/api/loadCustomerInfo/'+this.props.orderedID).then(r=>{
+        axios.get('/loadCustomerInfo/'+this.props.orderedID).then(r=>{
            //console.log(r.data.AllOrders,'print');
            // setAllData(r.data);
             // setAllDataProduct(r.data.AllOrders);

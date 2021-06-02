@@ -1,9 +1,8 @@
     import React, { useState,useEffect,useReducer } from 'react';
     import {Route,Switch,withRouter,useParams} from 'react-router-dom';
-    import axios from 'axios';
     import classes from '../productsList.css';
     //import GoogleMapReact from 'google-map-react';
-
+    import axios from '../../api/axios';
 
 
     const LEPTOP = props =>{
@@ -13,7 +12,7 @@
         const { category,id } = useParams();
 
         useEffect(() => {
-            axios.get(api+'/'+category+'/'+id).then(result =>{
+            axios.get('/products/'+category+'/'+id).then(result =>{
             console.log(result);
             setData(result.data);
             });

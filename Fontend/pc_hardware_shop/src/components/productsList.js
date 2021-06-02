@@ -94,7 +94,7 @@ const ProductsList = props =>{
 
                   if(filterByBrand==data.Product.Brand.bName && filterByStatus==data.Product.Status){
                     return(
-                      <div key={data.Product.id} onClick={()=>showInfoHandeler(data.ID)}  className={classes.productListData}>
+                      <div key={data.Product.id} onClick={()=>routeChange(data.ID)} className={classes.productListData}>
                         <img className={classes.mainImage} src={require('../Content/LeptopImg/'+data.Product.MainPic).default} />
                         <div>{data.Product.pName}</div>
                         <div>{data.Product.Price} BDT</div>
@@ -115,7 +115,7 @@ const ProductsList = props =>{
                     )
                   }else if(filterByBrand=='ALL' && filterByStatus==data.Product.Status){
                     return(
-                      <div key={data.Product.id} onClick={()=>showInfoHandeler(data.ID)}  className={classes.productListData}>
+                      <div key={data.Product.id} onClick={()=>routeChange(data.ID)} className={classes.productListData}>
                         <img className={classes.mainImage} src={require('../Content/LeptopImg/'+data.Product.MainPic).default} />
                         <div>{data.Product.pName}</div>
                         <div>{data.Product.Price} BDT</div>
@@ -125,7 +125,7 @@ const ProductsList = props =>{
                     )
                   }else if(filterByBrand==data.Product.Brand.bName && filterByStatus=='ALL'){
                     return(
-                      <div key={data.Product.id} onClick={()=>showInfoHandeler(data.ID)}  className={classes.productListData}>
+                      <div key={data.Product.id} onClick={()=>routeChange(data.ID)} className={classes.productListData}>
                         <img className={classes.mainImage} src={require('../Content/LeptopImg/'+data.Product.MainPic).default} />
                         <div>{data.Product.pName}</div>
                         <div>{data.Product.Price} BDT</div>
