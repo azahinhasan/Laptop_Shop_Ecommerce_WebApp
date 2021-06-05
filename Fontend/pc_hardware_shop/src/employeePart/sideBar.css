@@ -7,6 +7,7 @@
     padding: 5px 5px;
     position: fixed;
     margin-top: 13px;
+    padding-left: 10px;
     
   }
   
@@ -46,7 +47,7 @@
     font-size: 18px;  
     border: none;
     outline: none;
-    color: white;
+    color: black;
     padding: 10px 12px;
     background-color: inherit;
     font-family: inherit;
@@ -54,7 +55,8 @@
   }
   
   .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: rgb(29, 3, 148);
+    color: white;
+    background-color: black;
   }
   
   .dropdowncontent { 
@@ -64,6 +66,7 @@
     min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(4, 60, 165, 0.2);
     z-index: 1;
+
   }
   
   .dropdowncontent a {
@@ -74,6 +77,7 @@
     display: block;
     text-align: left;
     font-size: 15px;  
+    transition-duration: 0.25s;
   }
   
   .dropdowncontent a:hover {

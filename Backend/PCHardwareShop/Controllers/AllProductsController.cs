@@ -16,9 +16,16 @@ namespace PCHardwareShop.Controllers
     {
         PcHardwareShopEntities2 context = new PcHardwareShopEntities2();
 
+        [Route(""), HttpGet]
+        public IHttpActionResult Geat()
+        {
+            return Ok("Running.....");
+        }
+
         [Route("api/products/latop1"), HttpGet]
         public IHttpActionResult Get()
         {
+
             return Ok(context.ProductCategoryLinks.Where(x => x.Category.cName == "SSD").ToList());
         }
 

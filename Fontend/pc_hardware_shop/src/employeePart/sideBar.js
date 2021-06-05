@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState,useEffect,useReducer, } from 'react';
 import classes from './sideBar.css';
 import {NavLink,withRouter,Link} from 'react-router-dom';
 
@@ -7,9 +6,9 @@ const SideBar = props =>{
 
     return (
         <div className={classes.SideBar}>
-        <Link to={{pathname: '/home'}} ></Link>
+        <Link to={{pathname: '/user/EmployeeHome/employeeaction'}}>Employee</Link>
         <br/>
-        <Link to={{pathname:'/list/Laptop'}}>Products</Link>
+        <Link to={{pathname:'/user/EmployeeHome/productaction'}}>Products</Link>
         <br/>
         <div class={classes.dropdown}>
             <button class={classes.dropbtn}>Employee</button>
