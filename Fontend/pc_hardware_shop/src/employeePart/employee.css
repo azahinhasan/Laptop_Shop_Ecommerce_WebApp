@@ -13,3 +13,54 @@
     border: black 1px solid;
     padding: 5px;
   }
+
+  .buttonOption{
+      height: 40px;
+      width: 70px;
+      margin: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      border: 2px black solid;
+      border-radius: 18px;
+  }
+  .buttonOption:hover{
+    background-color: black;
+    color: white;
+  }
+
+  .buttonOptionSelected{
+    height: 40px;
+    width: 70px;
+    margin: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px black solid;
+    border-radius: 18px;
+    background-color: black;
+    color: white;
+}
+.buttonOptionSelected:hover{
+  background-color: white;
+  color: black;
+}
+
+  /* Products */
+
+  select,input:not([type=file]){
+    height: 35px;
+    border: 2px black solid;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 5px;
+
+  }
+  option{
+    font-weight: bold;
+  }
+ 
+
+  /* Employee */
+
+    /* Orders */
