@@ -1,3 +1,4 @@
+import axios from '../api/axios';
 import React, { useState } from 'react';
 import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
 import classes from './employee.css';
@@ -5,16 +6,16 @@ import classes from './employee.css';
 const ProductAdd = props =>{
     
 
-    const [spacification,setSpacificationData]=useState('Leptop');
+    const [spacification,setSpacificationData]=useState('1');
     const [pName,setpName]=useState('');
     const [Price,setPrice]=useState('');
     const [Status,setStatus]=useState('');
     const [BrandID,setBrandID]=useState('');
     const [SpecificationID,setSpecificationID]=useState('');
-    const [MainPic,setMainPic]=useState('');
+    const [MainPic,setMainPic]=useState('fx505dt-03-500x500.jpg');
     const [Pic2,setPic2]=useState('');
-
     const [Pic3,setPic3]=useState('');
+
     const [Manufacturing_Warranty,setManufacturing_Warranty]=useState('');
     const [Processor,setProcessor]=useState('');
     const [Colors,setColors]=useState('');
@@ -33,53 +34,103 @@ const ProductAdd = props =>{
     const [Flash_Type,setFlash_Type]=useState('');
     const [Interface,setInterface]=useState('');
 
+
+    const addProductCatagoryLink=(pID)=>{
+        axios.post('/products',{
+            pID,BrandID
+        })
+        .then(r=>{
+            addProduct(r.data);
+            console.log(r.data);
+        }).catch(e=>{
+            console.log(e);
+        })
+    }
+
+    const addProduct=(SpecificationID)=>{
+        axios.post('/products',{
+            pName,Price,Status,BrandID,SpecificationID,MainPic,Pic2,Pic3
+        })
+        .then(r=>{
+            //addProductCatagoryLink(r.data);
+            console.log(r.data);
+        }).catch(e=>{
+            console.log(e);
+        })
+    }
+
+    const addProductSpacification=()=>{
+        axios.post('/products/spacification',{
+            Processor,
+            Colors,Display,Memory,Storage,Graphics,OS,Battery,Adapter,Audio,Keyboard,WebCam
+        })
+        .then(r=>{
+            addProduct(r.data);
+            console.log(r.data);
+        }).catch(e=>{
+            console.log(e);
+        })
+    }
+
     let spacificationData='';
 
-    if(spacification === "Leptop"){
+    if(spacification === "1"){ //Laptop
         spacificationData=(
             <div>
                 <table  className={classes.Form}>
                     <tr>
                         <td>Processor </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setProcessor(event.target.value)}}></input></td>
                     </tr>
                     <tr>
                         <td>Colors </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setColors(event.target.value)}} ></input></td>
                     </tr>
                     <tr>
                         <td>Display </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setDisplay(event.target.value)}}></input></td>
                     </tr>
                     <tr>
                         <td>Memory </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setMemory(event.target.value)}}></input></td>
                     </tr>
                     <tr>
                         <td>Storage </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setStorage(event.target.value)}}></input></td>
                     </tr>
                     <tr>
                         <td>Graphics </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setGraphics(event.target.value)}}></input></td>
+                    </tr>
+                    <tr>
+                        <td>OS </td>
+                        <td><input onChange={(event)=>{setOS(event.target.value)}}></input></td>
                     </tr>
                     <tr>
                         <td>Battery </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setBattery(event.target.value)}}></input></td>
                     </tr>
                     <tr>
                         <td>Adapter </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setAdapter(event.target.value)}}></input></td>
+                    </tr>
+                    <tr>
+                        <td>Audio </td>
+                        <td><input onChange={(event)=>{setAudio(event.target.value)}}></input></td>
+                    </tr>
+                    <tr>
+                        <td>Keyboard </td>
+                        <td><input onChange={(event)=>{setKeyboard(event.target.value)}}></input></td>
                     </tr>
                     <tr>
                         <td>WebCam </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setWebCam(event.target.value)}}></input></td>
                     </tr>
                 </table>
             </div>
         )
     }
-    else if(spacification === "RAM"){
+    else if(spacification === "2"){ //RAM
         spacificationData=(
             <div>
                 <table className={classes.Form}>
@@ -128,16 +179,16 @@ const ProductAdd = props =>{
         <table  className={classes.Form}> 
             <tr>
             <td>Name</td>
-            <td><input></input></td>
+            <td><input  onChange={(event)=>{setpName(event.target.value)}}></input></td>
             </tr>
             <tr>
                 <td> <label>Price</label></td>
-                <td><input type="number"></input></td>
+                <td><input type="number" onChange={(event)=>{setPrice(event.target.value)}}></input></td>
             </tr>
             <tr>
                 <td><label>Status</label></td>
                 <td>
-                    <select>
+                    <select onChange={(event)=>{setStatus(event.target.value)}}>
                         <option value="In Stock">In Stock</option>
                         <option value="Out Stock">Out Stock</option>
                         <option value="Up Coming">Up Coming</option>
@@ -147,7 +198,7 @@ const ProductAdd = props =>{
             <tr>
                 <td><label>Brand</label></td>
                 <td>
-                    <select>
+                    <select onChange={(event)=>{setBrandID(event.target.value)}}>
                         <option value="1">RAZER</option>
                         <option value="2">HP</option>
                         <option value="3">ASUS</option>
@@ -166,13 +217,14 @@ const ProductAdd = props =>{
         <br/>
         <label>Spacification For </label>
         <select onChange={(event)=>setSpacificationData(event.target.value)}>
-            <option value="Leptop">Leptop</option>
-            <option value="RAM">RAM</option>
-            <option value="SSD">SSD</option>
+            <option value="1">Leptop</option>
+            <option value="2">RAM</option>
+            <option value="3">SSD</option>
         </select>
         <button>LOAD</button>
         <br/>
         {spacificationData}
+        <button onClick={addProductSpacification}>ADD</button>
         </div>
     );
     } 

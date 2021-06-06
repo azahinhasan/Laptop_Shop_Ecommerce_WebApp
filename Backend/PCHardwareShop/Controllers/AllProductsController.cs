@@ -123,5 +123,29 @@ namespace PCHardwareShop.Controllers
 
 
 
+        [Route("api/products/spacification"), HttpPost]
+        public IHttpActionResult AddProductsSpacification([FromBody]ProductSpecification data)
+        {
+            /* context.ProductSpecifications.Add(data);
+             context.SaveChanges();
+             return Ok(data.SpecificationID);*/
+            return Ok(21);
+        }
+        [Route("api/products"), HttpPost]
+        public IHttpActionResult AddProducts([FromBody]Product data)
+        {
+            context.Products.Add(data);
+            context.SaveChanges();
+            return Ok(data.ID);
+        }
+        [Route("api/productsConnectWithBrand"), HttpPost]
+        public IHttpActionResult AddProductsConnectWithBrand([FromBody]ProductCategoryLink data)
+        {
+            /* context.ProductCategoryLinks.Add(data);
+             context.SaveChanges();
+             return Ok("OK");*/
+            return Ok("21");
+        }
+
     }
 }
