@@ -8,7 +8,7 @@ namespace PCHardwareShop.Repository
 {
     public class CustomerRepo
     {
-        PcHardwareShopEntities2 context = new PcHardwareShopEntities2();
+        PcHardwareShopEntities3 context = new PcHardwareShopEntities3();
         public CustomerInfo loadCustomerInfo(int loginTableID,string email)
         {
 

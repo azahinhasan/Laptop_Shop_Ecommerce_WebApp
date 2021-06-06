@@ -10,6 +10,8 @@ const SideBar = props =>{
         <br/>
         <Link to={{pathname:'/user/EmployeeHome/productaction'}}>Products</Link>
         <br/>
+        <Link to={{pathname:'/list/RAM'}}>Orders</Link>
+        <br/>
         <div class={classes.dropdown}>
             <button class={classes.dropbtn}>Employee</button>
             <div class={classes.dropdowncontent}>

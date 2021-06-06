@@ -14,7 +14,7 @@ namespace PCHardwareShop.Controllers
 
     public class AllProductsController : ApiController
     {
-        PcHardwareShopEntities2 context = new PcHardwareShopEntities2();
+        PcHardwareShopEntities3 context = new PcHardwareShopEntities3();
 
         [Route(""), HttpGet]
         public IHttpActionResult Geat()
@@ -122,29 +122,27 @@ namespace PCHardwareShop.Controllers
         }
 
 
-
-        [Route("api/products/spacification"), HttpPost]
-        public IHttpActionResult AddProductsSpacification([FromBody]ProductSpecification data)
-        {
-            /* context.ProductSpecifications.Add(data);
-             context.SaveChanges();
-             return Ok(data.SpecificationID);*/
-            return Ok(21);
-        }
         [Route("api/products"), HttpPost]
         public IHttpActionResult AddProducts([FromBody]Product data)
         {
             context.Products.Add(data);
             context.SaveChanges();
             return Ok(data.ID);
+
+        }
+        [Route("api/products/spacification"), HttpPost]
+        public IHttpActionResult AddProductsSpacification([FromBody]ProductSpecification data)
+        {
+            context.ProductSpecifications.Add(data);
+            context.SaveChanges();
+            return Ok(data.SpecificationID);
         }
         [Route("api/productsConnectWithBrand"), HttpPost]
         public IHttpActionResult AddProductsConnectWithBrand([FromBody]ProductCategoryLink data)
         {
-            /* context.ProductCategoryLinks.Add(data);
-             context.SaveChanges();
-             return Ok("OK");*/
-            return Ok("21");
+            context.ProductCategoryLinks.Add(data);
+            context.SaveChanges();
+            return Ok(data.ID);
         }
 
     }

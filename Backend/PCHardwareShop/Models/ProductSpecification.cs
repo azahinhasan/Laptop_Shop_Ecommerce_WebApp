@@ -21,6 +21,7 @@ namespace PCHardwareShop.Models
         }
     
         public int SpecificationID { get; set; }
+        public string Manufacturing_Warranty { get; set; }
         public string Processor { get; set; }
         public string Colors { get; set; }
         public string Display { get; set; }
@@ -33,7 +34,6 @@ namespace PCHardwareShop.Models
         public string Audio { get; set; }
         public string Keyboard { get; set; }
         public string WebCam { get; set; }
-        public string Manufacturing_Warranty { get; set; }
         public string Capacity { get; set; }
         public string Form_Factor { get; set; }
         public string Flash_Type { get; set; }

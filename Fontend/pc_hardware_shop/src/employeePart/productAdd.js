@@ -9,13 +9,13 @@ const ProductAdd = props =>{
     const [spacification,setSpacificationData]=useState('1');
     const [pName,setpName]=useState('');
     const [Price,setPrice]=useState('');
-    const [Status,setStatus]=useState('');
+    const [Status,setStatus]=useState('In Stock');
     const [BrandID,setBrandID]=useState('');
     const [SpecificationID,setSpecificationID]=useState('');
     const [MainPic,setMainPic]=useState('fx505dt-03-500x500.jpg');
     const [Pic2,setPic2]=useState('');
     const [Pic3,setPic3]=useState('');
-
+    //LepTop
     const [Manufacturing_Warranty,setManufacturing_Warranty]=useState('');
     const [Processor,setProcessor]=useState('');
     const [Colors,setColors]=useState('');
@@ -29,30 +29,34 @@ const ProductAdd = props =>{
     const [Audio,setAudio]=useState('');
     const [Keyboard,setKeyboard]=useState('');
     const [WebCam,setWebCam]=useState('');
-    const [Capacity,setCapacity]=useState('');
-    const [Form_Factor,setForm_Factor]=useState('');
-    const [Flash_Type,setFlash_Type]=useState('');
-    const [Interface,setInterface]=useState('');
+    //RAM
+    const [Ram_Type,setRam_Type]=useState('');
+    const [Ram_Capacity,setRam_Capacity]=useState('');
+    const [Ram_Operating_voltage,setRam_Operating_voltage]=useState('');
+    const [Ram_Latency,setRam_Latency]=useState('');
+    const [Ram_Pin,setRam_Pin]=useState('');
+    const [Ram_Frequency,setRam_Frequency]=useState('');
 
 
     const addProductCatagoryLink=(pID)=>{
-        axios.post('/products',{
-            pID,BrandID
+        axios.post('/productsConnectWithBrand',{
+            pID,
+            pCategory:Number(spacification)
         })
         .then(r=>{
-            addProduct(r.data);
-            console.log(r.data);
+            console.log(r.data,"dta");
         }).catch(e=>{
             console.log(e);
         })
     }
 
     const addProduct=(SpecificationID)=>{
+        console.log('addProduct')
         axios.post('/products',{
             pName,Price,Status,BrandID,SpecificationID,MainPic,Pic2,Pic3
         })
         .then(r=>{
-            //addProductCatagoryLink(r.data);
+            addProductCatagoryLink(r.data);
             console.log(r.data);
         }).catch(e=>{
             console.log(e);
@@ -60,16 +64,33 @@ const ProductAdd = props =>{
     }
 
     const addProductSpacification=()=>{
-        axios.post('/products/spacification',{
-            Processor,
-            Colors,Display,Memory,Storage,Graphics,OS,Battery,Adapter,Audio,Keyboard,WebCam
-        })
-        .then(r=>{
-            addProduct(r.data);
-            console.log(r.data);
-        }).catch(e=>{
-            console.log(e);
-        })
+        console.log('addProductSpacification')
+        if(spacification === "1"){
+            axios.post('/products/spacification',{
+                Processor,
+                Colors,Display,Memory,Storage,Graphics,OS,Battery,Adapter,Audio,Keyboard,WebCam,Manufacturing_Warranty
+            })
+            .then(r=>{
+                addProduct(r.data);
+                console.log(r.data);
+            }).catch(e=>{
+                console.log(e);
+            })
+        }else if(spacification === "3"){
+            axios.post('/products/spacification',{
+                Ram_Type, Ram_Capacity, Ram_Operating_voltage, Ram_Latency, Ram_Pin, Ram_Frequency,Manufacturing_Warranty
+            })
+            .then(r=>{
+                addProduct(r.data);
+                console.log(r.data);
+            }).catch(e=>{
+                console.log(e);
+            })
+
+        }else if(spacification === "3"){
+
+        }
+
     }
 
     let spacificationData='';
@@ -126,47 +147,54 @@ const ProductAdd = props =>{
                         <td>WebCam </td>
                         <td><input onChange={(event)=>{setWebCam(event.target.value)}}></input></td>
                     </tr>
+                    <tr>
+                        <td>Warranty </td>
+                        <td><input onChange={(event)=>{setManufacturing_Warranty(event.target.value)}}></input></td>
+                    </tr>
                 </table>
+                <br/>
             </div>
         )
     }
-    else if(spacification === "2"){ //RAM
+    else if(spacification === "3"){ //RAM
         spacificationData=(
             <div>
                 <table className={classes.Form}>
                     <tr>
                         <td>Ram Type </td>
-                        <td><input></input></td>
+                        <td><input  onChange={(event)=>{setRam_Type(event.target.value)}}></input></td>
                     </tr>
                     <tr>
                         <td>Ram Capacity </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setRam_Capacity(event.target.value)}}></input></td>
                     </tr>
-                    <tr>
+                    {/* <tr>
                         <td>Flash Type </td>
-                        <td><input></input></td>
-                    </tr>
+                        <td><input onChange={(event)=>{setRam_Operating_voltage(event.target.value)}}></input></td>
+                    </tr> */}
                     <tr>
                         <td>Ram Frequency </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setRam_Frequency(event.target.value)}}></input></td>
                     </tr>
                     <tr>
                         <td>Ram Operating voltage</td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setRam_Operating_voltage(event.target.value)}}></input></td>
                     </tr>
                     <tr>
                         <td>Ram Latency </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setRam_Latency(event.target.value)}}></input></td>
                     </tr>
                     <tr>
                         <td>Ram Pin </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setRam_Pin(event.target.value)}}></input></td>
                     </tr>
                     <tr>
                         <td>Warranty </td>
-                        <td><input></input></td>
+                        <td><input onChange={(event)=>{setManufacturing_Warranty(event.target.value)}}></input></td>
                     </tr>
                 </table>
+                <br/>
+               
             </div>
         )
 
@@ -218,8 +246,8 @@ const ProductAdd = props =>{
         <label>Spacification For </label>
         <select onChange={(event)=>setSpacificationData(event.target.value)}>
             <option value="1">Leptop</option>
-            <option value="2">RAM</option>
-            <option value="3">SSD</option>
+            <option value="3">RAM</option>
+            <option value="2">SSD</option>
         </select>
         <button>LOAD</button>
         <br/>

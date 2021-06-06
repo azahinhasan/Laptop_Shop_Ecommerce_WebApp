@@ -13,10 +13,10 @@ namespace PCHardwareShop.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PcHardwareShopEntities2 : DbContext
+    public partial class PcHardwareShopEntities3 : DbContext
     {
-        public PcHardwareShopEntities2()
-            : base("name=PcHardwareShopEntities2")
+        public PcHardwareShopEntities3()
+            : base("name=PcHardwareShopEntities3")
         {
         }
     
@@ -25,14 +25,14 @@ namespace PCHardwareShop.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AllOrder> AllOrders { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<CustomerInfo> CustomerInfoes { get; set; }
+        public virtual DbSet<OrderdUserInfo> OrderdUserInfoes { get; set; }
         public virtual DbSet<ProductCategoryLink> ProductCategoryLinks { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductSpecification> ProductSpecifications { get; set; }
-        public virtual DbSet<AllOrder> AllOrders { get; set; }
-        public virtual DbSet<CustomerInfo> CustomerInfoes { get; set; }
-        public virtual DbSet<OrderdUserInfo> OrderdUserInfoes { get; set; }
         public virtual DbSet<PromoCode> PromoCodes { get; set; }
         public virtual DbSet<UserLoginTable> UserLoginTables { get; set; }
     }

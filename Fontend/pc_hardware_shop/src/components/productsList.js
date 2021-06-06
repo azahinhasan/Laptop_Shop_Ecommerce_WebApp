@@ -90,7 +90,7 @@ const ProductsList = props =>{
             {
               //&& filterByMaxPrice < parseInt(data.Product.Price.replace(/,/g, ''))   filterByMinPrice < parseFloat(data.Product.Price.replace(/,/g, '')) &&
               data.map(data =>{ 
-                if(filterByMinPrice < parseFloat(data.Product.Price.replace(/,/g, '')) && filterByMaxPrice > parseInt(data.Product.Price.replace(/,/g, ''))){
+                if(filterByMinPrice <= parseFloat(data.Product.Price.replace(/,/g, '')) && filterByMaxPrice >= parseInt(data.Product.Price.replace(/,/g, ''))){
 
                   if(filterByBrand==data.Product.Brand.bName && filterByStatus==data.Product.Status){
                     return(

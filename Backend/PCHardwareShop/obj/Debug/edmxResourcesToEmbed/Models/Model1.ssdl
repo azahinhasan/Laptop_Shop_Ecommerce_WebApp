@@ -188,14 +188,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Products_Brands">
-    <End Role="Brands" Type="Self.Brands" Multiplicity="1" />
-    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+    <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Brands">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Products">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="BrandID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -1,12 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="PcHardwareShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AllOrder">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderdUserID" Type="Int32" />
+    <Property Name="ProductCatagoryLinkedID" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="OrderdUserInfo" Relationship="Self.FK_AllOrders_OrderdUserInfo" FromRole="AllOrders" ToRole="OrderdUserInfo" />
+    <NavigationProperty Name="ProductCategoryLink" Relationship="Self.FK_AllOrders_ProductCategoryLink" FromRole="AllOrders" ToRole="ProductCategoryLink" />
+  </EntityType>
   <EntityType Name="Brand">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="bName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Product" Relationship="Self.FK_Products_Brands" FromRole="Brands" ToRole="Products" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Products_Brands" FromRole="Brands" ToRole="Products" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -16,6 +28,37 @@
     <Property Name="cName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ProductCategoryLinks" Relationship="Self.FK_ProductCategoryLink_Category" FromRole="Category" ToRole="ProductCategoryLink" />
   </EntityType>
+  <EntityType Name="CustomerInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LoginTableID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="UserLoginTable" Relationship="Self.FK_CustomerInfo_UserLoginTable" FromRole="CustomerInfo" ToRole="UserLoginTable" />
+  </EntityType>
+  <EntityType Name="OrderdUserInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PrmoCodeOffer" Type="Int32" />
+    <Property Name="OrderedData" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AllOrders" Relationship="Self.FK_AllOrders_OrderdUserInfo" FromRole="OrderdUserInfo" ToRole="AllOrders" />
+  </EntityType>
   <EntityType Name="ProductCategoryLink">
     <Key>
       <PropertyRef Name="ID" />
@@ -23,9 +66,9 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="pID" Type="Int32" Nullable="false" />
     <Property Name="pCategory" Type="Int32" />
+    <NavigationProperty Name="AllOrders" Relationship="Self.FK_AllOrders_ProductCategoryLink" FromRole="ProductCategoryLink" ToRole="AllOrders" />
     <NavigationProperty Name="Category" Relationship="Self.FK_ProductCategoryLink_Category" FromRole="ProductCategoryLink" ToRole="Category" />
     <NavigationProperty Name="Product" Relationship="Self.FK_ProductCategoryLink_Products" FromRole="ProductCategoryLink" ToRole="Products" />
-    <NavigationProperty Name="AllOrders" Relationship="PcHardwareShopModel.FK_AllOrders_ProductCategoryLink" FromRole="ProductCategoryLink" ToRole="AllOrder" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -33,22 +76,23 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="pName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="Price" Type="String" Nullable="true" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="BrandID" Type="Int32" />
     <Property Name="SpecificationID" Type="Int32" />
-    <NavigationProperty Name="Brand" Relationship="Self.FK_Products_Brands" FromRole="Products" ToRole="Brands" />
-    <NavigationProperty Name="ProductCategoryLinks" Relationship="Self.FK_ProductCategoryLink_Products" FromRole="Products" ToRole="ProductCategoryLink" />
-    <NavigationProperty Name="ProductSpecification" Relationship="Self.FK_Products_ProductSpecification" FromRole="Products" ToRole="ProductSpecification" />
     <Property Name="MainPic" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Pic2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Pic3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Brand" Relationship="Self.FK_Products_Brands" FromRole="Products" ToRole="Brands" />
+    <NavigationProperty Name="ProductCategoryLinks" Relationship="Self.FK_ProductCategoryLink_Products" FromRole="Products" ToRole="ProductCategoryLink" />
+    <NavigationProperty Name="ProductSpecification" Relationship="Self.FK_Products_ProductSpecification" FromRole="Products" ToRole="ProductSpecification" />
   </EntityType>
   <EntityType Name="ProductSpecification">
     <Key>
       <PropertyRef Name="SpecificationID" />
     </Key>
     <Property Name="SpecificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Manufacturing_Warranty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Processor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Colors" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Display" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -61,8 +105,6 @@
     <Property Name="Audio" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Keyboard" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="WebCam" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductSpecification" FromRole="ProductSpecification" ToRole="Products" />
-    <Property Name="Manufacturing_Warranty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Capacity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Form_Factor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Flash_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -77,16 +119,61 @@
     <Property Name="Ram_Operating_voltage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Ram_Latency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Ram_Pin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductSpecification" FromRole="ProductSpecification" ToRole="Products" />
   </EntityType>
+  <EntityType Name="PromoCode">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PromoCode1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="UsageLeft" Type="Int32" />
+    <Property Name="OfferInPercentage" Type="Int32" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="UserLoginTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CustomerInfoes" Relationship="Self.FK_CustomerInfo_UserLoginTable" FromRole="UserLoginTable" ToRole="CustomerInfo" />
+  </EntityType>
+  <Association Name="FK_AllOrders_OrderdUserInfo">
+    <End Role="OrderdUserInfo" Type="Self.OrderdUserInfo" Multiplicity="0..1" />
+    <End Role="AllOrders" Type="Self.AllOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderdUserInfo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AllOrders">
+        <PropertyRef Name="OrderdUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AllOrders_ProductCategoryLink">
+    <End Role="ProductCategoryLink" Type="Self.ProductCategoryLink" Multiplicity="0..1" />
+    <End Role="AllOrders" Type="Self.AllOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategoryLink">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AllOrders">
+        <PropertyRef Name="ProductCatagoryLinkedID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Products_Brands">
-    <End Role="Brands" Type="Self.Brand" Multiplicity="1" />
-    <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Brands" Type="Self.Brand" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Brands">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Products">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="BrandID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -99,6 +186,18 @@
       </Principal>
       <Dependent Role="ProductCategoryLink">
         <PropertyRef Name="pCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerInfo_UserLoginTable">
+    <End Role="UserLoginTable" Type="Self.UserLoginTable" Multiplicity="1" />
+    <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLoginTable">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CustomerInfo">
+        <PropertyRef Name="LoginTableID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -126,12 +225,25 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="PcHardwareShopEntities2" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="PcHardwareShopEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AllOrders" EntityType="Self.AllOrder" />
     <EntitySet Name="Brands" EntityType="Self.Brand" />
     <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="CustomerInfoes" EntityType="Self.CustomerInfo" />
+    <EntitySet Name="OrderdUserInfoes" EntityType="Self.OrderdUserInfo" />
     <EntitySet Name="ProductCategoryLinks" EntityType="Self.ProductCategoryLink" />
     <EntitySet Name="Products" EntityType="Self.Product" />
     <EntitySet Name="ProductSpecifications" EntityType="Self.ProductSpecification" />
+    <EntitySet Name="PromoCodes" EntityType="Self.PromoCode" />
+    <EntitySet Name="UserLoginTables" EntityType="Self.UserLoginTable" />
+    <AssociationSet Name="FK_AllOrders_OrderdUserInfo" Association="Self.FK_AllOrders_OrderdUserInfo">
+      <End Role="OrderdUserInfo" EntitySet="OrderdUserInfoes" />
+      <End Role="AllOrders" EntitySet="AllOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AllOrders_ProductCategoryLink" Association="Self.FK_AllOrders_ProductCategoryLink">
+      <End Role="ProductCategoryLink" EntitySet="ProductCategoryLinks" />
+      <End Role="AllOrders" EntitySet="AllOrders" />
+    </AssociationSet>
     <AssociationSet Name="FK_Products_Brands" Association="Self.FK_Products_Brands">
       <End Role="Brands" EntitySet="Brands" />
       <End Role="Products" EntitySet="Products" />
@@ -139,6 +251,10 @@
     <AssociationSet Name="FK_ProductCategoryLink_Category" Association="Self.FK_ProductCategoryLink_Category">
       <End Role="Category" EntitySet="Categories" />
       <End Role="ProductCategoryLink" EntitySet="ProductCategoryLinks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerInfo_UserLoginTable" Association="Self.FK_CustomerInfo_UserLoginTable">
+      <End Role="UserLoginTable" EntitySet="UserLoginTables" />
+      <End Role="CustomerInfo" EntitySet="CustomerInfoes" />
     </AssociationSet>
     <AssociationSet Name="FK_ProductCategoryLink_Products" Association="Self.FK_ProductCategoryLink_Products">
       <End Role="Products" EntitySet="Products" />
@@ -148,121 +264,5 @@
       <End Role="ProductSpecification" EntitySet="ProductSpecifications" />
       <End Role="Products" EntitySet="Products" />
     </AssociationSet>
-    <EntitySet Name="AllOrders" EntityType="PcHardwareShopModel.AllOrder" />
-    <EntitySet Name="CustomerInfoes" EntityType="PcHardwareShopModel.CustomerInfo" />
-    <EntitySet Name="OrderdUserInfoes" EntityType="PcHardwareShopModel.OrderdUserInfo" />
-    <EntitySet Name="PromoCodes" EntityType="PcHardwareShopModel.PromoCode" />
-    <AssociationSet Name="FK_AllOrders_OrderdUserInfo" Association="PcHardwareShopModel.FK_AllOrders_OrderdUserInfo">
-      <End Role="OrderdUserInfo" EntitySet="OrderdUserInfoes" />
-      <End Role="AllOrder" EntitySet="AllOrders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AllOrders_ProductCategoryLink" Association="PcHardwareShopModel.FK_AllOrders_ProductCategoryLink">
-      <End Role="ProductCategoryLink" EntitySet="ProductCategoryLinks" />
-      <End Role="AllOrder" EntitySet="AllOrders" />
-    </AssociationSet>
-    <EntitySet Name="UserLoginTables" EntityType="PcHardwareShopModel.UserLoginTable" />
-    <AssociationSet Name="FK_CustomerInfo_UserLoginTable" Association="PcHardwareShopModel.FK_CustomerInfo_UserLoginTable">
-      <End Role="UserLoginTable" EntitySet="UserLoginTables" />
-      <End Role="CustomerInfo" EntitySet="CustomerInfoes" />
-    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="AllOrder">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="OrderdUserID" Type="Int32" />
-    <Property Name="ProductCatagoryLinkedID" Type="Int32" />
-    <NavigationProperty Name="OrderdUserInfo" Relationship="PcHardwareShopModel.FK_AllOrders_OrderdUserInfo" FromRole="AllOrder" ToRole="OrderdUserInfo" />
-    <NavigationProperty Name="ProductCategoryLink" Relationship="PcHardwareShopModel.FK_AllOrders_ProductCategoryLink" FromRole="AllOrder" ToRole="ProductCategoryLink" />
-    <Property Name="Quantity" Type="Int32" />
-    <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
-  </EntityType>
-  <EntityType Name="CustomerInfo">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="LoginTableID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="UserLoginTable" Relationship="PcHardwareShopModel.FK_CustomerInfo_UserLoginTable" FromRole="CustomerInfo" ToRole="UserLoginTable" />
-  </EntityType>
-  <EntityType Name="OrderdUserInfo">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="AllOrders" Relationship="PcHardwareShopModel.FK_AllOrders_OrderdUserInfo" FromRole="OrderdUserInfo" ToRole="AllOrder" />
-    <Property Name="PrmoCodeOffer" Type="Int32" />
-    <Property Name="OrderedData" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="PromoCode">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PromoCode1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="UsageLeft" Type="Int32" />
-    <Property Name="OfferInPercentage" Type="Int32" />
-    <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
-  </EntityType>
-  <Association Name="FK_AllOrders_OrderdUserInfo">
-    <End Type="PcHardwareShopModel.OrderdUserInfo" Role="OrderdUserInfo" Multiplicity="0..1" />
-    <End Type="PcHardwareShopModel.AllOrder" Role="AllOrder" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OrderdUserInfo">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="AllOrder">
-        <PropertyRef Name="OrderdUserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_AllOrders_ProductCategoryLink">
-    <End Type="PcHardwareShopModel.ProductCategoryLink" Role="ProductCategoryLink" Multiplicity="0..1" />
-    <End Type="PcHardwareShopModel.AllOrder" Role="AllOrder" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ProductCategoryLink">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="AllOrder">
-        <PropertyRef Name="ProductCatagoryLinkedID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="UserLoginTable">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="CustomerInfoes" Relationship="PcHardwareShopModel.FK_CustomerInfo_UserLoginTable" FromRole="UserLoginTable" ToRole="CustomerInfo" />
-  </EntityType>
-  <Association Name="FK_CustomerInfo_UserLoginTable">
-    <End Type="PcHardwareShopModel.UserLoginTable" Role="UserLoginTable" Multiplicity="1" />
-    <End Type="PcHardwareShopModel.CustomerInfo" Role="CustomerInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="UserLoginTable">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="CustomerInfo">
-        <PropertyRef Name="LoginTableID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

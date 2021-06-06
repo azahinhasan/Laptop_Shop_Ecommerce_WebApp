@@ -1,6 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="PcHardwareShopModelStoreContainer" CdmEntityContainer="PcHardwareShopEntities2">
+  <EntityContainerMapping StorageEntityContainer="PcHardwareShopModelStoreContainer" CdmEntityContainer="PcHardwareShopEntities3">
+    <EntitySetMapping Name="AllOrders">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.AllOrder">
+        <MappingFragment StoreEntitySet="AllOrders">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderdUserID" ColumnName="OrderdUserID" />
+          <ScalarProperty Name="ProductCatagoryLinkedID" ColumnName="ProductCatagoryLinkedID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Brands">
       <EntityTypeMapping TypeName="PcHardwareShopModel.Brand">
         <MappingFragment StoreEntitySet="Brands">
@@ -17,6 +28,37 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CustomerInfoes">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.CustomerInfo">
+        <MappingFragment StoreEntitySet="CustomerInfo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="LoginTableID" ColumnName="LoginTableID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderdUserInfoes">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.OrderdUserInfo">
+        <MappingFragment StoreEntitySet="OrderdUserInfo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="PrmoCodeOffer" ColumnName="PrmoCodeOffer" />
+          <ScalarProperty Name="OrderedData" ColumnName="OrderedData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ProductCategoryLinks">
       <EntityTypeMapping TypeName="PcHardwareShopModel.ProductCategoryLink">
         <MappingFragment StoreEntitySet="ProductCategoryLink">
@@ -29,37 +71,23 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="PcHardwareShopModel.Product">
         <MappingFragment StoreEntitySet="Products">
-          <ScalarProperty Name="Pic3" ColumnName="Pic3" />
-          <ScalarProperty Name="Pic2" ColumnName="Pic2" />
-          <ScalarProperty Name="MainPic" ColumnName="MainPic" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="pName" ColumnName="pName" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="BrandID" ColumnName="BrandID" />
           <ScalarProperty Name="SpecificationID" ColumnName="SpecificationID" />
+          <ScalarProperty Name="MainPic" ColumnName="MainPic" />
+          <ScalarProperty Name="Pic2" ColumnName="Pic2" />
+          <ScalarProperty Name="Pic3" ColumnName="Pic3" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProductSpecifications">
       <EntityTypeMapping TypeName="PcHardwareShopModel.ProductSpecification">
         <MappingFragment StoreEntitySet="ProductSpecification">
-          <ScalarProperty Name="Ram_Pin" ColumnName="Ram_Pin" />
-          <ScalarProperty Name="Ram_Latency" ColumnName="Ram_Latency" />
-          <ScalarProperty Name="Ram_Operating_voltage" ColumnName="Ram_Operating_voltage" />
-          <ScalarProperty Name="Ram_Frequency" ColumnName="Ram_Frequency" />
-          <ScalarProperty Name="Ram_Capacity" ColumnName="Ram_Capacity" />
-          <ScalarProperty Name="Ram_Type" ColumnName="Ram_Type" />
-          <ScalarProperty Name="Storage_Temperature" ColumnName="Storage_Temperature" />
-          <ScalarProperty Name="Operating_Temperature" ColumnName="Operating_Temperature" />
-          <ScalarProperty Name="MTBF" ColumnName="MTBF" />
-          <ScalarProperty Name="Sequential_R_W" ColumnName="Sequential_R_W" />
-          <ScalarProperty Name="Interface" ColumnName="Interface" />
-          <ScalarProperty Name="Flash_Type" ColumnName="Flash_Type" />
-          <ScalarProperty Name="Form_Factor" ColumnName="Form_Factor" />
-          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
-          <ScalarProperty Name="Manufacturing_Warranty" ColumnName="Manufacturing_Warranty" />
           <ScalarProperty Name="SpecificationID" ColumnName="SpecificationID" />
+          <ScalarProperty Name="Manufacturing_Warranty" ColumnName="Manufacturing_Warranty" />
           <ScalarProperty Name="Processor" ColumnName="Processor" />
           <ScalarProperty Name="Colors" ColumnName="Colors" />
           <ScalarProperty Name="Display" ColumnName="Display" />
@@ -72,69 +100,41 @@
           <ScalarProperty Name="Audio" ColumnName="Audio" />
           <ScalarProperty Name="Keyboard" ColumnName="Keyboard" />
           <ScalarProperty Name="WebCam" ColumnName="WebCam" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AllOrders">
-      <EntityTypeMapping TypeName="PcHardwareShopModel.AllOrder">
-        <MappingFragment StoreEntitySet="AllOrders">
-          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="ProductCatagoryLinkedID" ColumnName="ProductCatagoryLinkedID" />
-          <ScalarProperty Name="OrderdUserID" ColumnName="OrderdUserID" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CustomerInfoes">
-      <EntityTypeMapping TypeName="PcHardwareShopModel.CustomerInfo">
-        <MappingFragment StoreEntitySet="CustomerInfo">
-          <ScalarProperty Name="LoginTableID" ColumnName="LoginTableID" />
-          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
-          <ScalarProperty Name="Country" ColumnName="Country" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="OrderdUserInfoes">
-      <EntityTypeMapping TypeName="PcHardwareShopModel.OrderdUserInfo">
-        <MappingFragment StoreEntitySet="OrderdUserInfo">
-          <ScalarProperty Name="OrderedData" ColumnName="OrderedData" />
-          <ScalarProperty Name="PrmoCodeOffer" ColumnName="PrmoCodeOffer" />
-          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
-          <ScalarProperty Name="Country" ColumnName="Country" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="Form_Factor" ColumnName="Form_Factor" />
+          <ScalarProperty Name="Flash_Type" ColumnName="Flash_Type" />
+          <ScalarProperty Name="Interface" ColumnName="Interface" />
+          <ScalarProperty Name="Sequential_R_W" ColumnName="Sequential_R_W" />
+          <ScalarProperty Name="MTBF" ColumnName="MTBF" />
+          <ScalarProperty Name="Operating_Temperature" ColumnName="Operating_Temperature" />
+          <ScalarProperty Name="Storage_Temperature" ColumnName="Storage_Temperature" />
+          <ScalarProperty Name="Ram_Type" ColumnName="Ram_Type" />
+          <ScalarProperty Name="Ram_Capacity" ColumnName="Ram_Capacity" />
+          <ScalarProperty Name="Ram_Frequency" ColumnName="Ram_Frequency" />
+          <ScalarProperty Name="Ram_Operating_voltage" ColumnName="Ram_Operating_voltage" />
+          <ScalarProperty Name="Ram_Latency" ColumnName="Ram_Latency" />
+          <ScalarProperty Name="Ram_Pin" ColumnName="Ram_Pin" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PromoCodes">
       <EntityTypeMapping TypeName="PcHardwareShopModel.PromoCode">
         <MappingFragment StoreEntitySet="PromoCodes">
-          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-          <ScalarProperty Name="OfferInPercentage" ColumnName="OfferInPercentage" />
-          <ScalarProperty Name="UsageLeft" ColumnName="UsageLeft" />
-          <ScalarProperty Name="PromoCode1" ColumnName="PromoCode" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PromoCode1" ColumnName="PromoCode" />
+          <ScalarProperty Name="UsageLeft" ColumnName="UsageLeft" />
+          <ScalarProperty Name="OfferInPercentage" ColumnName="OfferInPercentage" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserLoginTables">
       <EntityTypeMapping TypeName="PcHardwareShopModel.UserLoginTable">
         <MappingFragment StoreEntitySet="UserLoginTable">
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

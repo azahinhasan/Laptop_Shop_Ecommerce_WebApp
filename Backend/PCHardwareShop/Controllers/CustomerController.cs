@@ -13,7 +13,7 @@ namespace PCHardwareShop.Controllers
     public class CustomerController : ApiController
     {
         CustomerRepo repo = new CustomerRepo();
-        PcHardwareShopEntities2 context = new PcHardwareShopEntities2();
+        PcHardwareShopEntities3 context = new PcHardwareShopEntities3();
 
         [Route("api/loadCustomerInfo/{loginTableID}/{email}"), HttpGet]
         public IHttpActionResult AddOrderProduct([FromUri]int loginTableID, [FromUri]string email)
