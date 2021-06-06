@@ -5,7 +5,6 @@ import classes from './employee.css';
 
 const ProductAdd = props =>{
     
-
     const [spacification,setSpacificationData]=useState('1');
     const [pName,setpName]=useState('');
     const [Price,setPrice]=useState('');
@@ -15,6 +14,7 @@ const ProductAdd = props =>{
     const [MainPic,setMainPic]=useState('fx505dt-03-500x500.jpg');
     const [Pic2,setPic2]=useState('');
     const [Pic3,setPic3]=useState('');
+    const [ImgTest,setImgTest]=useState('fx505dt-03-500x500.jpg');
     //LepTop
     const [Manufacturing_Warranty,setManufacturing_Warranty]=useState('');
     const [Processor,setProcessor]=useState('');
@@ -37,6 +37,7 @@ const ProductAdd = props =>{
     const [Ram_Pin,setRam_Pin]=useState('');
     const [Ram_Frequency,setRam_Frequency]=useState('');
 
+    console.log(MainPic,'MainPic');
 
     const addProductCatagoryLink=(pID)=>{
         axios.post('/productsConnectWithBrand',{
@@ -53,7 +54,7 @@ const ProductAdd = props =>{
     const addProduct=(SpecificationID)=>{
         console.log('addProduct')
         axios.post('/products',{
-            pName,Price,Status,BrandID,SpecificationID,MainPic,Pic2,Pic3
+            pName,Price,Status,BrandID,SpecificationID,ImgTest,Pic2,Pic3
         })
         .then(r=>{
             addProductCatagoryLink(r.data);
@@ -88,9 +89,21 @@ const ProductAdd = props =>{
             })
 
         }else if(spacification === "3"){
-
+        
         }
 
+    }
+
+    const uploadMainImage=(e)=>{
+        //console.log(e.target.files[0]);
+        let imageFile = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload=x=>{
+            setImgTest(x.target.result);
+            console.log(x.target.result);
+        }
+        console.log(reader.readAsDataURL(imageFile))
     }
 
     let spacificationData='';
@@ -210,7 +223,10 @@ const ProductAdd = props =>{
             <td><input  onChange={(event)=>{setpName(event.target.value)}}></input></td>
             </tr>
             <tr>
-                <td> <label>Price</label></td>
+                <td> 
+                    <label>Price</label>
+                   
+                </td>
                 <td><input type="number" onChange={(event)=>{setPrice(event.target.value)}}></input></td>
             </tr>
             <tr>
@@ -241,6 +257,18 @@ const ProductAdd = props =>{
                     </select>
                 </td>
             </tr>
+            <tr>
+                <td> 
+                    <label>Main Pic</label>
+                    <br/>
+                    <img src={ImgTest} width='210px'/>
+                </td>
+                <td><input type="file" accept="image/*" onChange={(event)=>{uploadMainImage(event)}}></input></td>
+            </tr>
+            <tr>
+                <td> <label>Pic 2</label></td>
+                <td><input type="file" onChange={(event)=>{setPic2(event.target.value)}}></input></td>
+            </tr>
         </table>
         <br/>
         <label>Spacification For </label>
@@ -252,6 +280,7 @@ const ProductAdd = props =>{
         <button>LOAD</button>
         <br/>
         {spacificationData}
+       
         <button onClick={addProductSpacification}>ADD</button>
         </div>
     );

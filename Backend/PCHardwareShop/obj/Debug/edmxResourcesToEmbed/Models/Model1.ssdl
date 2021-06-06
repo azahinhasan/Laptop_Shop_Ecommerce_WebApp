@@ -71,9 +71,9 @@
     <Property Name="Status" Type="varchar" MaxLength="500" />
     <Property Name="BrandID" Type="int" />
     <Property Name="SpecificationID" Type="int" />
-    <Property Name="MainPic" Type="varchar" MaxLength="500" />
-    <Property Name="Pic2" Type="varchar" MaxLength="50" />
-    <Property Name="Pic3" Type="varchar" MaxLength="50" />
+    <Property Name="MainPic" Type="varchar" MaxLength="5000" />
+    <Property Name="Pic2" Type="varchar" MaxLength="5000" />
+    <Property Name="Pic3" Type="varchar" MaxLength="5000" />
   </EntityType>
   <EntityType Name="ProductSpecification">
     <Key>

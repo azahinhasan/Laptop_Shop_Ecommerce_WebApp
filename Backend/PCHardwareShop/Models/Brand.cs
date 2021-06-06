@@ -6,8 +6,7 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using Newtonsoft.Json;
-using System.Xml.Serialization;
+
 namespace PCHardwareShop.Models
 {
     using System;
@@ -25,8 +24,6 @@ namespace PCHardwareShop.Models
         public string bName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-        [JsonIgnore, XmlIgnore]
         public virtual ICollection<Product> Products { get; set; }
     }
 }

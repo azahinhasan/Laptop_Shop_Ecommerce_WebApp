@@ -80,9 +80,9 @@
     <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="BrandID" Type="Int32" />
     <Property Name="SpecificationID" Type="Int32" />
-    <Property Name="MainPic" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="Pic2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Pic3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MainPic" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="Pic2" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="Pic3" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Brand" Relationship="Self.FK_Products_Brands" FromRole="Products" ToRole="Brands" />
     <NavigationProperty Name="ProductCategoryLinks" Relationship="Self.FK_ProductCategoryLink_Products" FromRole="Products" ToRole="ProductCategoryLink" />
     <NavigationProperty Name="ProductSpecification" Relationship="Self.FK_Products_ProductSpecification" FromRole="Products" ToRole="ProductSpecification" />

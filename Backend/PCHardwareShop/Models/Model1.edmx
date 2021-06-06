@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PcHardwareShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PcHardwareShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AllOrders">
           <Key>
             <PropertyRef Name="ID" />
@@ -76,9 +76,9 @@
           <Property Name="Status" Type="varchar" MaxLength="500" />
           <Property Name="BrandID" Type="int" />
           <Property Name="SpecificationID" Type="int" />
-          <Property Name="MainPic" Type="varchar" MaxLength="500" />
-          <Property Name="Pic2" Type="varchar" MaxLength="50" />
-          <Property Name="Pic3" Type="varchar" MaxLength="50" />
+          <Property Name="MainPic" Type="varchar" MaxLength="5000" />
+          <Property Name="Pic2" Type="varchar" MaxLength="5000" />
+          <Property Name="Pic3" Type="varchar" MaxLength="5000" />
         </EntityType>
         <EntityType Name="ProductSpecification">
           <Key>
@@ -256,8 +256,7 @@
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PcHardwareShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -341,9 +340,9 @@
           <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="BrandID" Type="Int32" />
           <Property Name="SpecificationID" Type="Int32" />
-          <Property Name="MainPic" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Pic2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Pic3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MainPic" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="Pic2" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="Pic3" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Brand" Relationship="Self.FK_Products_Brands" FromRole="Products" ToRole="Brands" />
           <NavigationProperty Name="ProductCategoryLinks" Relationship="Self.FK_ProductCategoryLink_Products" FromRole="Products" ToRole="ProductCategoryLink" />
           <NavigationProperty Name="ProductSpecification" Relationship="Self.FK_Products_ProductSpecification" FromRole="Products" ToRole="ProductSpecification" />
