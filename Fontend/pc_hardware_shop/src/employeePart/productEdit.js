@@ -12,13 +12,15 @@ const ProductEdit = props =>{
     const [Price,setPrice]=useState('0');
     const [Status,setStatus]=useState('In Stock');
     const [BrandID,setBrandID]=useState('1');
-    const [SpecificationID,setSpecificationID]=useState('');
     const [MainPic,setMainPic]=useState('fx505dt-03-500x500.jpg');
     const [Pic2,setPic2]=useState('');
     const [Pic3,setPic3]=useState('');
     const [MainPicSrc,setMainImageSrc]=useState('../Content/LeptopImg/');
     const [Pic2Src,setPic2Src]=useState(EmptyImage);
     const [Pic3Src,setPic3Src]=useState(EmptyImage);
+    //ID
+    const [SpecificationID,setSpecificationID]=useState('');
+    const [pID,setpID]=useState('');
     //LepTop
     const [Manufacturing_Warranty,setManufacturing_Warranty]=useState('');
     const [Processor,setProcessor]=useState('');
@@ -72,6 +74,19 @@ const ProductEdit = props =>{
             setRam_Frequency(data.Ram_Pin);
         }
     }
+
+    const saveData=()=>{
+        axios.put('/products/'+pID,{
+            Ram_Type
+        })
+        .then(r=>{
+            console.log(r)
+        }).catch(e=>{
+            console.log(e);
+        })
+    }
+
+
     const loadData=()=>{
         axios.get('/products/load/'+Search)
         .then(r=>{
@@ -87,10 +102,14 @@ const ProductEdit = props =>{
             setProcessor(r.data.Product.ProductSpecification.Manufacturing_Warranty);
             console.log(pName);
 
+            setpID(r.data.pID);
+            setSpecificationID(r.data.Product.SpecificationID);
+           // setpID(r.data.pID);
+        
+
             let data = r.data.Product.ProductSpecification;
             setManufacturing_Warranty(data.Manufacturing_Warranty);
-            if(spacification === 1){ //leptop
-                setProcessor(T.Processor);
+                setProcessor(data.Processor);
                 setColors(data.Colors);
                 setDisplay(data.Display);
                 setMemory(data.Memory);
@@ -102,16 +121,13 @@ const ProductEdit = props =>{
                 setAudio(data.Audio);
                 setKeyboard(data.Keyboard);
                 setWebCam(data.WebCam);
-            }else if(spacification === 2){ //ssd
-    
-            }else if(spacification ===3){
                 setRam_Type(data.Ram_Type);
                 setRam_Capacity(data.Ram_Capacity);
                 setRam_Operating_voltage(data.Ram_Frequency);
                 setRam_Latency(data.Ram_Operating_voltage);
                 setRam_Pin(data.Ram_Latency);
                 setRam_Frequency(data.Ram_Pin);
-            }
+            
             
         }).catch(e=>{
 
@@ -286,7 +302,7 @@ const ProductEdit = props =>{
                     <label>Price</label>
                     
                 </td>
-                <td><input value={Price} type="number" onChange={(event)=>{setPrice(event.target.value)}}></input></td>
+                <td><input value={Price} type="" onChange={(event)=>{setPrice(event.target.value)}}></input></td>
             </tr>
             <tr>
                 <td><label>Status</label></td>
@@ -348,7 +364,8 @@ const ProductEdit = props =>{
 
         <br/>
         {spacificationData}
-        
+        <br/>
+        <button onClick={saveData}>SAVE</button>
         </div>
     );
     } 
