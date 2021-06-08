@@ -144,7 +144,6 @@ const ProductAdd = props =>{
         }
 
 
-
     }
 
     let spacificationData='';
@@ -277,7 +276,7 @@ const ProductAdd = props =>{
             <tr>
                 <td><label>Status</label></td>
                 <td>
-                    <select className={classes.select} onChange={(event)=>{setStatus(event.target.value)}}>
+                    <select onChange={(event)=>{setStatus(event.target.value)}}>
                         <option value="In Stock">In Stock</option>
                         <option value="Out Stock">Out Stock</option>
                         <option value="Up Coming">Up Coming</option>
