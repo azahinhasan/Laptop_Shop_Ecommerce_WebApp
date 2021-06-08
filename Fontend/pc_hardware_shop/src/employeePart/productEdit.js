@@ -5,6 +5,7 @@ import classes from './employee.css';
 import EmptyImage from '../Content/no_blog.jpg';
 
 const ProductEdit = props =>{
+    const [dataUpaded,setDataUpdated]=useState('');
     const [Search,setSearch]=useState('None');
     const [T,setT]=useState('None');
     const [spacification,setSpacificationData]=useState(null);
@@ -47,42 +48,51 @@ const ProductEdit = props =>{
 
 
 
-    const loadSpacification=(data)=>{
-        console.log("Yooo",T.Processor)
-        setManufacturing_Warranty(data.Manufacturing_Warranty);
-        if(spacification === 1){ //leptop
-            setProcessor(T.Processor);
-            setColors(data.Colors);
-            setDisplay(data.Display);
-            setMemory(data.Memory);
-            setStorage(data.Storage);
-            setGraphics(data.Graphics);
-            setOS(data.OS);
-            setBattery(data.Battery);
-            setAdapter(data.Adapter);
-            setAudio(data.Audio);
-            setKeyboard(data.Keyboard);
-            setWebCam(data.WebCam);
-        }else if(spacification === 2){ //ssd
+    // const loadSpacification=(data)=>{
+    //     console.log("Yooo",T.Processor)
+    //     setManufacturing_Warranty(data.Manufacturing_Warranty);
+    //     if(spacification === 1){ //leptop
+    //         setProcessor(T.Processor);
+    //         setColors(data.Colors);
+    //         setDisplay(data.Display);
+    //         setMemory(data.Memory);
+    //         setStorage(data.Storage);
+    //         setGraphics(data.Graphics);
+    //         setOS(data.OS);
+    //         setBattery(data.Battery);
+    //         setAdapter(data.Adapter);
+    //         setAudio(data.Audio);
+    //         setKeyboard(data.Keyboard);
+    //         setWebCam(data.WebCam);
+    //     }else if(spacification === 2){ //ssd
 
-        }else if(spacification ===3){
-            setRam_Type(data.Ram_Type);
-            setRam_Capacity(data.Ram_Capacity);
-            setRam_Operating_voltage(data.Ram_Frequency);
-            setRam_Latency(data.Ram_Operating_voltage);
-            setRam_Pin(data.Ram_Latency);
-            setRam_Frequency(data.Ram_Pin);
-        }
-    }
+    //     }else if(spacification ===3){
+    //         setRam_Type(data.Ram_Type);
+    //         setRam_Capacity(data.Ram_Capacity);
+    //         setRam_Operating_voltage(data.Ram_Frequency);
+    //         setRam_Latency(data.Ram_Operating_voltage);
+    //         setRam_Pin(data.Ram_Latency);
+    //         setRam_Frequency(data.Ram_Pin);
+    //     }
+    // }
 
     const saveData=()=>{
         axios.put('/products/'+pID,{
-            Ram_Type
+            pName,Price,Status,BrandID,MainPic,Pic2,Pic3,SpecificationID
         })
         .then(r=>{
-            console.log(r)
+
+            axios.put('/products/spacification/'+SpecificationID,{
+                Manufacturing_Warranty,Processor,Colors,Display,Memory,Storage,Graphics,
+                OS,Battery,Adapter,Audio,Keyboard,WebCam,Ram_Type,Ram_Capacity,Ram_Operating_voltage,
+                Ram_Latency,Ram_Pin,Ram_Frequency
+            }).then(r=>{
+                console.log("Data Updated!");
+                setDataUpdated(true);
+            })
         }).catch(e=>{
             console.log(e);
+            setDataUpdated(false);
         })
     }
 
@@ -99,6 +109,8 @@ const ProductEdit = props =>{
             setStatus(r.data.Product.Status);
             setBrandID(r.data.Product.BrandID);
             setMainPic(r.data.Product.MainPic);
+            setPic3(r.data.Product.Pic2);
+            setPic2(r.data.Product.MainPic);
             setProcessor(r.data.Product.ProductSpecification.Manufacturing_Warranty);
             console.log(pName);
 
@@ -290,7 +302,11 @@ const ProductEdit = props =>{
     
         <label>Search</label>
         <input type="" onChange={e=>setSearch(e.target.value)}></input>
-        <button onClick={loadData}>Search</button>
+        <button onClick={loadData}>LOAD</button>
+        <br/>
+        {dataUpaded?<p style={{color:'green'}}>Data Updated!</p>:null}
+        {!dataUpaded?<p style={{color:'red'}}>Data is not Updated!</p>:null}
+        <br/>
         {spacification==null?null:
             <table  className={classes.Form}> 
             <tr>
