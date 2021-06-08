@@ -14,8 +14,8 @@ const ProductEdit = props =>{
     const [Status,setStatus]=useState('In Stock');
     const [BrandID,setBrandID]=useState('1');
     const [MainPic,setMainPic]=useState('fx505dt-03-500x500.jpg');
-    const [Pic2,setPic2]=useState('');
-    const [Pic3,setPic3]=useState('');
+    const [Pic2,setPic2]=useState('no_blog.jpg');
+    const [Pic3,setPic3]=useState('no_blog.jpg');
     const [MainPicSrc,setMainImageSrc]=useState('../Content/LeptopImg/');
     const [Pic2Src,setPic2Src]=useState(EmptyImage);
     const [Pic3Src,setPic3Src]=useState(EmptyImage);
@@ -109,10 +109,17 @@ const ProductEdit = props =>{
             setStatus(r.data.Product.Status);
             setBrandID(r.data.Product.BrandID);
             setMainPic(r.data.Product.MainPic);
-            setPic3(r.data.Product.Pic2);
-            setPic2(r.data.Product.MainPic);
+            if(r.data.Product.Pic3!=null){
+                setPic3(r.data.Product.Pic3);
+            }
+            if(r.data.Product.Pic2!=null){
+                setPic2(r.data.Product.Pic2);
+            }
+      
             setProcessor(r.data.Product.ProductSpecification.Manufacturing_Warranty);
             console.log(pName);
+
+            setMainImageSrc(MainPicSrc+MainPic);
 
             setpID(r.data.pID);
             setSpecificationID(r.data.Product.SpecificationID);
@@ -305,9 +312,10 @@ const ProductEdit = props =>{
         <button onClick={loadData}>LOAD</button>
         <br/>
         {dataUpaded?<p style={{color:'green'}}>Data Updated!</p>:null}
-        {!dataUpaded?<p style={{color:'red'}}>Data is not Updated!</p>:null}
+        {/* {dataUpaded==false?<p style={{color:'red'}}>Data is not Updated!</p>:null} */}
         <br/>
         {spacification==null?null:
+            <div>
             <table  className={classes.Form}> 
             <tr>
             <td>Name</td>
@@ -352,8 +360,10 @@ const ProductEdit = props =>{
                 <td> 
                     <label>Main Pic</label>
                     <br/>
-                    {/* <img src={require(MainPicSrc+MainPic)} width='140px' height='140px'/> */}
-                </td>
+                    {/* <img src={require((MainPicSrc+MainPic).toString()).default} width='140px' height='140px'/> */}
+                        <img src={require("../Content/LeptopImg/"+MainPic).default} width='140px' height='140px'/>
+                {/* {MainPicSrc+""} */}
+               </td>
                 <td><input type="file" accept="image/*" onChange={(event)=>{uploadMainImage(event,"MainPic")}}></input></td>
             </tr>
             <tr>
@@ -361,7 +371,7 @@ const ProductEdit = props =>{
                     <label>
                         Pic 2
                         <br/>
-                        <img src={Pic2Src} width='140px' height='140px'/>
+                        <img src={Pic2!=null?(require("../Content/LeptopImg/"+Pic2).default):null} width='140px' height='140px'/>
                     </label></td>
                 <td><input type="file" accept="image/*" onChange={(event)=>{uploadMainImage(event,"Pic2")}}></input></td>
             </tr>
@@ -370,18 +380,25 @@ const ProductEdit = props =>{
                 <label>
                     Pic 3
                     <br/>
-                    <img src={Pic3Src} width='140px' height='140px'/>
+                    {/* <img src={Pic3!=null?require("../Content/LeptopImg/"+Pic3).default:null} width='140px' height='140px'/> */}
+                    {
+                         <img src={require("../Content/LeptopImg/"+Pic3).default} width='140px' height='140px'/>
+                        
+                    }
                 </label></td>
             <td><input type="file" accept="image/*" onChange={(event)=>{uploadMainImage(event,"Pic3")}}></input></td>
             </tr>
         </table>
-        
-        }
-
         <br/>
         {spacificationData}
         <br/>
         <button onClick={saveData}>SAVE</button>
+        </div>
+        
+        }
+
+    
+        <br/>
         </div>
     );
     } 

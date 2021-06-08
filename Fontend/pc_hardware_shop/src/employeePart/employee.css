@@ -14,6 +14,20 @@
     padding: 5px;
   }
 
+  button{
+    height: 40px;
+    width: 70px;
+    margin: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px black solid;
+    border-radius: 18px;
+  }
+  button:hover{
+    background-color: black;
+    color: white;
+  }
+
   .buttonOption{
       height: 40px;
       width: 70px;
