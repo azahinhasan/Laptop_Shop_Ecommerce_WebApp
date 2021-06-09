@@ -12,10 +12,16 @@ const HomePage = props =>{
         let link = "/product/search?q="+searchData;
         history.push(link);
       }
+      const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          routeToSearchResult();
+        }
+      }
+
         return (
           <div className={classes.homePage}>
-            <input onChange={e=>setSearchData(e.target.value)}></input>
-            <button onClick={routeToSearchResult}>FIND</button>
+            <input onKeyDown={handleKeyDown}  onChange={e=>setSearchData(e.target.value)}></input>
+            <button  onClick={routeToSearchResult}>FIND</button>
 
               <h2>Welcome To MyMyLeptopShop</h2>
               <br/>

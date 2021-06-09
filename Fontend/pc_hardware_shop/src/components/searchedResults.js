@@ -17,10 +17,14 @@ const SearchPage = props =>{
         const [resultNotFound, setResultNotFound] = useState(0);
         const {category} = useParams();
         const history = useHistory()
+
+        const [search, setSearch] = useState(props.location.search.slice(3).replace(/%20/g, " ").trim());
+        //setSearch(search.replace(/\s{2,}/g, ' '));
         
         useEffect(() => {
 
-        axios.get('/search/'+props.location.search.slice(3).replace(/%20/g, " ").trim()).then(result =>{
+        let searchNow = search.replace(/\s{2,}/g, ' ');
+        axios.get('/search/'+searchNow).then(result =>{
             //console.log(result);
             setData(result.data);
             if(result.data.length< 1){
@@ -152,7 +156,7 @@ const SearchPage = props =>{
 
     return (
         <div className="">
-            <h2>Result of : {props.location.search.slice(3).replace(/%20/g, " ")} </h2>
+            <h2>Result of : {search.replace(/\s{2,}/g, ' ')} </h2>
 
         <div className={classes.FilterLIst}>
             <div>Filter</div>
