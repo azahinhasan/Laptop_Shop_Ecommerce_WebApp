@@ -29,7 +29,7 @@ render() {
                 <Link to={{pathname: '/home'}} >Home</Link>
                 <Link to={{pathname:'/list/Laptop'}}>Laptop</Link>
                 <div class={classes.dropdown}>
-                    <button class={classes.dropbtn}>Leptop Components</button>
+                    <div class={classes.dropbtn}>Leptop Components</div>
                     <div class={classes.dropdowncontent}>
                     <Link to={{pathname:'/list/SSD'}}>SSD</Link>
                     <Link to={{pathname:'/list/RAM'}}>RAM</Link>

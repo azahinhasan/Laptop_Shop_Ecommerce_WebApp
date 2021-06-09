@@ -20,14 +20,16 @@ const SearchPage = props =>{
         
         useEffect(() => {
 
-        axios.get('/search/'+props.location.search.slice(3)).then(result =>{
+        axios.get('/search/'+props.location.search.slice(3).replace(/%20/g, " ")).then(result =>{
             //console.log(result);
             setData(result.data);
-            if(result.data== null){
+            if(result.data.length< 1){
                 setResultNotFound("Not Found!")
+            }else{
+                setResultNotFound("")
             }
-            setResultNotFound("")
-           // console.log(result.data)
+        
+            console.log(result.data)
 
         }).catch(e=>{
             setResultNotFound("Not Found!")
@@ -150,7 +152,7 @@ const SearchPage = props =>{
 
     return (
         <div className="">
-            <h2>Result of : {category} </h2>
+            <h2>Result of : {props.location.search.slice(3).replace(/%20/g, " ")} </h2>
 
         <div className={classes.FilterLIst}>
             <div>Filter</div>
