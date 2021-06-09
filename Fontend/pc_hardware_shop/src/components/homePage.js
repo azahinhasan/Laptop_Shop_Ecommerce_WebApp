@@ -1,12 +1,22 @@
-import React from 'react';
+import React,{ useState} from 'react';
 import classes from './homePage.css';
-
+import {Route,Switch,withRouter,Redirect,useParams,useHistory } from 'react-router-dom';
 
 const HomePage = props =>{
 
+    const [searchData,setSearchData]=useState('');
+    const {category} = useParams();
+    const history = useHistory()
 
+      const routeToSearchResult=()=>{
+        let link = "/product/search?q="+searchData;
+        history.push(link);
+      }
         return (
           <div className={classes.homePage}>
+            <input onChange={e=>setSearchData(e.target.value)}></input>
+            <button onClick={routeToSearchResult}>FIND</button>
+
               <h2>Welcome To MyMyLeptopShop</h2>
               <br/>
               <img className={classes.smallPic} src={require('../Content/HomePage/apple-imac.jpg').default} />

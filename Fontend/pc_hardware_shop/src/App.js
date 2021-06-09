@@ -3,6 +3,7 @@ import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
 
 import Classes from './App.css';
 import HomePage from './components/homePage';
+import SearchPage from './components/searchedResults';
 import ProductsList from './components/productsList';
 import ProductInfo from './components/productInfo';
 import NavBar from './components/navBar';
@@ -34,6 +35,7 @@ class App extends Component {
             <Route path="/user/signup" component={SignUp}/>
             <Route path="/user/printReceipt/:orderedid" component={PrintPdf}/>
             <Route path="/user/EmployeeHOme/" component={EmployeeHOme}/>
+            <Route path="/product/search" component={SearchPage}/>
             <Redirect to="/home"/>
         </Switch>
       </div>
