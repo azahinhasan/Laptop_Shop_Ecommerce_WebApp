@@ -20,7 +20,7 @@ const SearchPage = props =>{
         
         useEffect(() => {
 
-        axios.get('/search/'+props.location.search.slice(3).replace(/%20/g, " ")).then(result =>{
+        axios.get('/search/'+props.location.search.slice(3).replace(/%20/g, " ").trim()).then(result =>{
             //console.log(result);
             setData(result.data);
             if(result.data.length< 1){
