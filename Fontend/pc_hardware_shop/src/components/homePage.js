@@ -4,25 +4,9 @@ import {Route,Switch,withRouter,Redirect,useParams,useHistory } from 'react-rout
 
 const HomePage = props =>{
 
-    const [searchData,setSearchData]=useState('');
-    const {category} = useParams();
-    const history = useHistory()
-
-      const routeToSearchResult=()=>{
-        let link = "/product/search?q="+searchData;
-        history.push(link);
-      }
-      const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-          routeToSearchResult();
-        }
-      }
-
         return (
           <div className={classes.homePage}>
-            <input onKeyDown={handleKeyDown}  onChange={e=>setSearchData(e.target.value)}></input>
-            <button  onClick={routeToSearchResult}>FIND</button>
-
+           
               <h2>Welcome To MyMyLeptopShop</h2>
               <br/>
               <img className={classes.smallPic} src={require('../Content/HomePage/apple-imac.jpg').default} />
