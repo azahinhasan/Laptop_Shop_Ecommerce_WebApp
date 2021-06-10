@@ -78,3 +78,19 @@
   /* Employee */
 
     /* Orders */
+    .table{
+
+      margin-left: 320px;
+      text-align: center;
+      /* border: black 1px solid; */
+    }
+    .table th{
+      background-color: black;
+      color: white;
+      width: 220px;
+    }
+    .table td{
+      font-size: 16px;
+      border-bottom: 1px solid black;
+      padding: 5px;
+    }
