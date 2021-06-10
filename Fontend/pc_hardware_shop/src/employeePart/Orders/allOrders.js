@@ -1,7 +1,7 @@
 import React,{ useState,useEffect} from 'react';
-import classes from './employee.css';
+import classes from './orders.css';
 import {Route,Switch,Link,Redirect,useParams,useHistory } from 'react-router-dom';
-import axios from '../api/axios';
+import axios from '../../api/axios';
 import moment from 'moment'
 //npm i moment --save //used for print only time or data
 const AllOrders = props =>{
@@ -9,7 +9,7 @@ const AllOrders = props =>{
         const [allOrders,setAllOrders]=useState([]);
 
         useEffect(() => {
-            axios.get('/orders/users').then(r=>{
+            axios.get('/orders/').then(r=>{
                 setAllOrders(r.data);
                 console.log(r.data,"Orders");
             })
@@ -19,7 +19,7 @@ const AllOrders = props =>{
   
             
         return (
-        <div  className={classes.Product}>
+        <div  className={''}>
             <p>All Oeders</p>
 
             <table className={classes.table}>
@@ -37,7 +37,7 @@ const AllOrders = props =>{
                     <td>{data.Name}</td>
                     <td>{moment(data.OrderedData).format('MMMM Do YYYY')}</td>
                     <td>{data.Status}</td>
-                    <td><Link>go</Link></td>
+                    <td><Link to={{pathname:'/user/EmployeeHome/orderDetails/'+data.ID}}>go</Link></td>
                 </tr>
                 )
             })}
