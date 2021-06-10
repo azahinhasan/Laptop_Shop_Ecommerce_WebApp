@@ -2,6 +2,7 @@ import React from 'react';
 import SideBar from './sideBar';
 import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
 import ProductAction from './productAction';
+import AllOrders from './allOrders';
 const EmployeeHome = props =>{
 
     return (
@@ -10,6 +11,7 @@ const EmployeeHome = props =>{
             <p>Welcome To Employee Home</p>
             <Switch>
             <Route path="/user/EmployeeHome/productaction" component={ProductAction}/> 
+            <Route path="/user/EmployeeHome/allorders/" component={AllOrders}/> 
             <Redirect to="/user/EmployeeHome/"/>
             </Switch>
         </div>
