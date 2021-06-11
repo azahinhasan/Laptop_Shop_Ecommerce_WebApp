@@ -9,24 +9,31 @@ const AllOrders = props =>{
 
         const [userInfo,setSetUserInfo]=useState([]);
         const [orders,setOrders]=useState([]);
+        const [status,setStatus]=useState('');
         const {id}= useParams();
 
         useEffect(() => {
-            axios.get('api/orders/'+id).then(r=>{
+            loadData();
+        }, []);
+
+        const loadData=() => {
+            axios.get('/orders/'+id).then(r=>{
                 setSetUserInfo(r.data);
                 setOrders(r.data.AllOrders);
-                console.log(r.data,"deatils");
+               // console.log(r.data,"deatils");
             })
             
-        }, []);
+        };
         
         const changeStatus=(status) => {
-            axios.post('api/changeStatus/'+id+'/'+status).then(r=>{
-                console.log(r.data);
+            axios.post('/changeStatus/'+id+'/'+status).then(r=>{
+                //console.log(r.data);
+                setStatus(r.data);
+                loadData();
                 
             })
             
-        }
+        };
 
 
             
@@ -58,9 +65,11 @@ const AllOrders = props =>{
                     <td>Status</td>
                     <td>{userInfo.Status}</td>
                 </tr>
-
                 
             </table>
+            <br/>
+            <p style={{color:'blue',fontWeight:'bold'}}>{status!=''?'Status Chnage to '+status:null}</p>
+            <br/>
             <button onClick={()=>changeStatus('none')} className={classes.button}>NO ACTION</button>
             <button onClick={()=>changeStatus('done')} className={classes.button+" "+classes.buttonGreen}>DONE</button>
             <br/>
