@@ -9,18 +9,25 @@ const AllOrders = props =>{
 
         const [userInfo,setSetUserInfo]=useState([]);
         const [orders,setOrders]=useState([]);
+        const [currentStatus,setcurrentStatus]=useState('');
         const [status,setStatus]=useState('');
+        const [comment,setComment]=useState('');
         const {id}= useParams();
 
         useEffect(() => {
             loadData();
         }, []);
 
+        const saveComment=()=>{
+            axios.put('')
+        }
         const loadData=() => {
             axios.get('/orders/'+id).then(r=>{
                 setSetUserInfo(r.data);
                 setOrders(r.data.AllOrders);
-               // console.log(r.data,"deatils");
+                setcurrentStatus(r.data.StatusTables[0]);
+                setComment(r.data.StatusTables[0].FailedReason);
+                //console.log(r.data,"deatils");
             })
             
         };
@@ -63,7 +70,7 @@ const AllOrders = props =>{
                     <td>OrderedData</td>
                     <td>{userInfo.OrderedData}</td>
                     <td>Status</td>
-                    <td>{userInfo.Status}</td>
+                    <td>{currentStatus.Status}</td>
                 </tr>
                 
             </table>
@@ -75,6 +82,10 @@ const AllOrders = props =>{
             <br/>
             <button onClick={()=>changeStatus('inprogress')} className={classes.button+" "+classes.buttonYellow}>IN PROGRESS</button>
             <button onClick={()=>changeStatus('failed')} className={classes.button+" "+classes.buttonRed}>FAIED</button>
+            <br/>
+            <label>Comment: </label>
+            <textarea type="text" value={comment} onChange={e=>setComment(e.target.value)}/>
+            <button onClick={saveComment}>SAVE</button>
             <br/>
             <h4>Orders Information</h4>
             <br/>
