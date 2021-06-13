@@ -1,3 +1,10 @@
+.MainPage{
+  position: relative;
+  left: 180px;
+  width: 80%;
+}
+
+
 .Product{
   position: relative;
   /* left: 320px; */
@@ -15,8 +22,8 @@
   }
 
   button{
-    height: 40px;
-    width: 70px;
+    height: 45px;
+    width: 120px;
     margin: 10px;
     font-size: 15px;
     font-weight: bold;

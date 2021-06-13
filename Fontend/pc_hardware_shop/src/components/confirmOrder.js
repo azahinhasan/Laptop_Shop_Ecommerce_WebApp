@@ -194,9 +194,9 @@ const ConfirmOrder = props =>{
                     <br/>
                     <br/>
                     <input placeholder="Promo Code" disabled={prmoCodeOffer!=0?true:false} onChange={(event)=>setPromoCode(event.target.value)}/>
-                    <button onClick={()=>promoCodeVerify(0)} disabled={prmoCodeOffer!=0?true:false}>Save</button>
+                    <button onClick={()=>promoCodeVerify(0)} disabled={prmoCodeOffer!=0?true:false}>APPLY</button>
                     <br/>
-                    {OrderInProgress?<p>Sending...</p>:<button onClick={confirmOrderHandler}>Confirm Order</button>}
+                    {OrderInProgress?<p>Sending...</p>:<button onClick={confirmOrderHandler}>Confirm</button>}
                 </div>
             )
         }else{

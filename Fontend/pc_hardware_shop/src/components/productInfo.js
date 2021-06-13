@@ -177,7 +177,7 @@ const ProductsInfo = props =>{
             <br/>
             <input className={classes.quantity} min='1' type='number'  placeholder="Quantity(Defult 1)" onChange={(event)=>setQuantity(event.target.value)}/>
             <br/>
-            <button className={classes.button} onClick={addToCartHandler}>ADD</button>
+            <button disabled={quantity<1?true:false} className={classes.button} onClick={addToCartHandler}>ADD</button>
             <br/>
             <h2>Specification</h2>
             <br/>

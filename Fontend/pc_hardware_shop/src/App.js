@@ -45,3 +45,9 @@ class App extends Component {
 }
 
 export default withRouter(App); //withRouter will rendered tha page wehn route cnage
+
+
+
+
+//update delete for promocode
+//auth for all user
