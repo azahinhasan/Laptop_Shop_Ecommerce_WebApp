@@ -35,7 +35,7 @@ const AllOrders = props =>{
                 setOrders(r.data.AllOrders);
                 setcurrentStatus(r.data.StatusTables[0]);
                 setComment(r.data.StatusTables[0].FailedReason);
-                //console.log(r.data,"deatils");
+                console.log(r.data,"deatils");
             })
             
         };
@@ -94,16 +94,18 @@ const AllOrders = props =>{
                     <th>Order Date</th>
                     <th>Status</th>
                     <th>Quantity</th>
+                    <th>Status</th>
                 </tr>
                 
             {orders.map(data=>{
             return( 
                 <tr>
-                    <td>{data.ProductCategoryLink.Product.pName}</td>
+                    <td><Link  to={{pathname:'/info/'+data.ProductCategoryLink.Category.cName+'/'+data.ProductCategoryLink.Product.ID}} target="_blank" rel="noopener noreferrer">{data.ProductCategoryLink.Product.pName}</Link></td>
                     <td>{data.ProductCategoryLink.Product.Price}</td>
                     <td>{data.ProductCategoryLink.Product.Brand.bName}</td>
                     <td>{data.ProductCategoryLink.Category.cName}</td>
                     <td>{data.Quantity}</td>
+                    <td>{data.ProductCategoryLink.Product.Status}</td>
                 </tr>
                 )
             })}

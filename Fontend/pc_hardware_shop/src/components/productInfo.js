@@ -163,6 +163,10 @@ const ProductsInfo = props =>{
                           <td>Brand </td>
                           <td>{data.Product.Brand.bName}</td>
                         </tr>
+                        <tr>
+                          <td>Product ID </td>
+                          <td>{data.Product.ID}</td>
+                        </tr>
                       </>
                     )
                   })

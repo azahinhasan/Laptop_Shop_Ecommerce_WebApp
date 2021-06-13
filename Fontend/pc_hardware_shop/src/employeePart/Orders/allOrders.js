@@ -7,10 +7,12 @@ import moment from 'moment'
 const AllOrders = props =>{
 
         const [allOrders,setAllOrders]=useState([]);
+        const [currentStatus,setcurrentStatus]=useState('');
 
         useEffect(() => {
             axios.get('/orders/').then(r=>{
                 setAllOrders(r.data);
+                //setcurrentStatus(r.data.StatusTables[0]);
                 console.log(r.data,"Orders");
             })
             
@@ -36,7 +38,7 @@ const AllOrders = props =>{
                     <td>{data.ID}</td>
                     <td>{data.Name}</td>
                     <td>{moment(data.OrderedData).format('MMMM Do YYYY')}</td>
-                    <td>{data.Status}</td>
+                    <td>{data.StatusTables[0].Status}</td>
                     <td><Link to={{pathname:'/user/EmployeeHome/orderDetails/'+data.ID}}>go</Link></td>
                 </tr>
                 )

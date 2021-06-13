@@ -12,14 +12,6 @@ const SideBar = props =>{
         <br/>
         <Link to={{pathname:'/user/EmployeeHome/allorders/'}}>Orders</Link>
         <br/>
-        <div class={classes.dropdown}>
-            <button class={classes.dropbtn}>Employee</button>
-            <div class={classes.dropdowncontent}>
-                <Link to={{pathname:'/list/SSD'}}>Salary</Link>
-                <Link to={{pathname:'/list/RAM'}}>Add Employee</Link>
-                <Link to={{pathname:'/list/HDD'}}>Edit Employee Info</Link>
-            </div>
-        </div> 
         </div>
     );
     } 
