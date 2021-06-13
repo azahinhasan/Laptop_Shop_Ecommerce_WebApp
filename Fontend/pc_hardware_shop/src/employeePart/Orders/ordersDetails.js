@@ -12,6 +12,7 @@ const AllOrders = props =>{
         const [currentStatus,setcurrentStatus]=useState('');
         const [status,setStatus]=useState('');
         const [comment,setComment]=useState('');
+        const [commentMsg,setCommentMsg]=useState('');
         const {id}= useParams();
 
         useEffect(() => {
@@ -19,7 +20,14 @@ const AllOrders = props =>{
         }, []);
 
         const saveComment=()=>{
-            axios.put('')
+            axios.put('/editcomment/'+id,{
+                FailedReason:comment
+            }).then(r=>{
+                setComment(r.data);
+                setCommentMsg('Comment updated'); 
+            }).catch(e=>{
+                console.log(e);
+            })
         }
         const loadData=() => {
             axios.get('/orders/'+id).then(r=>{
@@ -74,19 +82,9 @@ const AllOrders = props =>{
                 </tr>
                 
             </table>
+
             <br/>
-            <p style={{color:'blue',fontWeight:'bold'}}>{status!=''?'Status Chnage to '+status:null}</p>
-            <br/>
-            <button onClick={()=>changeStatus('none')} className={classes.button}>NO ACTION</button>
-            <button onClick={()=>changeStatus('done')} className={classes.button+" "+classes.buttonGreen}>DONE</button>
-            <br/>
-            <button onClick={()=>changeStatus('inprogress')} className={classes.button+" "+classes.buttonYellow}>IN PROGRESS</button>
-            <button onClick={()=>changeStatus('failed')} className={classes.button+" "+classes.buttonRed}>FAIED</button>
-            <br/>
-            <label>Comment: </label>
-            <textarea type="text" value={comment} onChange={e=>setComment(e.target.value)}/>
-            <button onClick={saveComment}>SAVE</button>
-            <br/>
+
             <h4>Orders Information</h4>
             <br/>
             <table className={classes.table}>
@@ -110,6 +108,20 @@ const AllOrders = props =>{
                 )
             })}
             </table>
+            <br/>
+
+            <p style={{color:'blue',fontWeight:'bold'}}>{status!=''?'Status Chnage to '+status:null}</p>
+            <br/>
+            <button onClick={()=>changeStatus('none')} className={classes.button}>NO ACTION</button>
+            <button onClick={()=>changeStatus('done')} className={classes.button+" "+classes.buttonGreen}>DONE</button>
+            <br/>
+            <button onClick={()=>changeStatus('inprogress')} className={classes.button+" "+classes.buttonYellow}>IN PROGRESS</button>
+            <button onClick={()=>changeStatus('failed')} className={classes.button+" "+classes.buttonRed}>FAIED</button>
+            <br/>
+            <textarea type="text" value={comment} onChange={e=>setComment(e.target.value)}/>
+            <p>{commentMsg}</p>
+            <button className={classes.button} onClick={saveComment}>SAVE COMMENT</button>
+            <br/>
         </div>
         );
     } 
