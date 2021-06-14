@@ -4,15 +4,15 @@ import AddProduct from './productAdd';
 import EditProduct from './productEdit';
 import classes from './employee.css';
 
-const ProductAction = props =>{
+const OtherAction = props =>{
     
-    const [showAddPage, setShowAddPage]=useState(true);
+    const [showAddPage, setShowAddPage]=useState('');
 
     const showAddPageHandler=(data)=>{
         setShowAddPage(data);
     }
     let pageData='';
-    if(showAddPage){
+    if(showAddPage=='promo'){
         pageData=<AddProduct/>
     }else{
         pageData=<EditProduct/>
@@ -20,8 +20,8 @@ const ProductAction = props =>{
 
     return (
         <div className={''}>
-        <button className={showAddPage?classes.buttonOptionSelected: classes.buttonOption} onClick={()=>showAddPageHandler(true)}>ADD</button> 
-        <button className={!showAddPage?classes.buttonOptionSelected: classes.buttonOption} onClick={()=>showAddPageHandler(false)}>EDIT</button> 
+        <button className={showAddPage?classes.buttonOptionSelected: classes.buttonOption} onClick={()=>showAddPageHandler('promo')}>Promocode</button> 
+        <button className={!showAddPage?classes.buttonOptionSelected: classes.buttonOption} onClick={()=>showAddPageHandler('offers')}>Offers</button> 
         
 
         {pageData}
@@ -29,7 +29,7 @@ const ProductAction = props =>{
     );
     } 
 
-export default ProductAction;
+export default OtherAction;
 
 
 
