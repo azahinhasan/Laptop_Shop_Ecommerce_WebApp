@@ -32,14 +32,14 @@ const PromoList = props =>{
         let promoAdd ='';
         if(promoEditBar!=-1){
            // setAllPromoAddBar(false);
-            promoEdit=<PromoEdit promoID={promoEditBar}  reLoad={loadData}/>
+            promoEdit=<PromoEdit  hideOption={()=>setAllPromoEditBar(-1)}  promoID={promoEditBar}  reLoad={loadData}/>
         }else{
             promoEdit='';
         }
 
         if(promoAddBar){
         //setAllPromoEditBar(-1);
-        promoAdd=<PromoAdd  reLoad={loadData}/>
+        promoAdd=<PromoAdd hideOption={()=>setAllPromoAddBar(false)}  reLoad={loadData}/>
         }else{
             promoAdd='';
         }
@@ -73,7 +73,7 @@ const PromoList = props =>{
                             <td>{data.UsageLeft}</td>
                             <td>{data.OfferInPercentage}</td>
                             <td>{data.ExpiryDate ==null?'none':data.ExpiryDate}</td>
-                            <td><a   onClick={()=>prmoEditHandler(data.ID)} >Edit</a></td>
+                            <td><a     onClick={()=>prmoEditHandler(data.ID)} >Edit</a></td>
                         </tr>
                         )
                     })}

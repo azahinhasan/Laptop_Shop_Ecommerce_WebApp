@@ -40,7 +40,9 @@ const PromoAdd = props =>{
 
     return (
         <div style={{backgroundColor:'#F6DDCC ' , borderRadius:'5px',marginBottom:'5%'}}>
-            <p>ADD DATA </p>
+            <button onClick={props.hideOption} style={{float:'right',width:'30px',height:'25px'}}>X</button>
+              <p>ADD DATA </p>
+  
             <p style={{color:'blue'}}>{msg}</p>
             <table className={classes.table}>
                     <tr>

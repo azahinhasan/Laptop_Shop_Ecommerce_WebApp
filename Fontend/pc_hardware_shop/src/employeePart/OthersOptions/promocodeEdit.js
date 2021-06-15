@@ -85,6 +85,7 @@ const PromoEdit = props =>{
 
     return (
         <div style={{backgroundColor:'#F6DDCC ' , borderRadius:'5px',marginBottom:'5%'}}>
+        <button onClick={props.hideOption} style={{float:'right',width:'30px',height:'25px'}}>X</button>
             <h2>UPDATE DATA </h2>
 
           {pageData}
