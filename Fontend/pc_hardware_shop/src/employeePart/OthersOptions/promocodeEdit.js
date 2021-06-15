@@ -14,6 +14,7 @@ const PromoEdit = props =>{
     const [OfferInPercentage, setOfferInPercentage]=useState([]);
     const [ExpiryDate, setExpiryDate]=useState([]);
     const [msg, setMsg]=useState([]);
+    const [deleted, setDeleted]=useState(false);
 
     useEffect(() => {
         loadData();
@@ -32,7 +33,15 @@ const PromoEdit = props =>{
      }
    
      const prmoDeleteHandler =()=>{
+      axios.delete('/pormolist/'+props.promoID).then(r=>{
+              console.log('Deleted');
+              setDeleted(true);
+              props.reLoad();
+      }).catch(e=>{
+          console.log(e)
+      })
 
+      
 
     }
   
@@ -49,10 +58,11 @@ const PromoEdit = props =>{
       })
      }
 
-    return (
-        <div style={{backgroundColor:'#F6DDCC ' , borderRadius:'5px',marginBottom:'5%'}}>
-            <p>UPDATE DATA </p>
-            <p style={{color:'blue'}}>{msg}</p>
+     let pageData = '';
+     if(!deleted){
+      pageData=(
+        <div>
+              <p style={{color:'blue'}}>{msg}</p>
             <table className={classes.table}>
                     <tr>
                             <td><input disabled value={PromoCode1}  onChange={e=>setPromoCode1(e.target.value)}/></td>
@@ -66,8 +76,18 @@ const PromoEdit = props =>{
                             </td>
                         </tr>
             </table>
-        
+        </div>
+      )
+     }
+     else{
+       pageData=<h3>PROMO DELETED!</h3>
+     }
 
+    return (
+        <div style={{backgroundColor:'#F6DDCC ' , borderRadius:'5px',marginBottom:'5%'}}>
+            <h2>UPDATE DATA </h2>
+
+          {pageData}
         
         </div>
     );
