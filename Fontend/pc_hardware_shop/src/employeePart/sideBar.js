@@ -12,6 +12,8 @@ const SideBar = props =>{
         <br/>
         <Link to={{pathname:'/user/EmployeeHome/allorders/'}}>Orders</Link>
         <br/>
+        <Link to={{pathname:'/user/EmployeeHome/OthersAction'}}>Others</Link>
+        <br/>
         </div>
     );
     } 

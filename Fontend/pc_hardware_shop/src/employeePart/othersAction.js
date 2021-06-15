@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
-import AddProduct from './productAdd';
+import  Promocode from './OthersOptions/promocodeList';
 import EditProduct from './productEdit';
 import classes from './employee.css';
 
@@ -13,14 +13,14 @@ const OtherAction = props =>{
     }
     let pageData='';
     if(showAddPage=='promo'){
-        pageData=<AddProduct/>
+        pageData=<Promocode/>
     }else{
-        pageData=<EditProduct/>
+        pageData=<Promocode/>
     }
 
     return (
         <div className={''}>
-        <button className={showAddPage?classes.buttonOptionSelected: classes.buttonOption} onClick={()=>showAddPageHandler('promo')}>Promocode</button> 
+        <button  style={{width:'120px'}} className={showAddPage?classes.buttonOptionSelected: classes.buttonOption} onClick={()=>showAddPageHandler('promo')}>Promocode</button> 
         <button className={!showAddPage?classes.buttonOptionSelected: classes.buttonOption} onClick={()=>showAddPageHandler('offers')}>Offers</button> 
         
 
