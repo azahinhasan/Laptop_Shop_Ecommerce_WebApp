@@ -3,13 +3,13 @@ import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
 import classes from '../Orders/orders.css';
 import axios from '../../api/axios';
 import PromoEdit from './promocodeEdit';
-
+import PromoAdd from './promocodeAdd';
 
 const PromoList = props =>{
     
     const [allPromos, setAllPromos]=useState([]);
     const [promoEditBar, setAllPromoEditBar]=useState(-1);
-
+    const [promoAddBar, setAllPromoAddBar]=useState(false);
 
     useEffect(() => {
         loadData();
@@ -18,7 +18,7 @@ const PromoList = props =>{
     const loadData=()=>{
 
     axios.get('/pormolist/').then(r=>{
-        console.log(r.data);
+       // console.log(r.data);
         setAllPromos(r.data);
         })
         }
@@ -29,15 +29,35 @@ const PromoList = props =>{
 
 
         let promoEdit ='';
+        let promoAdd ='';
         if(promoEditBar!=-1){
-            promoEdit=<PromoEdit promoID={promoEditBar}/>
+           // setAllPromoAddBar(false);
+            promoEdit=<PromoEdit promoID={promoEditBar}  reLoad={loadData}/>
         }else{
             promoEdit='';
         }
+
+        if(promoAddBar){
+        //setAllPromoEditBar(-1);
+        promoAdd=<PromoAdd  reLoad={loadData}/>
+        }else{
+            promoAdd='';
+        }
+
+
     return (
         <div className={''}>
             {promoEdit}
+            {promoAdd}
+            <br/>
             <table className={classes.table}>
+                <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td> <button  hidden={promoAddBar?true:false} style={{ fontSize:'15px',width:'80px',height:'35px'}}  onClick={()=>setAllPromoAddBar(true)}>+ADD</button></td>
+                    </tr>
                     <tr>
                         <th>PromoCode</th>
                         <th>UsageLeft</th>
