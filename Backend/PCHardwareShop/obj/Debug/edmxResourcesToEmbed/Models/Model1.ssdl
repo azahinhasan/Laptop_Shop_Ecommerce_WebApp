@@ -39,6 +39,29 @@
     <Property Name="PostCode" Type="varchar" MaxLength="50" />
     <Property Name="LoginTableID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="EmployeeInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="500" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="LoginTableID" Type="int" Nullable="false" />
+    <Property Name="RankTableID" Type="int" />
+  </EntityType>
+  <EntityType Name="EmployeeRank">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rank" Type="varchar" MaxLength="50" />
+    <Property Name="Employee" Type="varchar" MaxLength="50" />
+    <Property Name="Products" Type="varchar" MaxLength="50" />
+    <Property Name="Orders" Type="varchar" MaxLength="50" />
+    <Property Name="Others" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="OrderdUserInfo">
     <Key>
       <PropertyRef Name="ID" />
@@ -71,7 +94,7 @@
     <Property Name="Status" Type="varchar" MaxLength="500" />
     <Property Name="BrandID" Type="int" />
     <Property Name="SpecificationID" Type="int" />
-    <Property Name="MainPic" Type="varchar" MaxLength="5000" />
+    <Property Name="MainPic" Type="varchar" MaxLength="8000" />
     <Property Name="Pic2" Type="varchar" MaxLength="5000" />
     <Property Name="Pic3" Type="varchar" MaxLength="5000" />
   </EntityType>
@@ -118,6 +141,23 @@
     <Property Name="OfferInPercentage" Type="int" />
     <Property Name="ExpiryDate" Type="date" />
   </EntityType>
+  <EntityType Name="StatusTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderId" Type="int" />
+    <Property Name="FailedReason" Type="varchar" MaxLength="500" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TokenTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Token" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
   <EntityType Name="UserLoginTable">
     <Key>
       <PropertyRef Name="ID" />
@@ -160,6 +200,42 @@
       </Principal>
       <Dependent Role="CustomerInfo">
         <PropertyRef Name="LoginTableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeInfo_EmployeeRank">
+    <End Role="EmployeeRank" Type="Self.EmployeeRank" Multiplicity="0..1" />
+    <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeRank">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EmployeeInfo">
+        <PropertyRef Name="RankTableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeInfo_UserLoginTable">
+    <End Role="UserLoginTable" Type="Self.UserLoginTable" Multiplicity="1" />
+    <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLoginTable">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EmployeeInfo">
+        <PropertyRef Name="LoginTableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FailedResonTable_OrderdUserInfo">
+    <End Role="OrderdUserInfo" Type="Self.OrderdUserInfo" Multiplicity="0..1" />
+    <End Role="StatusTable" Type="Self.StatusTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderdUserInfo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StatusTable">
+        <PropertyRef Name="OrderId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -216,11 +292,15 @@
     <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeRank" EntityType="Self.EmployeeRank" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderdUserInfo" EntityType="Self.OrderdUserInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductCategoryLink" EntityType="Self.ProductCategoryLink" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductSpecification" EntityType="Self.ProductSpecification" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PromoCodes" EntityType="Self.PromoCodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatusTable" EntityType="Self.StatusTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TokenTable" EntityType="Self.TokenTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserLoginTable" EntityType="Self.UserLoginTable" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_AllOrders_OrderdUserInfo" Association="Self.FK_AllOrders_OrderdUserInfo">
       <End Role="OrderdUserInfo" EntitySet="OrderdUserInfo" />
@@ -233,6 +313,18 @@
     <AssociationSet Name="FK_CustomerInfo_UserLoginTable" Association="Self.FK_CustomerInfo_UserLoginTable">
       <End Role="UserLoginTable" EntitySet="UserLoginTable" />
       <End Role="CustomerInfo" EntitySet="CustomerInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeInfo_EmployeeRank" Association="Self.FK_EmployeeInfo_EmployeeRank">
+      <End Role="EmployeeRank" EntitySet="EmployeeRank" />
+      <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeInfo_UserLoginTable" Association="Self.FK_EmployeeInfo_UserLoginTable">
+      <End Role="UserLoginTable" EntitySet="UserLoginTable" />
+      <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FailedResonTable_OrderdUserInfo" Association="Self.FK_FailedResonTable_OrderdUserInfo">
+      <End Role="OrderdUserInfo" EntitySet="OrderdUserInfo" />
+      <End Role="StatusTable" EntitySet="StatusTable" />
     </AssociationSet>
     <AssociationSet Name="FK_ProductCategoryLink_Category" Association="Self.FK_ProductCategoryLink_Category">
       <End Role="Category" EntitySet="Category" />

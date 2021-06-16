@@ -44,6 +44,29 @@
           <Property Name="PostCode" Type="varchar" MaxLength="50" />
           <Property Name="LoginTableID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="EmployeeInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="LoginTableID" Type="int" Nullable="false" />
+          <Property Name="RankTableID" Type="int" />
+        </EntityType>
+        <EntityType Name="EmployeeRank">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rank" Type="varchar" MaxLength="50" />
+          <Property Name="Employee" Type="varchar" MaxLength="50" />
+          <Property Name="Products" Type="varchar" MaxLength="50" />
+          <Property Name="Orders" Type="varchar" MaxLength="50" />
+          <Property Name="Others" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="OrderdUserInfo">
           <Key>
             <PropertyRef Name="ID" />
@@ -76,7 +99,7 @@
           <Property Name="Status" Type="varchar" MaxLength="500" />
           <Property Name="BrandID" Type="int" />
           <Property Name="SpecificationID" Type="int" />
-          <Property Name="MainPic" Type="varchar" MaxLength="5000" />
+          <Property Name="MainPic" Type="varchar" MaxLength="8000" />
           <Property Name="Pic2" Type="varchar" MaxLength="5000" />
           <Property Name="Pic3" Type="varchar" MaxLength="5000" />
         </EntityType>
@@ -123,6 +146,23 @@
           <Property Name="OfferInPercentage" Type="int" />
           <Property Name="ExpiryDate" Type="date" />
         </EntityType>
+        <EntityType Name="StatusTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="FailedReason" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TokenTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Token" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserLoginTable">
           <Key>
             <PropertyRef Name="ID" />
@@ -165,6 +205,42 @@
             </Principal>
             <Dependent Role="CustomerInfo">
               <PropertyRef Name="LoginTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeInfo_EmployeeRank">
+          <End Role="EmployeeRank" Type="Self.EmployeeRank" Multiplicity="0..1" />
+          <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeRank">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeInfo">
+              <PropertyRef Name="RankTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeInfo_UserLoginTable">
+          <End Role="UserLoginTable" Type="Self.UserLoginTable" Multiplicity="1" />
+          <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLoginTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeInfo">
+              <PropertyRef Name="LoginTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FailedResonTable_OrderdUserInfo">
+          <End Role="OrderdUserInfo" Type="Self.OrderdUserInfo" Multiplicity="0..1" />
+          <End Role="StatusTable" Type="Self.StatusTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderdUserInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StatusTable">
+              <PropertyRef Name="OrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -221,11 +297,15 @@
           <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeRank" EntityType="Self.EmployeeRank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderdUserInfo" EntityType="Self.OrderdUserInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductCategoryLink" EntityType="Self.ProductCategoryLink" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductSpecification" EntityType="Self.ProductSpecification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PromoCodes" EntityType="Self.PromoCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusTable" EntityType="Self.StatusTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TokenTable" EntityType="Self.TokenTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLoginTable" EntityType="Self.UserLoginTable" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_AllOrders_OrderdUserInfo" Association="Self.FK_AllOrders_OrderdUserInfo">
             <End Role="OrderdUserInfo" EntitySet="OrderdUserInfo" />
@@ -238,6 +318,18 @@
           <AssociationSet Name="FK_CustomerInfo_UserLoginTable" Association="Self.FK_CustomerInfo_UserLoginTable">
             <End Role="UserLoginTable" EntitySet="UserLoginTable" />
             <End Role="CustomerInfo" EntitySet="CustomerInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeInfo_EmployeeRank" Association="Self.FK_EmployeeInfo_EmployeeRank">
+            <End Role="EmployeeRank" EntitySet="EmployeeRank" />
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeInfo_UserLoginTable" Association="Self.FK_EmployeeInfo_UserLoginTable">
+            <End Role="UserLoginTable" EntitySet="UserLoginTable" />
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FailedResonTable_OrderdUserInfo" Association="Self.FK_FailedResonTable_OrderdUserInfo">
+            <End Role="OrderdUserInfo" EntitySet="OrderdUserInfo" />
+            <End Role="StatusTable" EntitySet="StatusTable" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductCategoryLink_Category" Association="Self.FK_ProductCategoryLink_Category">
             <End Role="Category" EntitySet="Category" />
@@ -318,6 +410,7 @@
           <Property Name="PrmoCodeOffer" Type="Int32" />
           <Property Name="OrderedData" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AllOrders" Relationship="Self.FK_AllOrders_OrderdUserInfo" FromRole="OrderdUserInfo" ToRole="AllOrders" />
+          <NavigationProperty Name="StatusTables" Relationship="Self.FK_FailedResonTable_OrderdUserInfo" FromRole="OrderdUserInfo" ToRole="StatusTable" />
         </EntityType>
         <EntityType Name="ProductCategoryLink">
           <Key>
@@ -340,7 +433,7 @@
           <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="BrandID" Type="Int32" />
           <Property Name="SpecificationID" Type="Int32" />
-          <Property Name="MainPic" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="MainPic" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
           <Property Name="Pic2" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="Pic3" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Brand" Relationship="Self.FK_Products_Brands" FromRole="Products" ToRole="Brands" />
@@ -391,6 +484,16 @@
           <Property Name="OfferInPercentage" Type="Int32" />
           <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
         </EntityType>
+        <EntityType Name="StatusTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="FailedReason" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrderdUserInfo" Relationship="Self.FK_FailedResonTable_OrderdUserInfo" FromRole="StatusTable" ToRole="OrderdUserInfo" />
+        </EntityType>
         <EntityType Name="UserLoginTable">
           <Key>
             <PropertyRef Name="ID" />
@@ -400,6 +503,7 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CustomerInfoes" Relationship="Self.FK_CustomerInfo_UserLoginTable" FromRole="UserLoginTable" ToRole="CustomerInfo" />
+          <NavigationProperty Name="EmployeeInfoes" Relationship="PcHardwareShopModel.FK_EmployeeInfo_UserLoginTable" FromRole="UserLoginTable" ToRole="EmployeeInfo" />
         </EntityType>
         <Association Name="FK_AllOrders_OrderdUserInfo">
           <End Role="OrderdUserInfo" Type="Self.OrderdUserInfo" Multiplicity="0..1" />
@@ -461,6 +565,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FailedResonTable_OrderdUserInfo">
+          <End Role="OrderdUserInfo" Type="Self.OrderdUserInfo" Multiplicity="0..1" />
+          <End Role="StatusTable" Type="Self.StatusTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderdUserInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StatusTable">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ProductCategoryLink_Products">
           <End Role="Products" Type="Self.Product" Multiplicity="1" />
           <End Role="ProductCategoryLink" Type="Self.ProductCategoryLink" Multiplicity="*" />
@@ -485,7 +601,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PcHardwareShopEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PcHardwareShopEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AllOrders" EntityType="Self.AllOrder" />
           <EntitySet Name="Brands" EntityType="Self.Brand" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
@@ -495,6 +611,7 @@
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="ProductSpecifications" EntityType="Self.ProductSpecification" />
           <EntitySet Name="PromoCodes" EntityType="Self.PromoCode" />
+          <EntitySet Name="StatusTables" EntityType="Self.StatusTable" />
           <EntitySet Name="UserLoginTables" EntityType="Self.UserLoginTable" />
           <AssociationSet Name="FK_AllOrders_OrderdUserInfo" Association="Self.FK_AllOrders_OrderdUserInfo">
             <End Role="OrderdUserInfo" EntitySet="OrderdUserInfoes" />
@@ -516,6 +633,10 @@
             <End Role="UserLoginTable" EntitySet="UserLoginTables" />
             <End Role="CustomerInfo" EntitySet="CustomerInfoes" />
           </AssociationSet>
+          <AssociationSet Name="FK_FailedResonTable_OrderdUserInfo" Association="Self.FK_FailedResonTable_OrderdUserInfo">
+            <End Role="OrderdUserInfo" EntitySet="OrderdUserInfoes" />
+            <End Role="StatusTable" EntitySet="StatusTables" />
+          </AssociationSet>
           <AssociationSet Name="FK_ProductCategoryLink_Products" Association="Self.FK_ProductCategoryLink_Products">
             <End Role="Products" EntitySet="Products" />
             <End Role="ProductCategoryLink" EntitySet="ProductCategoryLinks" />
@@ -524,13 +645,82 @@
             <End Role="ProductSpecification" EntitySet="ProductSpecifications" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="EmployeeInfoes" EntityType="PcHardwareShopModel.EmployeeInfo" />
+          <EntitySet Name="EmployeeRanks" EntityType="PcHardwareShopModel.EmployeeRank" />
+          <EntitySet Name="TokenTables" EntityType="PcHardwareShopModel.TokenTable" />
+          <AssociationSet Name="FK_EmployeeInfo_EmployeeRank" Association="PcHardwareShopModel.FK_EmployeeInfo_EmployeeRank">
+            <End Role="EmployeeRank" EntitySet="EmployeeRanks" />
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeInfo_UserLoginTable" Association="PcHardwareShopModel.FK_EmployeeInfo_UserLoginTable">
+            <End Role="UserLoginTable" EntitySet="UserLoginTables" />
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfoes" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="EmployeeInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LoginTableID" Type="Int32" Nullable="false" />
+          <Property Name="RankTableID" Type="Int32" />
+          <NavigationProperty Name="EmployeeRank" Relationship="PcHardwareShopModel.FK_EmployeeInfo_EmployeeRank" FromRole="EmployeeInfo" ToRole="EmployeeRank" />
+          <NavigationProperty Name="UserLoginTable" Relationship="PcHardwareShopModel.FK_EmployeeInfo_UserLoginTable" FromRole="EmployeeInfo" ToRole="UserLoginTable" />
+        </EntityType>
+        <EntityType Name="EmployeeRank">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Employee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Products" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Orders" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Others" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmployeeInfoes" Relationship="PcHardwareShopModel.FK_EmployeeInfo_EmployeeRank" FromRole="EmployeeRank" ToRole="EmployeeInfo" />
+        </EntityType>
+        <EntityType Name="TokenTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Token" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_EmployeeInfo_EmployeeRank">
+          <End Type="PcHardwareShopModel.EmployeeRank" Role="EmployeeRank" Multiplicity="0..1" />
+          <End Type="PcHardwareShopModel.EmployeeInfo" Role="EmployeeInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeRank">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeInfo">
+              <PropertyRef Name="RankTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeInfo_UserLoginTable">
+          <End Type="PcHardwareShopModel.UserLoginTable" Role="UserLoginTable" Multiplicity="1" />
+          <End Type="PcHardwareShopModel.EmployeeInfo" Role="EmployeeInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLoginTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeInfo">
+              <PropertyRef Name="LoginTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PcHardwareShopModelStoreContainer" CdmEntityContainer="PcHardwareShopEntities3">
+        <EntityContainerMapping StorageEntityContainer="PcHardwareShopModelStoreContainer" CdmEntityContainer="PcHardwareShopEntities4">
           <EntitySetMapping Name="AllOrders">
             <EntityTypeMapping TypeName="PcHardwareShopModel.AllOrder">
               <MappingFragment StoreEntitySet="AllOrders">
@@ -658,6 +848,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="StatusTables">
+            <EntityTypeMapping TypeName="PcHardwareShopModel.StatusTable">
+              <MappingFragment StoreEntitySet="StatusTable">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="FailedReason" ColumnName="FailedReason" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserLoginTables">
             <EntityTypeMapping TypeName="PcHardwareShopModel.UserLoginTable">
               <MappingFragment StoreEntitySet="UserLoginTable">
@@ -665,6 +865,40 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeInfoes">
+            <EntityTypeMapping TypeName="PcHardwareShopModel.EmployeeInfo">
+              <MappingFragment StoreEntitySet="EmployeeInfo">
+                <ScalarProperty Name="RankTableID" ColumnName="RankTableID" />
+                <ScalarProperty Name="LoginTableID" ColumnName="LoginTableID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeRanks">
+            <EntityTypeMapping TypeName="PcHardwareShopModel.EmployeeRank">
+              <MappingFragment StoreEntitySet="EmployeeRank">
+                <ScalarProperty Name="Others" ColumnName="Others" />
+                <ScalarProperty Name="Orders" ColumnName="Orders" />
+                <ScalarProperty Name="Products" ColumnName="Products" />
+                <ScalarProperty Name="Employee" ColumnName="Employee" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TokenTables">
+            <EntityTypeMapping TypeName="PcHardwareShopModel.TokenTable">
+              <MappingFragment StoreEntitySet="TokenTable">
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

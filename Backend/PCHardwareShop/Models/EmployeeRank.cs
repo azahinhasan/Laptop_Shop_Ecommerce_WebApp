@@ -12,22 +12,21 @@ namespace PCHardwareShop.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UserLoginTable
+    public partial class EmployeeRank
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UserLoginTable()
+        public EmployeeRank()
         {
-            this.CustomerInfoes = new HashSet<CustomerInfo>();
             this.EmployeeInfoes = new HashSet<EmployeeInfo>();
         }
     
         public int ID { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Type { get; set; }
+        public string Rank { get; set; }
+        public string Employee { get; set; }
+        public string Products { get; set; }
+        public string Orders { get; set; }
+        public string Others { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerInfo> CustomerInfoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeInfo> EmployeeInfoes { get; set; }
     }

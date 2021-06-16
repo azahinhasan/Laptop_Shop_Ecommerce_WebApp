@@ -18,6 +18,7 @@ namespace PCHardwareShop.Models
         public OrderdUserInfo()
         {
             this.AllOrders = new HashSet<AllOrder>();
+            this.StatusTables = new HashSet<StatusTable>();
         }
     
         public int ID { get; set; }
@@ -32,5 +33,7 @@ namespace PCHardwareShop.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AllOrder> AllOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StatusTable> StatusTables { get; set; }
     }
 }

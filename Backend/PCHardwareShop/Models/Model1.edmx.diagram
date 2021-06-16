@@ -4,24 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="79b66923641b44278f956a05db2d4fef" Name="Diagram1">
-        <EntityTypeShape EntityType="PcHardwareShopModel.AllOrder" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PcHardwareShopModel.Brand" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PcHardwareShopModel.Category" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PcHardwareShopModel.CustomerInfo" Width="1.5" PointX="10" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PcHardwareShopModel.OrderdUserInfo" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PcHardwareShopModel.ProductCategoryLink" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PcHardwareShopModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="PcHardwareShopModel.ProductSpecification" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="PcHardwareShopModel.PromoCode" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PcHardwareShopModel.UserLoginTable" Width="1.5" PointX="7.75" PointY="5.5" IsExpanded="true" />
+      <Diagram DiagramId="2d0bbea4ad9942ada5fdf360436c86fc" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="PcHardwareShopModel.AllOrder" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.Brand" Width="1.5" PointX="3.125" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.Category" Width="1.5" PointX="1.125" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.CustomerInfo" Width="1.5" PointX="14.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.OrderdUserInfo" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.ProductCategoryLink" Width="1.5" PointX="1.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.Product" Width="1.5" PointX="3.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.ProductSpecification" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.PromoCode" Width="1.5" PointX="9.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.StatusTable" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.UserLoginTable" Width="1.5" PointX="12.25" PointY="0.625" IsExpanded="true" />
         <AssociationConnector Association="PcHardwareShopModel.FK_AllOrders_OrderdUserInfo" ManuallyRouted="false" />
         <AssociationConnector Association="PcHardwareShopModel.FK_AllOrders_ProductCategoryLink" ManuallyRouted="false" />
         <AssociationConnector Association="PcHardwareShopModel.FK_Products_Brands" ManuallyRouted="false" />
         <AssociationConnector Association="PcHardwareShopModel.FK_ProductCategoryLink_Category" ManuallyRouted="false" />
         <AssociationConnector Association="PcHardwareShopModel.FK_CustomerInfo_UserLoginTable" ManuallyRouted="false" />
+        <AssociationConnector Association="PcHardwareShopModel.FK_FailedResonTable_OrderdUserInfo" ManuallyRouted="false" />
         <AssociationConnector Association="PcHardwareShopModel.FK_ProductCategoryLink_Products" ManuallyRouted="false" />
         <AssociationConnector Association="PcHardwareShopModel.FK_Products_ProductSpecification" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.EmployeeInfo" Width="1.5" PointX="12.25" PointY="3.375" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.EmployeeRank" Width="1.5" PointX="14.625" PointY="4.125" />
+        <EntityTypeShape EntityType="PcHardwareShopModel.TokenTable" Width="1.5" PointX="9.875" PointY="2.875" />
+        <AssociationConnector Association="PcHardwareShopModel.FK_EmployeeInfo_EmployeeRank" />
+        <AssociationConnector Association="PcHardwareShopModel.FK_EmployeeInfo_UserLoginTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

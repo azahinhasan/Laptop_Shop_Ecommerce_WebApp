@@ -13,10 +13,10 @@ namespace PCHardwareShop.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PcHardwareShopEntities3 : DbContext
+    public partial class PcHardwareShopEntities4 : DbContext
     {
-        public PcHardwareShopEntities3()
-            : base("name=PcHardwareShopEntities3")
+        public PcHardwareShopEntities4()
+            : base("name=PcHardwareShopEntities4")
         {
         }
     
@@ -34,6 +34,10 @@ namespace PCHardwareShop.Models
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductSpecification> ProductSpecifications { get; set; }
         public virtual DbSet<PromoCode> PromoCodes { get; set; }
+        public virtual DbSet<StatusTable> StatusTables { get; set; }
         public virtual DbSet<UserLoginTable> UserLoginTables { get; set; }
+        public virtual DbSet<EmployeeInfo> EmployeeInfoes { get; set; }
+        public virtual DbSet<EmployeeRank> EmployeeRanks { get; set; }
+        public virtual DbSet<TokenTable> TokenTables { get; set; }
     }
 }

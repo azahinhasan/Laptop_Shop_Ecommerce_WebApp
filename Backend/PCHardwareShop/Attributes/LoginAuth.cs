@@ -32,7 +32,7 @@ namespace PCHardwareShop.Attributes
                 string email = splittedText[0];
                 string pass = splittedText[1];
 
-                PcHardwareShopEntities3 context = new PcHardwareShopEntities3();
+                PcHardwareShopEntities4 context = new PcHardwareShopEntities4();
                 var data = context.UserLoginTables.Where(x => x.Email == email && x.Password == pass).FirstOrDefault<UserLoginTable>();
 
                 if (data != null)

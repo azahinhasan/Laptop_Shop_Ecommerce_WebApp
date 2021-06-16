@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="PcHardwareShopModelStoreContainer" CdmEntityContainer="PcHardwareShopEntities3">
+  <EntityContainerMapping StorageEntityContainer="PcHardwareShopModelStoreContainer" CdmEntityContainer="PcHardwareShopEntities4">
     <EntitySetMapping Name="AllOrders">
       <EntityTypeMapping TypeName="PcHardwareShopModel.AllOrder">
         <MappingFragment StoreEntitySet="AllOrders">
@@ -128,6 +128,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="StatusTables">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.StatusTable">
+        <MappingFragment StoreEntitySet="StatusTable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="FailedReason" ColumnName="FailedReason" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="UserLoginTables">
       <EntityTypeMapping TypeName="PcHardwareShopModel.UserLoginTable">
         <MappingFragment StoreEntitySet="UserLoginTable">
@@ -135,6 +145,40 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeInfoes">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.EmployeeInfo">
+        <MappingFragment StoreEntitySet="EmployeeInfo">
+          <ScalarProperty Name="RankTableID" ColumnName="RankTableID" />
+          <ScalarProperty Name="LoginTableID" ColumnName="LoginTableID" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeRanks">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.EmployeeRank">
+        <MappingFragment StoreEntitySet="EmployeeRank">
+          <ScalarProperty Name="Others" ColumnName="Others" />
+          <ScalarProperty Name="Orders" ColumnName="Orders" />
+          <ScalarProperty Name="Products" ColumnName="Products" />
+          <ScalarProperty Name="Employee" ColumnName="Employee" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TokenTables">
+      <EntityTypeMapping TypeName="PcHardwareShopModel.TokenTable">
+        <MappingFragment StoreEntitySet="TokenTable">
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -14,7 +14,7 @@ namespace PCHardwareShop.Controllers
 
     public class AllProductsController : ApiController
     {
-        PcHardwareShopEntities3 context = new PcHardwareShopEntities3();
+        PcHardwareShopEntities4 context = new PcHardwareShopEntities4();
 
         [Route(""), HttpGet]
         public IHttpActionResult Geat()
@@ -74,21 +74,8 @@ namespace PCHardwareShop.Controllers
             return Ok("Success");
         }
 
-        [Route("api/orderconfirm"), HttpPost]
-        public IHttpActionResult AddOrder([FromBody] OrderdUserInfo info)
-        {
-            context.OrderdUserInfoes.Add(info);
-            context.SaveChanges();
-            return Ok(info.ID);
-        }
+       
 
-        [Route("api/orderconfirm/productlist"), HttpPost]
-        public IHttpActionResult AddOrderProduct([FromBody] AllOrder data)
-        {
-            context.AllOrders.Add(data);
-            context.SaveChanges();
-            return Ok("OK");
-        }
 
         [Route("api/promocodeverify/{promoCode}/{type}"), HttpGet]
         public IHttpActionResult Get([FromUri] string promoCode,[FromUri]int type)
@@ -121,6 +108,55 @@ namespace PCHardwareShop.Controllers
             return Ok(data.OfferInPercentage);
         }
 
+        [Route("api/pormolist"), HttpGet]
+        public IHttpActionResult GetPromocodeList()
+        {
+            return Ok(context.PromoCodes.ToList());
+
+        }
+
+        [Route("api/pormolist/{id}"), HttpGet]
+        public IHttpActionResult LoadPromocode([FromUri]int id)
+        {
+            return Ok(context.PromoCodes.Find(id));
+
+        }
+
+        [Route("api/pormolist/{id}"), HttpPut]
+        public IHttpActionResult EditPromocode([FromUri] int id,[FromBody]PromoCode data)
+        {
+            data.ID = id;
+            context.Entry(data).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+            return Ok("OK");
+
+        }
+
+        [Route("api/pormolist/"), HttpPost]
+        public IHttpActionResult AddPromocode([FromBody] PromoCode data)
+        {
+            var test = context.PromoCodes.Where(x => x.PromoCode1 == data.PromoCode1).FirstOrDefault();
+
+            if (test!= null)
+            {
+                return Ok("PROMO ALREADY EXiST");
+            }
+            context.PromoCodes.Add(data);
+            context.SaveChanges();
+
+            return Ok("PRODUCT ADDED");
+
+        }
+
+        [Route("api/pormolist/{id}"), HttpDelete]
+        public IHttpActionResult DeleteProducts([FromUri]int id)
+        {
+            context.PromoCodes.Remove(context.PromoCodes.Find(id));
+            context.SaveChanges();
+            return Ok("OK");
+
+        }
+
 
         [Route("api/products"), HttpPost]
         public IHttpActionResult AddProducts([FromBody]Product data)
@@ -130,6 +166,9 @@ namespace PCHardwareShop.Controllers
             return Ok(data.ID);
 
         }
+
+      
+
         [Route("api/products/spacification"), HttpPost]
         public IHttpActionResult AddProductsSpacification([FromBody]ProductSpecification data)
         {
@@ -144,6 +183,65 @@ namespace PCHardwareShop.Controllers
             context.SaveChanges();
             return Ok(data.ID);
         }
+
+        [Route("api/products/load/{search}"), HttpGet]
+        public IHttpActionResult LoadProductInfoForEdit([FromUri]String search)
+        {
+            int serachToInt = Int32.Parse(search);
+            var data = context.Products.Where(x=>x.ID == serachToInt).FirstOrDefault();
+            
+            if (data == null)
+            {
+                data = context.Products.Where(x => x.pName == search).FirstOrDefault();
+                if (data == null)
+                {
+                    return Ok("Data Not Found");
+                }
+            }
+
+            return Ok(context.ProductCategoryLinks.Where(x => x.pID == data.ID).FirstOrDefault());
+        }
+
+/*        [Route("api/products/{id}"), HttpPut]
+        public IHttpActionResult EditProductInfo([FromBody]ProductCategoryLink data,[FromUri]int id)
+        {
+
+            //data.pID = id;
+            //  data.Product.Price = "83";
+            data.ID = id;
+            context.Entry(data).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+            return Ok(context.Products.Find(data.pID));
+           // return Ok(data.Price);
+        }*/
+
+
+        [Route("api/products/spacification/{id}"), HttpPut]
+        public IHttpActionResult EditProductsSpacification([FromBody] ProductSpecification data, [FromUri] int id)
+        {
+            data.SpecificationID = id;
+            context.Entry(data).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+            return Ok(data.SpecificationID);
+        }
+        [Route("api/products/{id}"), HttpPut]
+        public IHttpActionResult EditProducts([FromBody]Product data, [FromUri]int id)
+        {
+            data.ID = id;
+            context.Entry(data).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+            return Ok(data.SpecificationID);
+
+        }
+        [Route("api/search/{data}"), HttpGet]
+        public IHttpActionResult EditProductsConnectWithBrand([FromUri]string data)
+        {
+
+           // return Ok(context.Products.Where(x=>x.pName.Contains(data)));
+            return Ok(context.ProductCategoryLinks.Where(x => x.Product.pName.Contains(data) || x.Category.cName.Contains(data) || x.Product.ProductSpecification.Colors.Contains(data)).ToList());
+        }
+
+
 
     }
 }

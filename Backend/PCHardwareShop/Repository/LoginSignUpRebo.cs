@@ -9,7 +9,7 @@ namespace PCHardwareShop.Repository
     
     public class LoginSignUpRebo
     {
-        PcHardwareShopEntities3 context = new PcHardwareShopEntities3();
+        PcHardwareShopEntities4 context = new PcHardwareShopEntities4();
 
 
         public string[] loginRepo(UserLoginTable value)
