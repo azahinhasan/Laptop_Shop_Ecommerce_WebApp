@@ -51,3 +51,5 @@ export default withRouter(App); //withRouter will rendered tha page wehn route c
 
 //update delete for promocode
 //auth for all user
+//customer can see theyer order list and currnt status
+//customer can cancel there order

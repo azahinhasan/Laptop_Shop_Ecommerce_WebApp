@@ -73,7 +73,7 @@ const PromoList = props =>{
                             <td>{data.UsageLeft}</td>
                             <td>{data.OfferInPercentage}</td>
                             <td>{data.ExpiryDate ==null?'none':data.ExpiryDate}</td>
-                            <td><a     onClick={()=>prmoEditHandler(data.ID)} >Edit</a></td>
+                            <td><a onClick={()=>prmoEditHandler(data.ID)} style={{cursor: 'pointer'}} >Edit</a></td>
                         </tr>
                         )
                     })}

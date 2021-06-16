@@ -6,7 +6,7 @@ import classes from './employee.css';
 
 const OtherAction = props =>{
     
-    const [showAddPage, setShowAddPage]=useState('');
+    const [showAddPage, setShowAddPage]=useState('promo');
 
     const showAddPageHandler=(data)=>{
         setShowAddPage(data);
@@ -15,7 +15,7 @@ const OtherAction = props =>{
     if(showAddPage=='promo'){
         pageData=<Promocode/>
     }else{
-        pageData=<Promocode/>
+        pageData=''
     }
 
     return (
