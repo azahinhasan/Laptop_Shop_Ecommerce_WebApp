@@ -12,7 +12,7 @@ const HomePage = props =>{
             window.localStorage.removeItem("Email");
             window.localStorage.removeItem("UserVerified");
             window.localStorage.removeItem("Type");
-            window.localStorage.removeItem("Tokken");
+            window.localStorage.removeItem("Token");
         }
         useEffect(()=>{
             axios.post('/logout',{

@@ -12,8 +12,8 @@ const EmployeeHome = props =>{
 
     const[userValid,setUserValid]=useState(false);
     const history = useHistory();
-    useEffect(() => {
 
+    const checkValidity=(digit)=>{
         axios.post('/login/verify',{
             Email: localStorage.getItem("Email"),
             Token:localStorage.getItem("Token")
@@ -23,12 +23,28 @@ const EmployeeHome = props =>{
                 setUserValid(true);
                
             }else{
-                history.push('/home');
+                if(digit==0){
+                    //history.push('/home');
+                    history.push('/user/logout');
+                }
+                else if(digit==1){
+                    history.push('/user/logout');
+                }
+            
             }
         }).catch(e=>{
             console.log(e);
         })
+    }
+
+    useEffect(() => {
+        checkValidity(0);
     }, []);
+
+    useEffect(() => {
+        checkValidity(1);
+    }, [localStorage.getItem("Token")]);
+
 
     let pagaData='';
     if(userValid){
