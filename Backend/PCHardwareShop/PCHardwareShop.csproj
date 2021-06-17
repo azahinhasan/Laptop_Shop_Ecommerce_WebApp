@@ -184,6 +184,8 @@
     <Compile Include="Models\connectBrandWithMeataData.cs" />
     <Compile Include="Models\connectCategoryToMetaData.cs" />
     <Compile Include="Models\connectCustomerInfoToMetaData.cs" />
+    <Compile Include="Models\connectEmployeeInfoToMetaData.cs" />
+    <Compile Include="Models\connectEmployeeRankToMetaData.cs" />
     <Compile Include="Models\connectStatusToMetaData.cs" />
     <Compile Include="Models\connectProductCategoryLinkToMetaData.cs" />
     <Compile Include="Models\connectProductSpecificationToMeataData.cs" />
@@ -202,6 +204,8 @@
     <Compile Include="Models\MetaData\CategoryMetaData.cs" />
     <Compile Include="Models\connectAllOrderToMetaData.cs" />
     <Compile Include="Models\MetaData\CustomerInfoMetaData.cs" />
+    <Compile Include="Models\MetaData\EmployeeInfoMetaData.cs" />
+    <Compile Include="Models\MetaData\EmployeeRankMetaData.cs" />
     <Compile Include="Models\MetaData\ProductCategoryLinkMeta.cs" />
     <Compile Include="Models\MetaData\ProductMeta.cs" />
     <Compile Include="Models\MetaData\ProductSpecificationMetaData.cs" />
