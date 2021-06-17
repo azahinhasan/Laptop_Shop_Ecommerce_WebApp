@@ -16,7 +16,7 @@ namespace PCHardwareShop.Repository
         {
 
             var data = context.UserLoginTables.Where(x => x.Email == value.Email && x.Password == value.Password).FirstOrDefault();
-            
+            string tokken = "0";
 
             if (data == null)
             {
@@ -25,9 +25,36 @@ namespace PCHardwareShop.Repository
                 return temp1;
             }
 
-            string[] temp = { data.ID.ToString(), data.Type, data.Email };
+            if (data.Type== "Employee")
+            {
+               tokken=tockenCheck(data.Email);
+            }
+
+            string[] temp = { data.ID.ToString(), data.Type, data.Email, tokken };
 
             return temp;
+        }
+
+
+        public string tockenCheck(string value)
+        {
+            TokenTable temp = new TokenTable();
+            var data = context.TokenTables.Where(x => x.Email == value).FirstOrDefault();
+            Random r = new Random();
+            int rendom = r.Next();
+
+            if (data != null)
+            {
+                context.TokenTables.Remove(context.TokenTables.Find(data.ID));
+                context.SaveChanges();
+
+            }
+            temp.Email = value;
+            temp.Token = rendom.ToString();
+            context.TokenTables.Add(temp);
+            context.SaveChanges();
+
+            return temp.Token;
         }
 
         public int signUpForLoginRepo(UserLoginTable data)
@@ -51,6 +78,32 @@ namespace PCHardwareShop.Repository
             return "OK";
         }
 
+        public string logOutRepo(TokenTable value)
+        {
+            var data = context.TokenTables.Where(x => x.Email == value.Email && x.Token == value.Token).FirstOrDefault();
+
+            if(data == null)
+            {
+                data = context.TokenTables.Where(x => x.Email == value.Email).FirstOrDefault();
+            }
+
+            context.TokenTables.Remove(context.TokenTables.Find(data.ID));
+            context.SaveChanges();
+
+            return "OK";
+        }
+        public string checkLoginRepo(TokenTable value)
+        {
+            var data = context.TokenTables.Where(x => x.Email == value.Email && x.Token == value.Token).FirstOrDefault();
+
+
+            if (data == null)
+            {
+                return "InValid";
+            }
+
+            return "OK";
+        }
 
     }
 }

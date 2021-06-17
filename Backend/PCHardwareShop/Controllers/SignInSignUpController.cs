@@ -20,6 +20,13 @@ namespace PCHardwareShop.Controllers
             return Ok(repo.loginRepo(value));
         }
 
+        [Route("api/login/verify"), HttpPost]
+        public IHttpActionResult loginVerifyEmployee([FromBody]TokenTable data)
+        {
+            return Ok(repo.logOutRepo(data));
+        }
+
+
         [Route("api/signup"), HttpPost]
         public IHttpActionResult signUpForLogin([FromBody] UserLoginTable data)
         {
@@ -33,6 +40,14 @@ namespace PCHardwareShop.Controllers
            return Ok(repo.signupCustomerRepo(data));
         }
 
-     
+        [Route("api/logout"), HttpPost]
+        public IHttpActionResult logoutEmployee([FromBody]TokenTable data)
+        {
+            return Ok(repo.logOutRepo(data));
+        }
+
+      
+
+
     }
 }
