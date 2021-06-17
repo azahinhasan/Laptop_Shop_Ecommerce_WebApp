@@ -17,7 +17,7 @@ const HomePage = props =>{
         useEffect(()=>{
             axios.post('/logout',{
                 Email: localStorage.getItem("Email"),
-                Tokken:localStorage.getItem("Tokken")
+                Token:localStorage.getItem("Token")
             }).then(r=>{
                 if(r.data=="OK"){
                     console.log('Tokken Deleted!')

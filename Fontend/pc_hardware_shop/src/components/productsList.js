@@ -15,7 +15,7 @@ const ProductsList = props =>{
         const [filterByMaxPrice, setFilterByMaxPrice] = useState(500000);
         const [filterByMinPrice, setFilterByMinPrice] = useState(0);
         const {category} = useParams();
-        const history = useHistory()
+        const history = useHistory();
         
         useEffect(() => {
 

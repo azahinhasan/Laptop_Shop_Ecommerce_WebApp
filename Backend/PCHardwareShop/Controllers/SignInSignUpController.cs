@@ -23,7 +23,8 @@ namespace PCHardwareShop.Controllers
         [Route("api/login/verify"), HttpPost]
         public IHttpActionResult loginVerifyEmployee([FromBody]TokenTable data)
         {
-            return Ok(repo.logOutRepo(data));
+            return Ok(repo.checkLoginRepo(data));
+            //return Ok("OK");
         }
 
 

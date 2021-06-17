@@ -46,7 +46,7 @@ const Login = () =>{
                 localStorage.setItem("LoginID", Number(r.data[0]));
                 localStorage.setItem("Type", r.data[1]);
                 localStorage.setItem("Email", r.data[2]);
-                localStorage.setItem("Tokken", r.data[3]);
+                localStorage.setItem("Token", r.data[3]);
                 localStorage.setItem("UserVerified", true);
                 window.location.reload();
             }
