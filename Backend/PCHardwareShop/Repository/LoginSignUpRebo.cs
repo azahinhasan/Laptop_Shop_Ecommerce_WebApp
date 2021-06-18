@@ -24,11 +24,12 @@ namespace PCHardwareShop.Repository
 
                 return temp1;
             }
-
+/*
             if (data.Type== "Employee")
             {
                tokken=tockenCheck(data.Email);
-            }
+            }*/
+            tokken = tockenCheck(data.Email);
 
             string[] temp = { data.ID.ToString(), data.Type, data.Email, tokken };
 
