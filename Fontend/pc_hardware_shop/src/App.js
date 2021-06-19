@@ -53,9 +53,12 @@ export default withRouter(App); //withRouter will rendered tha page wehn route c
 
 
 
-//update delete for promocode
+
 //auth for all user
 //admin can change the rank access
 //admin can resate the acess
-//customer can see theyer order list and currnt status
-//customer can cancel there order
+
+
+/** BuG **/
+//Prmocode returning NaN
+//OrderDetails product info page error
