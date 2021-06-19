@@ -13,6 +13,7 @@ const AllOrders = props =>{
         const [status,setStatus]=useState('');
         const [comment,setComment]=useState('');
         const [commentMsg,setCommentMsg]=useState('');
+
         const {id}= useParams();
 
         useEffect(() => {
@@ -114,12 +115,17 @@ const AllOrders = props =>{
 
             <p style={{color:'blue',fontWeight:'bold'}}>{status!=''?'Status Chnage to '+status:null}</p>
             <br/>
-            <button onClick={()=>changeStatus('none')} className={classes.button}>NO ACTION</button>
-            <button onClick={()=>changeStatus('done')} className={classes.button+" "+classes.buttonGreen}>DONE</button>
-            <br/>
-            <button onClick={()=>changeStatus('inprogress')} className={classes.button+" "+classes.buttonYellow}>IN PROGRESS</button>
-            <button onClick={()=>changeStatus('failed')} className={classes.button+" "+classes.buttonRed}>FAIED</button>
-            <br/>
+            {currentStatus.Status!="cancel"?
+                <div>
+                    <button onClick={()=>changeStatus('none')} className={classes.button}>NO ACTION</button>
+                    <button onClick={()=>changeStatus('done')} className={classes.button+" "+classes.buttonGreen}>DONE</button>
+                    <br/>
+                    <button onClick={()=>changeStatus('inprogress')} className={classes.button+" "+classes.buttonYellow}>IN PROGRESS</button>
+                    <button onClick={()=>changeStatus('failed')} className={classes.button+" "+classes.buttonRed}>FAIED</button>
+                    <br/>
+                </div>
+            :<h4 style={{color:'red'}}>Customer Canceled his/her Order!</h4>}
+           
             <textarea type="text" value={comment} onChange={e=>setComment(e.target.value)}/>
             <p>{commentMsg}</p>
             <button className={classes.button} onClick={saveComment}>SAVE COMMENT</button>

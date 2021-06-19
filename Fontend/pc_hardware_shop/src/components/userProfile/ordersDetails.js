@@ -10,6 +10,7 @@ const AllOrders = props =>{
         const [userInfo,setUserInfo]=useState([]);
         const [orders,setOrders]=useState([]);
         const [orderID,setOrderID]=useState('');
+        const [status,setStatus]=useState('');
         const [currentStatus,setcurrentStatus]=useState('');
         const [comment,setComment]=useState('');
         const {id}= useParams();
@@ -35,6 +36,15 @@ const AllOrders = props =>{
             history.push('/user/printReceipt/'+orderID);
         }
         
+        const changeStatus=(status) => {
+            axios.post('/changeStatus/'+id+'/'+status).then(r=>{
+                //console.log(r.data);
+                setStatus(r.data);
+                loadData();
+                
+            })
+            
+        };
 
             
         return (
@@ -100,9 +110,10 @@ const AllOrders = props =>{
             <textarea type="text" disabled value={comment} onChange={e=>setComment(e.target.value)}/>
             <br/>
             <button onClick={printOrders}>PRINT</button>
-            <button onClick={printOrders} disabled={currentStatus.Status!='none'?true:false}>CANCLE ORDER</button>
+            <br/>
+            <button onClick={()=>changeStatus('cancel')} disabled={currentStatus.Status!='none'?true:false}>CANCEL ORDER</button>
             <br/> <br/>
-            <p style={{color:'red'}}>You Only Can Cancle your order if Status is : None</p>
+            <p style={{color:'red'}}>You Only Can CANCEL your order if Status is : None</p>
         </div>
         );
     } 

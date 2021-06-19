@@ -12,6 +12,7 @@ const ProductsInfo = props =>{
         // const [cart, setCart] = useState([...JSON.parse(localStorage.getItem("CartData"))]);
         const [sucessMsg, setSucessMsg] = useState([]);
         const [quantity, setQuantity] = useState(1);
+        const [status, setStatus] = useState(1);
         const [imageName, setImageName] = useState('a.jpg');
         const [imageName2, setImageName2] = useState('a.jpg');
         const [imageName3, setImageName3] = useState('a.jpg');
@@ -34,6 +35,7 @@ const ProductsInfo = props =>{
         axios.get('/products/'+category+'/'+id).then(result =>{
             //console.log(result);
             setData(result.data);
+            setStatus(result.data[0].Product.Status)
             setImageName(result.data[0].Product.MainPic);
             setImageName2(result.data[0].Product.Pic2);
             setImageName3(result.data[0].Product.Pic3);
@@ -177,7 +179,7 @@ const ProductsInfo = props =>{
             <br/>
             <input className={classes.quantity} min='1' type='number'  placeholder="Quantity(Defult 1)" onChange={(event)=>setQuantity(event.target.value)}/>
             <br/>
-            <button disabled={quantity<1?true:false} className={classes.button} onClick={addToCartHandler}>ADD</button>
+            <button disabled={quantity<1||status!='In Stock'?true:false} className={classes.button} onClick={addToCartHandler}>ADD</button>
             <br/>
             <h2>Specification</h2>
             <br/>

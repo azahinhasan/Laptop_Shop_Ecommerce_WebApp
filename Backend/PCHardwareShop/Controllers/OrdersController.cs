@@ -58,7 +58,7 @@ namespace PCHardwareShop.Controllers
         public IHttpActionResult ChangeStatus([FromUri] int id, [FromUri] string status1)
         {
             var data = context.StatusTables.Where(x => x.OrderId == id).FirstOrDefault();
-
+/*
             if (status1 == "none")
             {
                 data.Status = "none";
@@ -76,6 +76,11 @@ namespace PCHardwareShop.Controllers
             {
                 data.Status = "done";
             }
+            if (status1 == "done")
+            {
+                data.Status = "done";
+            }*/
+            data.Status = status1;
 
             context.Entry(data).State = System.Data.Entity.EntityState.Modified;
             context.SaveChanges();
