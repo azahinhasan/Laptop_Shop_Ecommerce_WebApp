@@ -14,6 +14,7 @@ import Login from './components/loginPage';
 import Logout from './components/logOut';
 import SignUp from './components/signUp';
 import EmployeeHOme from './employeePart/employeeHome';
+import UserProfileHome from './components/userProfile/profileHome';
 import PrintPdf from './components/print/htmlToPdf2';
 class App extends Component {
   
@@ -36,6 +37,9 @@ class App extends Component {
             <Route path="/user/printReceipt/:orderedid" component={PrintPdf}/>
             <Route path="/user/EmployeeHOme/" component={EmployeeHOme}/>
             <Route path="/product/search" component={SearchPage}/>
+
+            <Route path="/user/profileHome" component={UserProfileHome}/>
+
             <Redirect to="/home"/>
         </Switch>
       </div>
