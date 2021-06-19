@@ -47,6 +47,7 @@
     <EntitySetMapping Name="OrderdUserInfoes">
       <EntityTypeMapping TypeName="PcHardwareShopModel.OrderdUserInfo">
         <MappingFragment StoreEntitySet="OrderdUserInfo">
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />

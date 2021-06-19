@@ -59,6 +59,7 @@
     <Property Name="OrderedData" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="AllOrders" Relationship="Self.FK_AllOrders_OrderdUserInfo" FromRole="OrderdUserInfo" ToRole="AllOrders" />
     <NavigationProperty Name="StatusTables" Relationship="Self.FK_FailedResonTable_OrderdUserInfo" FromRole="OrderdUserInfo" ToRole="StatusTable" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="ProductCategoryLink">
     <Key>

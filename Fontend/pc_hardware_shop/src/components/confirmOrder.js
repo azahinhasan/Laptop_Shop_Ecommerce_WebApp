@@ -11,6 +11,8 @@ const ConfirmOrder = props =>{
     const [cart, setCart] = useState([JSON.parse(localStorage.getItem("CartData"))]);
     const [continueOrder,setContinueOrder]=useState(false);
     let totalSum=0;
+    const [LoginTableID,setLoginTableID]=useState('3006');
+    const [Email,setEmail]=useState('');
     const [Name,setName]=useState('');
     const [Phone,setPhone]=useState('');
     const [City,setCity]=useState('');
@@ -39,6 +41,8 @@ const ConfirmOrder = props =>{
                 setPostCode(temp.PostCode);
                 setState(temp.State);
                 setCountry(temp.Country);
+                setEmail(temp.Email)
+                //setLoginTableID(temp.LoginTableID);
                 
             })
         }
@@ -66,6 +70,7 @@ const ConfirmOrder = props =>{
                 Country:Country,
                 PostCode:PostCode,
                 PrmoCodeOffer:prmoCodeOffer,
+                Email,
                 OrderedData:new Date().toLocaleString()
             }).then(result =>{
                 console.log(result);

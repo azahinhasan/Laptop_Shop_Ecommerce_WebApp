@@ -10,7 +10,7 @@ const SideBar = props =>{
         <br/>
         <Link to={{pathname:'/user/EmployeeHome/allorders/'}}>Update Password</Link>
         <br/>
-        <Link to={{pathname:'/user/EmployeeHome/OthersAction'}}>Orders</Link>
+        <Link to={{pathname:'/user/profileHome/orders'}}>Orders</Link>
         <br/>
         </div>
     );

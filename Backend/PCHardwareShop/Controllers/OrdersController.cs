@@ -94,5 +94,15 @@ namespace PCHardwareShop.Controllers
             return Ok(data.FailedReason);
 
         }
+
+
+        [Route("api/userOrders/{email}"), HttpGet] //order of spacific user
+        public IHttpActionResult OrderListOfSpacifiuser([FromUri]string email)
+        {
+
+            return Ok(context.OrderdUserInfoes.Where(x=>x.Email == "a").ToList());
+           
+
+        }
     }
 }
