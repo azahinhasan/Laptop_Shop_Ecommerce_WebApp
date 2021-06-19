@@ -104,18 +104,23 @@ const ConfirmOrder = props =>{
     const promoCodeVerify=(action)=>{
         axios.get('/promocodeverify/'+prmoCode+'/'+action,{
         }).then(r=>{
-           //console.log(r.data);
-            if(r.data!=='NotValid' && r.data!=='AlreadyUsed'){
+            //console.log(r.data,'prmo');
+            if(r.data!=='NotValid' && r.data!=='AlreadyUsed' && r.data!=='TimeExpired'){
                 setPromoErrorMsg('');
                 setPromoCodeOffer(Number(r.data));
                 setPromoErrorMsg('PromoCode Applied');
-            }else if(r.data=='AlreadyUsed'){
-                setPromoErrorMsg('PromoCode '+r.data);
-            }else if(r.data=='TimeExpired'){
-                setPromoErrorMsg('PromoCode '+r.data);
             }else{
                 setPromoErrorMsg('PromoCode '+r.data);
             }
+            
+        
+            // else if(r.data=='AlreadyUsed'){
+            //     setPromoErrorMsg('PromoCode '+r.data);
+            // }else if(r.data=='TimeExpired'){
+            //     setPromoErrorMsg('PromoCode '+r.data);
+            // }else{
+            //     setPromoErrorMsg('PromoCode '+r.data);
+            // }
             
         }).catch(e=>{
             console.log(e);
@@ -125,7 +130,7 @@ const ConfirmOrder = props =>{
         if(!OrderDone){
             pageData=(
                 <div>
-                    <h2>Your InforMation</h2>
+                    <h2>Your Information</h2>
 
                     <table className={classes.table}>
                         <tr>
@@ -181,7 +186,7 @@ const ConfirmOrder = props =>{
                                 <td></td>
                                 <td></td>
                                 <td>Offer: </td>
-                                <td>{(totalSum*prmoCodeOffer)/100}</td>
+                                <td>{(totalSum*prmoCodeOffer)/100} ({prmoCodeOffer}%)</td>
                             </tr>
                         }
                         <tr>
