@@ -7,11 +7,13 @@ import moment from 'moment'
 
 const AllOrders = props =>{
 
-        const [userInfo,setSetUserInfo]=useState([]);
+        const [userInfo,setUserInfo]=useState([]);
         const [orders,setOrders]=useState([]);
+        const [orderID,setOrderID]=useState('');
         const [currentStatus,setcurrentStatus]=useState('');
         const [comment,setComment]=useState('');
         const {id}= useParams();
+        const history = useHistory();
 
         useEffect(() => {
             loadData();
@@ -19,14 +21,19 @@ const AllOrders = props =>{
 
         const loadData=() => {
             axios.get('/orders/'+id).then(r=>{
-                setSetUserInfo(r.data);
+                setUserInfo(r.data);
                 setOrders(r.data.AllOrders);
                 setcurrentStatus(r.data.StatusTables[0]);
                 setComment(r.data.StatusTables[0].FailedReason);
+                setOrderID(r.data.ID);
                 console.log(r.data,"deatils");
             })
             
         };
+
+        const printOrders=()=>{
+            history.push('/user/printReceipt/'+orderID);
+        }
         
 
             
@@ -92,7 +99,10 @@ const AllOrders = props =>{
             <h4>Note</h4>
             <textarea type="text" disabled value={comment} onChange={e=>setComment(e.target.value)}/>
             <br/>
-            <button>PRINT</button>
+            <button onClick={printOrders}>PRINT</button>
+            <button onClick={printOrders} disabled={currentStatus.Status!='none'?true:false}>CANCLE ORDER</button>
+            <br/> <br/>
+            <p style={{color:'red'}}>You Only Can Cancle your order if Status is : None</p>
         </div>
         );
     } 
