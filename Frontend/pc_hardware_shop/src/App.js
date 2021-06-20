@@ -18,7 +18,43 @@ import UserProfileHome from './components/userProfile/profileHome';
 import PrintPdf from './components/print/htmlToPdf2';
 class App extends Component {
   
+  state={
+    userValid:false
+  }
 
+//   setUserValid(value){
+//     setState({userValid:value});
+//   }
+  
+//    checkValidity(digit){
+//     axios.post('/login/verify',{
+//         Email: localStorage.getItem("Email"),
+//         Token:localStorage.getItem("Token")
+//     }).then(r=>{
+//        // console.log(r.data);
+//         if(r.data=="OK"){
+//             this.setUserValid(true);
+
+           
+//         }else{
+//           this.setUserValid(false);
+//             if(digit==0){
+//                 //history.push('/home');
+//                 history.push('/user/logout');
+//             }
+//             else if(digit==1){
+//                 history.push('/user/logout');
+//             }
+        
+//         }
+//     }).catch(e=>{
+//         console.log(e);
+//     })
+// }
+
+//   componentDidCatch(){
+//     this.checkValidity(0)
+//   }
   render() {
 
     return (
@@ -38,7 +74,9 @@ class App extends Component {
             <Route path="/user/EmployeeHOme/" component={EmployeeHOme}/>
             <Route path="/product/search" component={SearchPage}/>
 
-            <Route path="/user/profileHome" component={UserProfileHome}/>
+            {this.state.userValid?
+            <Route path="/user/profileHome" component={UserProfileHome}/>:null}
+            
 
             <Redirect to="/home"/>
         </Switch>
@@ -60,5 +98,4 @@ export default withRouter(App); //withRouter will rendered tha page wehn route c
 
 
 /** BuG **/
-//Prmocode returning NaN
 //OrderDetails product info page error
