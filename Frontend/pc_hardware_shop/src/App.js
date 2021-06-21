@@ -1,5 +1,6 @@
 import React, {  Component } from 'react';
 import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
+import axios from './api/axios'
 
 import Classes from './App.css';
 import HomePage from './components/homePage';
@@ -17,46 +18,51 @@ import EmployeeHOme from './employeePart/employeeHome';
 import UserProfileHome from './components/userProfile/profileHome';
 import PrintPdf from './components/print/htmlToPdf2';
 class App extends Component {
-  
+
   state={
-    userValid:false
+    userValid:false,
+   
   }
 
-//   setUserValid(value){
-//     setState({userValid:value});
-//   }
+  setUserValid(value){
+    this.setState({userValid:value});
+  }
   
-//    checkValidity(digit){
-//     axios.post('/login/verify',{
-//         Email: localStorage.getItem("Email"),
-//         Token:localStorage.getItem("Token")
-//     }).then(r=>{
-//        // console.log(r.data);
-//         if(r.data=="OK"){
-//             this.setUserValid(true);
+   checkValidity(digit){
+    axios.post('/login/verify',{
+        Email: localStorage.getItem("Email"),
+        Token:localStorage.getItem("Token")
+    }).then(r=>{
+       // console.log(r.data);
+        if(r.data=="OK"){
+            this.setUserValid(true);
 
            
-//         }else{
-//           this.setUserValid(false);
-//             if(digit==0){
-//                 //history.push('/home');
-//                 history.push('/user/logout');
-//             }
-//             else if(digit==1){
-//                 history.push('/user/logout');
-//             }
+        }else{
+          this.setUserValid(false);
+            if(digit==0){
+                //history.push('/home');
+                //history.push('/user/logout');
+                this.props.history.push("/user/logout'");
+            }
+            else if(digit==1){
+                //history.push('/user/logout');
+                this.props.history.push("/user/logout'");
+            }
         
-//         }
-//     }).catch(e=>{
-//         console.log(e);
-//     })
-// }
+        }
+    }).catch(e=>{
+        console.log(e);
+    })
+}
 
-//   componentDidCatch(){
-//     this.checkValidity(0)
-//   }
+  componentDidMount(){
+    this.checkValidity(0)
+  }
+  
   render() {
 
+    
     return (
       <div className={Classes.App}>
         <NavBar/>
