@@ -43,9 +43,12 @@ render() {
                     <Link to={{pathname:'/user/EmployeeHOme/'}}>Employee</Link>
                     <Link to={{pathname:'/user/profileHome'}}>Profile</Link>
                 </div>
-                :
-                <Link to={{pathname:'/user/profileHome'}}>Profile</Link>}
-                
+                :null}
+                {localStorage.getItem("Type")=='Customer'?
+                <div>
+                    <Link to={{pathname:'/user/profileHome'}}>Profile</Link>
+                </div>
+                :null}
 
 
 
