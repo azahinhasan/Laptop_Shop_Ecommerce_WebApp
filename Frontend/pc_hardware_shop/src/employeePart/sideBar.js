@@ -6,7 +6,9 @@ const SideBar = props =>{
 
     return (
         <div className={classes.SideBar}>
-        <Link to={{pathname: '/user/EmployeeHome/employeeaction'}}>Employee</Link>
+        <Link to={{pathname: '/user/EmployeeHome/employeeaction'}}>Home</Link>
+        <br/>
+        <Link to={{pathname: '/user/EmployeeHome/EmployeeAction'}}>Employee</Link>
         <br/>
         <Link to={{pathname:'/user/EmployeeHome/productaction'}}>Products</Link>
         <br/>

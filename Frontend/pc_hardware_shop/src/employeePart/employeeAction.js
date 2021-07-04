@@ -6,8 +6,10 @@ const EmployeeAction = props =>{
     
     return (
         <div className={''}>
+        <button style={{width:'160px'}}>ACCESS CHANGE</button> 
         <button>EDIT</button> 
         <button>ADD</button> 
+        <button>SALARY</button> 
         </div>
     );
     } 

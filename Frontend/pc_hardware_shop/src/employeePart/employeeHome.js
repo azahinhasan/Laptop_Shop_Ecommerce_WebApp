@@ -7,6 +7,7 @@ import AllOrders from './Orders/allOrders';
 import AllOrdersDetails from './Orders/ordersDetails';
 import OthersAction from './othersAction';
 import classes from './employee.css';
+import EmployeeAction from './employeeAction';
 
 
 const EmployeeHome = props =>{
@@ -55,6 +56,7 @@ const EmployeeHome = props =>{
             <Route path="/user/EmployeeHome/allorders/" component={AllOrders}/> 
             <Route path="/user/EmployeeHome/orderDetails/:id" component={AllOrdersDetails}/> 
             <Route path="/user/EmployeeHome/OthersAction/" component={OthersAction}/> 
+            <Route path="/user/EmployeeHome/EmployeeAction/" component={EmployeeAction}/> 
             <Redirect to="/user/EmployeeHome/"/>
             </Switch>
         )
@@ -70,6 +72,7 @@ const EmployeeHome = props =>{
                 <p>Welcome To Employee Home</p>
                 {pagaData}
             </div>
+
         </div>
     );
     } 
