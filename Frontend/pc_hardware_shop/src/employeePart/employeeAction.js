@@ -1,6 +1,7 @@
 import React from 'react';
 import SideBar from './sideBar';
 import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
+import EmployeeAccess from './EmployeeOptions/employeeActionChnage';
 
 const EmployeeAction = props =>{
     
@@ -10,6 +11,10 @@ const EmployeeAction = props =>{
         <button>EDIT</button> 
         <button>ADD</button> 
         <button>SALARY</button> 
+
+        <br/>
+        <hr/>
+        <EmployeeAccess/>
         </div>
     );
     } 

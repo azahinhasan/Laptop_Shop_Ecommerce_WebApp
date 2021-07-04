@@ -1,0 +1,52 @@
+.table{
+    text-align: center;
+    margin-bottom: 5%;
+    margin: auto;
+    /* border: black 1px solid; */
+  }
+  .table th{
+    background-color: black;
+    color: white;
+    width: 220px;
+  }
+  .table td{
+    font-size: 16px;
+    border-bottom: 1px solid black;
+    padding: 5px;
+    width: 220px;
+  }
+
+  .button{
+    height: 40px;
+    width: 200px;
+    margin: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px black solid;
+    border-radius: 18px;
+  }
+  
+  .button:hover{
+    background-color: rgb(221, 221, 221);
+    color: rgb(0, 0, 0);
+  }
+  
+  .buttonRed{
+    border: 2px rgb(146, 2, 2) solid;
+    color: rgb(146, 2, 2);
+  }
+  .buttonGreen{
+    border: 2px rgb(8, 93, 30) solid;
+    color: rgb(8, 93, 30);
+  }
+  .buttonYellow{
+    border: 2px rgb(170, 126, 6) solid;
+    color: rgb(170, 126, 6);
+  }
+  textarea{
+    font-size: 15px;
+    font-weight: bold;
+    width: 500px;
+    height: 100px;
+    border: black 2px solid;
+  }
