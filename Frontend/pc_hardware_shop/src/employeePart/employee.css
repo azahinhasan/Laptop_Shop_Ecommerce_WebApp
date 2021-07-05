@@ -31,8 +31,8 @@
     border-radius: 18px;
   }
   button:hover{
-    background-color: black;
-    color: white;
+    background-color: rgb(104, 103, 103);
+    /* color: white; */
   }
 
   .buttonOption{
@@ -45,8 +45,8 @@
       border-radius: 18px;
   }
   .buttonOption:hover{
-    background-color: black;
-    color: white;
+    background-color: rgb(184, 184, 184);
+    /* color: white; */
   }
 
   .buttonOptionSelected{
@@ -61,8 +61,10 @@
     color: white;
 }
 .buttonOptionSelected:hover{
-  background-color: white;
-  color: black;
+  /* background-color: white;
+  color: black; */
+  background-color: black;
+  color: white;
 }
 
   /* Products */

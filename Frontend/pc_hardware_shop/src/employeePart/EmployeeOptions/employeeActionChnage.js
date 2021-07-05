@@ -6,6 +6,7 @@ const EmployeeAccess = props =>{
     
    const [serach,setSearch]=useState('');
    const [msg,setMsg]=useState('');
+   const [msgSave,setmsgSave]=useState('');
    const [showPageData,setShowPageData]=useState(false);
 
    const [userInfoData,setUserInfoData]=useState('');
@@ -47,7 +48,12 @@ const EmployeeAccess = props =>{
          Rank:userInfoDataRank.Rank,Employee,Products,Orders,Others
       }).then(r=>{
 
-            console.log(r.data)
+            //console.log(r.data)
+            if(r.data=='OK'){
+               setmsgSave('Data Saved!');
+            }else{
+               setmsgSave('Data Save Failed!');
+            }
       })
    }
 
@@ -60,7 +66,7 @@ const EmployeeAccess = props =>{
          <div className={classes.accessPageInfoPart}>
             
          <br/>
-         <h3>Employee Information</h3>
+         <h2>Employee Information</h2>
          <br/>
          <table  className={classes.table}>
          <tr>
@@ -77,9 +83,10 @@ const EmployeeAccess = props =>{
          </tr>
          </table>
          <br/>
-         <h3>Employee Access</h3>
-         <br/>
-         <div>
+         
+         <div className={classes.EmployeeAccess}>
+            <h2>Employee Access</h2>
+            <br/>
             <span>
                Employee Part: 
                <select onChange={e=>setEmployee(e.target.value)} value={Employee}>
@@ -110,6 +117,9 @@ const EmployeeAccess = props =>{
                </select>
             </span>
             <br/>
+            <br/>
+            {msgSave}
+            <br/>
             <button onClick={chnageAccess}>SAVE</button>
          </div>
       </div>
@@ -121,7 +131,7 @@ const EmployeeAccess = props =>{
 
    return (
       <div className={''}>
-         <input onChange={e=>setSearch(e.target.value)}></input>
+         <input onChange={e=>setSearch(e.target.value)} placeholder="User ID"></input>
          <br/>
          <p style={{color:'red'}}>{msg}</p>
          <button onClick={userInfo}>SEARCH</button>

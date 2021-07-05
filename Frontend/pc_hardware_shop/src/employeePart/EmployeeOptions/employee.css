@@ -52,3 +52,15 @@
     height: 100px;
     border: black 2px solid;
   }
+
+  .EmployeeAccess{
+    border: 2px black solid;
+  }
+
+  .EmployeeAccess span{
+
+    margin: 15px 15px;
+
+    font-weight: bold;
+    font-size: 20px;
+  }
