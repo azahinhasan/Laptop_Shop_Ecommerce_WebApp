@@ -13,11 +13,32 @@ namespace PCHardwareShop.Controllers
         PcHardwareShopEntities4 context = new PcHardwareShopEntities4();
 
         [Route("api/employeeAcess/{id}"), HttpGet]
-        public IHttpActionResult UserAndOrderInfo([FromUri] int id)
+        public IHttpActionResult UserInfo([FromUri] int id)
 
         {
+            var data = context.EmployeeInfoes.Where(e => e.ID == id).FirstOrDefault();
+            if (data==null)
+            {
+                return Ok("NotFound");
+            }
 
-            return Ok(context.EmployeeInfoes.Find(id));
+            return Ok(data);
+
+        }
+
+        [Route("api/employeeAcess/update/{id}"), HttpPost]
+        public IHttpActionResult AccessUpdate([FromUri]int id,[FromBody]EmployeeRank data)
+        {
+
+
+            var employeeRankID = context.EmployeeInfoes.Where(e=>e.ID==id).FirstOrDefault();
+
+            data.ID = (int)employeeRankID.RankTableID;
+
+            context.Entry(data).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+
+            return Ok("OK");
 
         }
     }

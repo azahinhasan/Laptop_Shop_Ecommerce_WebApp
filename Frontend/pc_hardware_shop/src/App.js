@@ -102,6 +102,9 @@ export default withRouter(App); //withRouter will rendered tha page wehn route c
 //admin can change the rank access
 //admin can resate the acess
 
+//backend auth
+//hanlder employee access
+
 
 /** BuG **/
 //OrderDetails product info page error
