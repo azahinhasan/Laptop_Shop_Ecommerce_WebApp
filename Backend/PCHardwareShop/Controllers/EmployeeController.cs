@@ -35,29 +35,30 @@ namespace PCHardwareShop.Controllers
             return Ok("OK");
         }
 
-        [Route("api/employeeAcessCheck/{action}/{id}/{email}"), HttpGet]
-        public IHttpActionResult AccessCheck([FromUri]int id, [FromUri] string action, [FromUri] string email)
+        [Route("api/employeeAcessCheck/{actionAccess}/{email}"), HttpGet]
+        public IHttpActionResult AccessCheck([FromUri] string actionAccess, [FromUri] string email)
         {
 
-            var data = context.EmployeeInfoes.Where(e => e.ID == id && e.Email==email).FirstOrDefault();
+            var data = context.EmployeeInfoes.Where(e =>  e.Email==email).FirstOrDefault();
             var accessData = context.EmployeeRanks.Find(data.RankTableID);
 
-            if(accessData.Employee=="true" && action == "Employee")
+            if(accessData.Employee=="true" && actionAccess == "Employee")
             {
                 return Ok("Valid");
             }
-            if (accessData.Others == "true" && action == "Others")
+            if (accessData.Others == "true" && actionAccess == "Others")
             {
                 return Ok("Valid");
             }
-            if (accessData.Products == "true" && action == "Products")
+            if (accessData.Products == "true" && actionAccess == "Products")
             {
                 return Ok("Valid");
             }
-            if (accessData.Orders == "true" && action == "Orders")
+            if (accessData.Orders == "true" && actionAccess == "Orders")
             {
                 return Ok("Valid");
             }
+
             return Ok("NotValid");
         }
     }
