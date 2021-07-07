@@ -107,5 +107,21 @@ namespace PCHardwareShop.Repository
             return "OK";
         }
 
+        public string updatePass(string oldPass,string newPass, string email)
+        {
+            var data = context.UserLoginTables.Where(x => x.Email == email && x.Password == oldPass).FirstOrDefault();
+
+            if (data == null)
+            {
+                return "Wrong Old Password!";
+            }
+
+            data.Password = newPass;
+            context.Entry(data).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+
+            return "Password Updated!";
+        }
+
     }
 }

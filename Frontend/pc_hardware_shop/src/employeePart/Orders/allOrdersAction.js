@@ -8,6 +8,14 @@ const AllOrders = props =>{
 
         const [allOrders,setAllOrders]=useState([]);
         const [currentStatus,setcurrentStatus]=useState('');
+        const [validUserForAccess, setValidUserForAccess]=useState('');
+
+        useEffect(() => {
+            axios.get('/employeeAcessCheck/Orders/'+localStorage.getItem("Email")).then(r=>{
+                setValidUserForAccess(r.data);
+            })
+        }, []);
+        
 
         useEffect(() => {
             axios.get('/orders/').then(r=>{
@@ -18,10 +26,13 @@ const AllOrders = props =>{
             
         }, []);
 
-  
+
             
         return (
         <div  className={''}>
+
+        {validUserForAccess=='Valid'?
+            <div>
             <p>All Oeders</p>
 
             <table className={classes.table}>
@@ -44,6 +55,9 @@ const AllOrders = props =>{
                 )
             })}
             </table>
+            </div>
+        :<h3 style={{color:'red'}}>You Donn't Have Access!!!</h3>}
+
         </div>
         );
     } 

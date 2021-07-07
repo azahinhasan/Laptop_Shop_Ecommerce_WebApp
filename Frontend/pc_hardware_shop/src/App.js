@@ -33,11 +33,10 @@ class App extends Component {
         Email: localStorage.getItem("Email"),
         Token:localStorage.getItem("Token")
     }).then(r=>{
-       // console.log(r.data);
+        console.log(r.data,'UserVarify');
         if(r.data=="OK"){
             this.setUserValid(true);
 
-           
         }else{
           this.setUserValid(false);
             if(digit==0){
@@ -77,10 +76,11 @@ class App extends Component {
             <Route path="/user/logout" component={Logout}/>
             <Route path="/user/signup" component={SignUp}/>
             <Route path="/user/printReceipt/:orderedid" component={PrintPdf}/>
-            <Route path="/user/EmployeeHOme/" component={EmployeeHOme}/>
             <Route path="/product/search" component={SearchPage}/>
 
+            <Route path="/user/EmployeeHOme/" component={EmployeeHOme}/>
             {this.state.userValid?
+            
             <Route path="/user/profileHome" component={UserProfileHome}/>:null}
             
 

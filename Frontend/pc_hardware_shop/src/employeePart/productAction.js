@@ -9,7 +9,7 @@ import axios from '../api/axios';
 const ProductAction = props =>{
     
     const [showAddPage, setShowAddPage]=useState(true);
-    const [validUserForAccess, setValidUserForAccess]=useState('ACCESS_CHANGE');
+    const [validUserForAccess, setValidUserForAccess]=useState('');
 
     const showAddPageHandler=(data)=>{
         setShowAddPage(data);

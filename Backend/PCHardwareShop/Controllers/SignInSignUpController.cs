@@ -47,7 +47,13 @@ namespace PCHardwareShop.Controllers
             return Ok(repo.logOutRepo(data));
         }
 
-      
+        [Route("api/updatePass/{oldPass}/{newPass}/{email}"), HttpPost]
+        public IHttpActionResult logoutEmployee([FromUri] string oldPass, [FromUri] string newPass, [FromUri] string email)
+        {
+
+
+            return Ok(repo.updatePass(oldPass, newPass, email));
+        }
 
 
     }

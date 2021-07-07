@@ -3,7 +3,7 @@ import React, { useState,useEffect } from 'react';
 import SideBar from './sideBar';
 import {Route,Switch,useHistory,Redirect} from 'react-router-dom';
 import ProductAction from './productAction';
-import AllOrders from './Orders/allOrders';
+import AllOrders from './Orders/allOrdersAction';
 import AllOrdersDetails from './Orders/ordersDetails';
 import OthersAction from './othersAction';
 import classes from './employee.css';
@@ -23,7 +23,7 @@ const EmployeeHome = props =>{
             console.log(r.data);
             if(r.data=="OK"){
                 setUserValid(true);
-               
+            
             }else{
                 if(digit==0){
                     //history.push('/home');
