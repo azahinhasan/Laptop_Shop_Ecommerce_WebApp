@@ -16,7 +16,19 @@
     width: 220px;
   }
 
+  .tableAddEmployee{
+    text-align: center;
+    margin-bottom: 5%;
+    margin: auto;
+  
+  }
 
+  .tableAddEmployee td{
+    font-size: 16px;
+    padding: 5px;
+    width: 220px;
+    font-weight: bold;
+  }
 
   .button{
     height: 40px;

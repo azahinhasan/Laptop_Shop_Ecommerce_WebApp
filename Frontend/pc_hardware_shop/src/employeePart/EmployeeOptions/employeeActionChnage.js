@@ -19,7 +19,7 @@ const EmployeeAccess = props =>{
 
 
    const userInfo=()=>{
-      axios.get('/employeeAcess/'+serach).then(r=>{
+      axios.get('/employeeInfo/'+serach).then(r=>{
 
 
          if(r.data!='NotFound'){

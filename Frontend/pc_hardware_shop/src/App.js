@@ -105,6 +105,6 @@ export default withRouter(App); //withRouter will rendered tha page wehn route c
 //backend auth
 //hanlder employee access
 
-
+//add product validationm
 /** BuG **/
 //OrderDetails product info page error

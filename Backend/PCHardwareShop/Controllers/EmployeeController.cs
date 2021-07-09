@@ -12,7 +12,7 @@ namespace PCHardwareShop.Controllers
     {
         PcHardwareShopEntities4 context = new PcHardwareShopEntities4();
 
-        [Route("api/employeeAcess/{id}"), HttpGet]
+        [Route("api/employeeInfo/{id}"), HttpGet]
         public IHttpActionResult UserInfo([FromUri] int id)
         {
             var data = context.EmployeeInfoes.Where(e => e.ID == id).FirstOrDefault();
@@ -22,6 +22,19 @@ namespace PCHardwareShop.Controllers
             }
             return Ok(data);
         }
+
+        [Route("api/loginInfo/{id}"), HttpGet]
+        public IHttpActionResult UserLoginInfo([FromUri]int id)
+        {
+            var data = context.UserLoginTables.Where(e => e.ID == id).FirstOrDefault();
+            if (data == null)
+            {
+                return Ok("NotFound");
+            }
+            return Ok(data.Password);
+        }
+
+
 
         [Route("api/employeeAcess/update/{id}"), HttpPost]
         public IHttpActionResult AccessUpdate([FromUri]int id,[FromBody]EmployeeRank data)
@@ -60,6 +73,67 @@ namespace PCHardwareShop.Controllers
             }
 
             return Ok("NotValid");
+        }
+
+        [Route("api/addEmployee/{Rank}"), HttpPost]
+        public IHttpActionResult AddEmployee([FromUri]string Rank, [FromBody]EmployeeInfo data)
+        {
+            Random r = new Random();
+            int pass = r.Next();
+
+            UserLoginTable LoginData = new UserLoginTable();
+            EmployeeRank RankData = new EmployeeRank();
+
+            var emailCheck = context.UserLoginTables.Where(d => d.Email == data.Email).FirstOrDefault();
+            if(emailCheck != null)
+            {
+                return Ok("Email Already Taken!");
+            }
+
+            if (data.Email=="" || data.Name== "" || data.Phone == "")
+            {
+                return Ok("Please Fill Up All InputBox!");
+            }
+
+            LoginData.Email = data.Email;
+            LoginData.Password = pass.ToString();
+            LoginData.Type = "Employee";
+            context.UserLoginTables.Add(LoginData);
+            context.SaveChanges();
+
+            RankData.Rank = Rank;
+            if (Rank=="admin")
+            {
+                RankData.Employee = "true";
+                RankData.Others = "true";
+                RankData.Orders = "true";
+                RankData.Products = "true";
+            }
+            if (Rank == "moderator")
+            {
+                RankData.Employee = "false";
+                RankData.Others = "true";
+                RankData.Orders = "false";
+                RankData.Products = "true";
+            }
+            if (Rank == "deliveryIncharge")
+            {
+                RankData.Employee = "false";
+                RankData.Others = "false";
+                RankData.Orders = "true";
+                RankData.Products = "false";
+            }
+
+            context.EmployeeRanks.Add(RankData);
+            context.SaveChanges();
+
+
+            data.RankTableID = RankData.ID;
+            data.LoginTableID = LoginData.ID;
+            context.EmployeeInfoes.Add(data);
+            context.SaveChanges();
+
+            return Ok(data.ID);
         }
     }
  }

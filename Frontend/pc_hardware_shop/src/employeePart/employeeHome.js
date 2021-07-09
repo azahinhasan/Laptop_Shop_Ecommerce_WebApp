@@ -8,6 +8,7 @@ import AllOrdersDetails from './Orders/ordersDetails';
 import OthersAction from './othersAction';
 import classes from './employee.css';
 import EmployeeAction from './employeeAction';
+import NewEmployee from './EmployeeOptions/htmlToPdf2EmployeeInfo';
 
 
 const EmployeeHome = props =>{
@@ -57,6 +58,7 @@ const EmployeeHome = props =>{
             <Route path="/user/EmployeeHome/orderDetails/:id" component={AllOrdersDetails}/> 
             <Route path="/user/EmployeeHome/OthersAction/" component={OthersAction}/> 
             <Route path="/user/EmployeeHome/EmployeeAction/" component={EmployeeAction}/> 
+            <Route path="/user/EmployeeHome/NewEmployeeInfo/:userID" component={NewEmployee}/> 
             <Redirect to="/user/EmployeeHome/"/>
             </Switch>
         )

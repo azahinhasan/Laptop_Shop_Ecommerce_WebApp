@@ -31,7 +31,7 @@
     border-radius: 18px;
   }
   button:hover{
-    background-color: rgb(104, 103, 103);
+    background-color: rgb(223, 223, 223);
     /* color: white; */
   }
 
@@ -45,7 +45,7 @@
       border-radius: 18px;
   }
   .buttonOption:hover{
-    background-color: rgb(184, 184, 184);
+    background-color: rgb(223, 223, 223);
     /* color: white; */
   }
 

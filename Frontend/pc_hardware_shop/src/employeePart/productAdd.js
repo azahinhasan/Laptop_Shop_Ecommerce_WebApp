@@ -259,8 +259,8 @@ const ProductAdd = props =>{
         <div className={classes.Product}>
         <h2>ADD PRODUCT PAGE</h2>
         {UploadedID>=0? <span style={{color:'green'}}>Product Added</span>:null}
-        {UploadedID>=0? <Link to={{pathname:'/info/Laptop/'+UploadedID}} target="_blank" rel="noopener noreferrer">CLICK</Link> :null}
-        <br/>
+        {UploadedID>=0? <Link to={{pathname:'/info/Laptop/'+UploadedID}} target="_blank" rel="noopener noreferrer"> CLICK</Link> :null}
+        <br/><br/>
         <table  className={classes.Form}> 
             <tr>
             <td>Name</td>
@@ -269,7 +269,6 @@ const ProductAdd = props =>{
             <tr>
                 <td> 
                     <label>Price</label>
-                   
                 </td>
                 <td><input type="number" onChange={(event)=>{setPrice(event.target.value)}}></input></td>
             </tr>
