@@ -19,7 +19,14 @@ const EmployeeAccess = props =>{
 
 
    const userInfo=()=>{
-      axios.get('/employeeInfo/'+serach).then(r=>{
+
+      const token = Buffer.from(`${localStorage.getItem("Email")}:${localStorage.getItem("Token")}`, 'utf8').toString('base64');
+
+      axios.get('/employeeInfo/'+serach,{
+         headers: {
+            'Authorization': `Basic ${token}`
+         }
+      }).then(r=>{
 
 
          if(r.data!='NotFound'){
@@ -44,8 +51,15 @@ const EmployeeAccess = props =>{
    }
 
    const chnageAccess=()=>{
+
+      const token = Buffer.from(`${localStorage.getItem("Email")}:${localStorage.getItem("Token")}`, 'utf8').toString('base64');
+
       axios.post('/employeeAcess/update/'+serach,{
          Rank:userInfoDataRank.Rank,Employee,Products,Orders,Others
+      },{
+         headers: {
+            'Authorization': `Basic ${token}`
+         }
       }).then(r=>{
 
             //console.log(r.data)
@@ -69,18 +83,20 @@ const EmployeeAccess = props =>{
          <h2>Employee Information</h2>
          <br/>
          <table  className={classes.table}>
-         <tr>
-            <td>ID</td>
-            <td>{userInfoData.ID}</td>
-            <td>Name</td>
-            <td>{userInfoData.Name}</td>
-         </tr>
-         <tr>
-            <td>Email</td>
-            <td>{userInfoData.Email}</td>
-            <td>Rank</td>
-            <td>{userInfoDataRank.Rank}</td>
-         </tr>
+            <tbody>
+               <tr>
+                  <td>ID</td>
+                  <td>{userInfoData.ID}</td>
+                  <td>Name</td>
+                  <td>{userInfoData.Name}</td>
+               </tr>
+               <tr>
+                  <td>Email</td>
+                  <td>{userInfoData.Email}</td>
+                  <td>Rank</td>
+                  <td>{userInfoDataRank.Rank}</td>
+               </tr>
+            </tbody>
          </table>
          <br/>
          

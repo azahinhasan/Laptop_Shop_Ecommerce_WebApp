@@ -161,6 +161,11 @@ namespace PCHardwareShop.Controllers
         [Route("api/products"), HttpPost]
         public IHttpActionResult AddProducts([FromBody]Product data)
         {
+
+            if (data.pName==null && Int32.Parse(data.Price) > 0 && data.MainPic==null)
+            {
+                return Ok("Please Fill-Up all textbox,Upload Main Pic and Price bigger then 0");
+            }
             context.Products.Add(data);
             context.SaveChanges();
             return Ok(data.ID);

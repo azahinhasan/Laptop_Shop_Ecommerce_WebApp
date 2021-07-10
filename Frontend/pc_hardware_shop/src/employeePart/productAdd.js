@@ -12,13 +12,14 @@ const ProductAdd = props =>{
     const [Price,setPrice]=useState('0');
     const [Status,setStatus]=useState('In Stock');
     const [BrandID,setBrandID]=useState('1');
-    const [SpecificationID,setSpecificationID]=useState('');
+    const [SpecificationName,setSpecificationName]=useState('Leptop');
     const [MainPic,setMainPic]=useState('fx505dt-03-500x500.jpg');
-    const [Pic2,setPic2]=useState('');
-    const [Pic3,setPic3]=useState('');
+    const [Pic2,setPic2]=useState(null);
+    const [Pic3,setPic3]=useState(null);
     const [MainPicSrc,setMainImageSrc]=useState(EmptyImage);
     const [Pic2Src,setPic2Src]=useState(EmptyImage);
     const [Pic3Src,setPic3Src]=useState(EmptyImage);
+    const [errorMsg,setErrorMsg]=useState('');
     //LepTop
     const [Manufacturing_Warranty,setManufacturing_Warranty]=useState('');
     const [Processor,setProcessor]=useState('');
@@ -51,7 +52,7 @@ const ProductAdd = props =>{
             pCategory:Number(spacification)
         })
         .then(r=>{
-            console.log(r.data,"dta");
+           // console.log(r.data,"dta");
             setUploadedID(r.data);
         }).catch(e=>{
             console.log(e);
@@ -59,44 +60,56 @@ const ProductAdd = props =>{
     }
 
     const addProduct=(SpecificationID)=>{
-        console.log('addProduct')
+        //console.log('addProduct')
         axios.post('/products',{
             pName,Price,Status,BrandID,SpecificationID,MainPic,Pic2,Pic3
         })
         .then(r=>{
             addProductCatagoryLink(r.data);
-            console.log(r.data);
+           // console.log(r.data);
+           setErrorMsg(r.data);
+
+            if(r.data!='Please Fill-Up all textbox,Upload Main Pic and Price bigger then 0'){
+                setErrorMsg('');
+            }
+
         }).catch(e=>{
             console.log(e);
         })
     }
 
     const addProductSpacification=()=>{
-        console.log('addProductSpacification')
-        if(spacification === "1"){
-            axios.post('/products/spacification',{
-                Processor,
-                Colors,Display,Memory,Storage,Graphics,OS,Battery,Adapter,Audio,Keyboard,WebCam,Manufacturing_Warranty
-            })
-            .then(r=>{
-                addProduct(r.data);
-                console.log(r.data);
-            }).catch(e=>{
-                console.log(e);
-            })
-        }else if(spacification === "3"){
-            axios.post('/products/spacification',{
-                Ram_Type, Ram_Capacity, Ram_Operating_voltage, Ram_Latency, Ram_Pin, Ram_Frequency,Manufacturing_Warranty
-            })
-            .then(r=>{
-                addProduct(r.data);
-                console.log(r.data);
-            }).catch(e=>{
-                console.log(e);
-            })
+       // console.log('addProductSpacification')
 
-        }else if(spacification === "3"){
-        
+        if(pName!='None' && MainPic!=EmptyImage && Price >0){
+            setErrorMsg('');
+            if(spacification === "1"){
+                axios.post('/products/spacification',{
+                    Processor,
+                    Colors,Display,Memory,Storage,Graphics,OS,Battery,Adapter,Audio,Keyboard,WebCam,Manufacturing_Warranty
+                })
+                .then(r=>{
+                    addProduct(r.data);
+                    console.log(r.data);
+                }).catch(e=>{
+                    console.log(e);
+                })
+            }else if(spacification === "3"){
+                axios.post('/products/spacification',{
+                    Ram_Type, Ram_Capacity, Ram_Operating_voltage, Ram_Latency, Ram_Pin, Ram_Frequency,Manufacturing_Warranty
+                })
+                .then(r=>{
+                    addProduct(r.data);
+                    console.log(r.data);
+                }).catch(e=>{
+                    console.log(e);
+                })
+
+            }else if(spacification === "3"){
+            
+            }
+        }else{
+            setErrorMsg('Please Fill-Up Name,Upload Main Pic and Price Must be bigger then 0');
         }
 
     }
@@ -146,9 +159,24 @@ const ProductAdd = props =>{
 
     }
 
+    const setSpecificationNameHandler=(data)=>{
+        console.log(data,'spe');
+        setSpacificationData(data);
+        if(data==1){
+            setSpecificationName('Leptop');
+        }else if(data==2){
+            setSpecificationName('SSD');
+        }else if(data==3){
+            setSpecificationName('RAM');
+        }
+    
+    }
+
     let spacificationData='';
 
     if(spacification === "1"){ //Laptop
+        
+
         spacificationData=(
             <div>
                 <table  className={classes.Form}>
@@ -258,8 +286,11 @@ const ProductAdd = props =>{
     return (
         <div className={classes.Product}>
         <h2>ADD PRODUCT PAGE</h2>
-        {UploadedID>=0? <span style={{color:'green'}}>Product Added</span>:null}
-        {UploadedID>=0? <Link to={{pathname:'/info/Laptop/'+UploadedID}} target="_blank" rel="noopener noreferrer"> CLICK</Link> :null}
+        {UploadedID>=0? <span style={{color:'green'}}>Product Added </span>:null}
+        {UploadedID>=0? <Link to={{pathname:'/info/'+SpecificationName+'/'+UploadedID}} target="_blank" rel="noopener noreferrer"> CLICK</Link> :null}
+
+        <span style={{color:'red',fontSize:'15px'}}>{errorMsg}</span>
+
         <br/><br/>
         <table  className={classes.Form}> 
             <tr>
@@ -285,7 +316,7 @@ const ProductAdd = props =>{
             <tr>
                 <td><label>Brand</label></td>
                 <td>
-                    <select onChange={(event)=>{setBrandID(event.target.value)}}>
+                    <select  onChange={(event)=>{setBrandID(event.target.value)}}>
                         <option value="1">RAZER</option>
                         <option value="2">HP</option>
                         <option value="3">ASUS</option>
@@ -329,7 +360,7 @@ const ProductAdd = props =>{
         </table>
         <br/>
         <label>Spacification For </label>
-        <select onChange={(event)=>setSpacificationData(event.target.value)}>
+        <select onChange={(event)=>setSpecificationNameHandler(event.target.value)}>
             <option value="1">Leptop</option>
             <option value="3">RAM</option>
             <option value="2">SSD</option>
@@ -338,7 +369,7 @@ const ProductAdd = props =>{
         <br/>
         {spacificationData}
        
-        <button className={classes.buttonOption} onClick={addProductSpacification}>ADD</button>
+        <button type="submit" className={classes.buttonOption} onClick={addProductSpacification}>ADD</button>
         </div>
     );
     } 

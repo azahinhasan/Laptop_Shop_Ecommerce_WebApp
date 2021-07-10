@@ -163,7 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Attributes\LoginAuth.cs" />
+    <Compile Include="Attributes\AdminAuth.cs" />
     <Compile Include="Controllers\AllProductsController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />

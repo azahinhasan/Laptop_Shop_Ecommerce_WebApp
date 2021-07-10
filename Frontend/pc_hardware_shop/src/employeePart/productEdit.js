@@ -5,6 +5,7 @@ import classes from './employee.css';
 import EmptyImage from '../Content/no_blog.jpg';
 
 const ProductEdit = props =>{
+    const [errMsg,setErrMsg]=useState('');
     const [dataUpaded,setDataUpdated]=useState('');
     const [Search,setSearch]=useState('None');
     const [T,setT]=useState('None');
@@ -102,7 +103,10 @@ const ProductEdit = props =>{
         .then(r=>{
             setT(r.data.Product.ProductSpecification)
             //loadSpacification(r.data.Product.ProductSpecification);
-            console.log(r.data);
+            console.log(r.data,'ff');
+            if(r.data == null){
+                setErrMsg("Product Not Found!");
+            }
             setSpacificationData(r.data.Category.ID);
             setpName(r.data.Product.pName);
             setPrice(r.data.Product.Price);
@@ -150,6 +154,8 @@ const ProductEdit = props =>{
             
         }).catch(e=>{
 
+            setErrMsg("Product Not Found!");
+            console.log(e);
         })
     }
 
@@ -310,6 +316,8 @@ const ProductEdit = props =>{
         <label>Search</label>
         <input type="" onChange={e=>setSearch(e.target.value)}></input>
         <button onClick={loadData}>LOAD</button>
+        <br/>
+        <div style={{color:'red'}}>{errMsg}</div>
         <br/>
         {dataUpaded?<p style={{color:'green'}}>Data Updated!</p>:null}
         {/* {dataUpaded==false?<p style={{color:'red'}}>Data is not Updated!</p>:null} */}

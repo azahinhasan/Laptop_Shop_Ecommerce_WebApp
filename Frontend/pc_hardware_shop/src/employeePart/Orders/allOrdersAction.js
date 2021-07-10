@@ -45,7 +45,7 @@ const AllOrders = props =>{
                 </tr>
             {allOrders.map(data=>{
             return( 
-                <tr>
+                <tr key={data.ID}>
                     <td>{data.ID}</td>
                     <td>{data.Name}</td>
                     <td>{moment(data.OrderedData).format('MMMM Do YYYY')}</td>

@@ -5,6 +5,12 @@ using System.Web;
 using System.Web.Http;
 using System.Web;
 using PCHardwareShop.Models;
+using PCHardwareShop.Attributes;
+using System.Net;
+using System.Web;
+using System.Threading;
+using System.IO;
+
 
 namespace PCHardwareShop.Controllers
 {
@@ -12,7 +18,7 @@ namespace PCHardwareShop.Controllers
     {
         PcHardwareShopEntities4 context = new PcHardwareShopEntities4();
 
-        [Route("api/employeeInfo/{id}"), HttpGet]
+        [Route("api/employeeInfo/{id}"), HttpGet, AdminAuth]
         public IHttpActionResult UserInfo([FromUri] int id)
         {
             var data = context.EmployeeInfoes.Where(e => e.ID == id).FirstOrDefault();
@@ -23,7 +29,7 @@ namespace PCHardwareShop.Controllers
             return Ok(data);
         }
 
-        [Route("api/loginInfo/{id}"), HttpGet]
+        [Route("api/loginInfo/{id}"), HttpGet,AdminAuth]
         public IHttpActionResult UserLoginInfo([FromUri]int id)
         {
             var data = context.UserLoginTables.Where(e => e.ID == id).FirstOrDefault();
@@ -36,7 +42,7 @@ namespace PCHardwareShop.Controllers
 
 
 
-        [Route("api/employeeAcess/update/{id}"), HttpPost]
+        [Route("api/employeeAcess/update/{id}"), HttpPost, AdminAuth]
         public IHttpActionResult AccessUpdate([FromUri]int id,[FromBody]EmployeeRank data)
         {
             var employeeRankID = context.EmployeeInfoes.Where(e=>e.ID==id).FirstOrDefault();
@@ -75,7 +81,7 @@ namespace PCHardwareShop.Controllers
             return Ok("NotValid");
         }
 
-        [Route("api/addEmployee/{Rank}"), HttpPost]
+        [Route("api/addEmployee/{Rank}"), HttpPost, AdminAuth]
         public IHttpActionResult AddEmployee([FromUri]string Rank, [FromBody]EmployeeInfo data)
         {
             Random r = new Random();

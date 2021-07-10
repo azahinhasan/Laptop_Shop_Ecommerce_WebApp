@@ -13,7 +13,7 @@ using PCHardwareShop.Models;
 
 namespace PCHardwareShop.Attributes
 {
-    public class AuthLogin : AuthorizationFilterAttribute
+    public class AdminAuth : AuthorizationFilterAttribute
     {
         // go to postman in Headers to disable authorizaton option
         public override void OnAuthorization(HttpActionContext actionContext)
@@ -23,6 +23,7 @@ namespace PCHardwareShop.Attributes
             if (actionContext.Request.Headers.Authorization == null)
             {
                 actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
+           
             }
             else
             {
@@ -30,18 +31,35 @@ namespace PCHardwareShop.Attributes
                 string decoded = Encoding.UTF8.GetString(Convert.FromBase64String(encoded));
                 string[] splittedText = decoded.Split(new char[] { ':' });
                 string email = splittedText[0];
-                string pass = splittedText[1];
+                string token = splittedText[1];
+
+
 
                 PcHardwareShopEntities4 context = new PcHardwareShopEntities4();
-                var data = context.UserLoginTables.Where(x => x.Email == email && x.Password == pass).FirstOrDefault<UserLoginTable>();
+                var data = context.TokenTables.Where(x => x.Token == token && x.Email == email).FirstOrDefault();
 
                 if (data != null)
                 {
-                    Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(email), null);
+
+                    var  data2 = context.EmployeeInfoes.Where(x => x.Email == email && x.EmployeeRank.Rank == "admin" ).FirstOrDefault();
+
+
+                    if (data2 != null)
+                    {
+                        Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity("AdminValid"), null);
+                    }
+                    else
+                    {
+                        actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
+                    }
+                        
+                   
                 }
                 else
                 {
-                    actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
+                     actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
+                    
+
                 }
 
             }

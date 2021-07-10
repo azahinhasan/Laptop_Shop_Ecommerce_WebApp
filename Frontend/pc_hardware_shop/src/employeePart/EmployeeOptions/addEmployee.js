@@ -20,8 +20,15 @@ const EmployeeAdd = props =>{
 
 
    const addEmployee=()=>{
+
+      const token = Buffer.from(`${localStorage.getItem("Email")}:${localStorage.getItem("Token")}`, 'utf8').toString('base64');
+
       axios.post('/addEmployee/'+Rank,{
          Name,Email,Phone,Gender
+      },{
+         headers: {
+               'Authorization': `Basic ${token}`
+            }
       })
       .then(r=>{
             setmsg(r.data);
@@ -45,6 +52,7 @@ const EmployeeAdd = props =>{
 
       <br/>
       <table className={classes.tableAddEmployee}> 
+         <tbody>
             <tr>
                <td>Name: </td>
                <td><input type='name'  onChange={(event)=>{setName(event.target.value)}}></input></td>
@@ -83,6 +91,7 @@ const EmployeeAdd = props =>{
                   </select>
                </td>
             </tr>
+         </tbody>
       </table>
       <br/>
       <button onClick={addEmployee} style={{width:'450px',borderRadius:'5px'}}>SAVE</button>

@@ -185,8 +185,8 @@ const ConfirmOrder = props =>{
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td>Offer: </td>
-                                <td>{(totalSum*prmoCodeOffer)/100} ({prmoCodeOffer}%)</td>
+                                <td style={{color:'red'}}>Offer: </td>
+                                <td style={{color:'red'}}> - {(totalSum*prmoCodeOffer)/100} ({prmoCodeOffer}%)</td>
                             </tr>
                         }
                         <tr>

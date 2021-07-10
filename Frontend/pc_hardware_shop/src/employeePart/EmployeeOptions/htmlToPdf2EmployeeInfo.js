@@ -17,6 +17,8 @@ class ComponentToPrint extends React.Component {
         rankData:[],
         prmoCodeOffer:0,
         totalPrice:0,
+        token:localStorage.getItem('Token'),
+        email:localStorage.getItem('Email')
         
     
     }
@@ -35,12 +37,23 @@ class ComponentToPrint extends React.Component {
 
 
     pageData=()=>{
-        console.log(this.props.userID);
-        axios.get('/employeeInfo/'+this.props.userID).then(r=>{
+        console.log(this.state.token);
+
+        const token = Buffer.from(`${this.state.email}:${this.state.token}`, 'utf8').toString('base64');
+
+        axios.get('/employeeInfo/'+this.props.userID,{
+            headers: {
+                'Authorization': `Basic ${token}`
+            }
+        }).then(r=>{
 
             console.log(r.data);
             
-            axios.get('/loginInfo/'+r.data.LoginTableID).then(r=>{
+            axios.get('/loginInfo/'+r.data.LoginTableID,{
+                headers: {
+                    'Authorization': `Basic ${token}`
+                }
+            }).then(r=>{
                 this.setState({loginData:r.data})
             })
 

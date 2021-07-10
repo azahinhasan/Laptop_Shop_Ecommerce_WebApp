@@ -100,7 +100,7 @@ const AllOrders = props =>{
                 
             {orders.map(data=>{
             return( 
-                <tr>
+                <tr key={data.ProductCategoryLink.Category.cName}>
                     <td><Link  to={{pathname:'/info/'+data.ProductCategoryLink.Category.cName+'/'+data.ProductCategoryLink.Product.ID}} target="_blank" rel="noopener noreferrer">{data.ProductCategoryLink.Product.pName}</Link></td>
                     <td>{data.ProductCategoryLink.Product.Price}</td>
                     <td>{data.ProductCategoryLink.Product.Brand.bName}</td>
