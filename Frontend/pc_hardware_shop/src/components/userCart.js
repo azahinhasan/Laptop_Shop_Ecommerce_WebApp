@@ -1,11 +1,12 @@
 import React, { useState,useEffect,useReducer, useRef,useMemo } from 'react';
 import axios from 'axios';
 import classes from './productsList.css';
-import {Route,Switch,withRouter,Redirect,Link,useHistory} from 'react-router-dom';
+import {withRouter,Link,useHistory} from 'react-router-dom';
 
 const Cart = props =>{
     const [cart, setCart] = useState([JSON.parse(localStorage.getItem("CartData"))]);
     const [continueOrder,setContinueOrder]=useState(false);
+    const  history = useHistory();
     let totalSum=0;
     console.log(cart);
 
@@ -18,11 +19,11 @@ const Cart = props =>{
             var index = val.findIndex(e=>e[0].ID==v);
             if (index > -1) { 
                 val.splice(index, 1);
-                console.log('de;eted');
             }
             localStorage.setItem("CartData", JSON.stringify(val));
             //setCart(val);
             window.location.reload(false);
+           // history.push('/user/cart');
         }
 
 

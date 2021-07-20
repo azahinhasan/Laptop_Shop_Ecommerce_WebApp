@@ -31,9 +31,9 @@ const ConfirmOrder = props =>{
 
     useEffect(()=>{
         if(Boolean(localStorage.getItem("UserVerified"))){
-           // axios.get('http://localhost:3819/api/loadCustomerInfo/'+Number(localStorage.getItem("LoginID"))+'/'+localStorage.getItem("Email")).then(r=>{
-            axios.get('/loadCustomerInfo/'+1+'/'+'a').then(r=>{
-                //console.log(r.data);
+           axios.get('/loadCustomerInfo/'+Number(localStorage.getItem("LoginID"))+'/'+localStorage.getItem("Email")+'/').then(r=>{
+            //axios.get('/loadCustomerInfo/'+localStorage.getItem("LoginID")+'/'+'a.com').then(r=>{
+                console.log(r.data);
                 var temp = r.data;
                 setName(temp.Name);
                 setPhone(temp.Phone);

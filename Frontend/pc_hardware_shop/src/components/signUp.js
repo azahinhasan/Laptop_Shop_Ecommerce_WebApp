@@ -19,7 +19,7 @@ const SignUp = props =>{
         const [PostCode,setPostCode]=useState('');
         const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
-        const [Gender, setGender] = useState("");
+        const [Gender, setGender] = useState("Male");
 
         const FormValidation=()=>{
             if(Name==''||Phone==''||City==''||State==''||Country==''||PostCode==''||email==''){

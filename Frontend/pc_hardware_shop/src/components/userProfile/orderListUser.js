@@ -21,7 +21,7 @@
          let pageData='';
    
             if(allOrders==''){
-               pageData=<h3>You did not made any order!</h3>
+               pageData=<h4>You did not made any order!</h4>
             }
             else{
                pageData=(<div>
@@ -49,7 +49,7 @@
             }   
          return (
          <div  className={''}>
-               <p>All Oeders</p>
+               <h3>All Oeders</h3>
                {pageData}
          </div>
          );

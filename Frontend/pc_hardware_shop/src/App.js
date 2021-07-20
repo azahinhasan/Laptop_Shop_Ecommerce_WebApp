@@ -100,3 +100,6 @@ export default withRouter(App); //withRouter will rendered tha page wehn route c
 
 /** BuG **/
 //OrderDetails product info page error
+
+//delete button bug cart
+//cart should be clean after confirm order
