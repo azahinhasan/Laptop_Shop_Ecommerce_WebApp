@@ -2,6 +2,7 @@ import React, { useState,useEffect} from 'react';
 import classes from './productsList.css';
 import {Route,Switch,withRouter,Redirect,useParams,useHistory } from 'react-router-dom';
 import ProductInfo from './productInfo';
+import PageNumber from './pageNumber';
 import axios from '../api/axios';
 
 const ProductsList = props =>{
@@ -26,15 +27,21 @@ const ProductsList = props =>{
           //     setData(result.data);
           // });
 
-          axios.get('/products/'+category).then(result =>{
-            //console.log(result);
-            setData(result.data);
-
-        });
+          loadData();
           
       },[]);
 
       
+      const loadData=(page)=>{
+        console.log(page,'Page Number');
+        
+        axios.get('/products/'+category).then(result =>{
+          //console.log(result);
+          setData(result.data);
+
+
+        });
+      }
 
       const routeChange = (id) =>{ 
 
@@ -196,12 +203,7 @@ const ProductsList = props =>{
 
 
             <div>
-
-            return tbody(
-            for (var i = 0; i < 20; i++) {
-              
-            } 
-)  
+                <PageNumber loadPage={loadData}/>
             </div>
            
           </div>

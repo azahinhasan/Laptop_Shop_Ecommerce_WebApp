@@ -46,6 +46,13 @@ namespace PCHardwareShop.Controllers
             //return Ok(context.ProductCategoryLinks.Where(x => x.Category.cName == "Laptop").ToList());
         }
 
+        [Route("api/pagenumber/{category}"), HttpPost]
+        public IHttpActionResult pageNumber([FromUri] string category)
+        {
+           var data = context.ProductCategoryLinks.Where(x => x.Category.cName == category);
+            return Ok(data.Count());
+        }
+
         [Route("api/products/laptop/{id}")]
         public IHttpActionResult Put([FromBody] ProductCategoryLink data, int id)
         {
