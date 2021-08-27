@@ -40,11 +40,14 @@ const PageNumber = props => {
         
         <div className="">
             <br/> <br/>
-            {pageNumbers.map(number=>{
+            {data>1?
+            pageNumbers.map(number=>{
                 return (
                     <span className={Classes.pageNumber} onClick={()=>props.loadPage(number)}>{number}</span>
                 )
-            })}
+            })
+
+        :null}
         </div>
 
         );
