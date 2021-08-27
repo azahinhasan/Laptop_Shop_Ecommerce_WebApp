@@ -6,6 +6,7 @@ import {withRouter,Link,useParams,useHistory} from 'react-router-dom';
 const PageNumber = props => {
     const {category} = useParams();
     const [data,setData]=useState(); 
+    let letmsInSnglePage=4;
 
     let pageNumbers=[];
 
@@ -19,9 +20,14 @@ const PageNumber = props => {
         },[]);
 
 
-        for(let i=1;i<data+1;i++){
+        for(let i=1;i<(data)/letmsInSnglePage;i++){
             pageNumbers.push(i);
         }
+
+        if((pageNumbers[pageNumbers.length - 1]*letmsInSnglePage)-data!=0){
+            pageNumbers.push(pageNumbers.length+1);
+        }
+
 
         return (
         
@@ -29,7 +35,7 @@ const PageNumber = props => {
             <br/> <br/>
             {pageNumbers.map(number=>{
                 return (
-                    <span className={Classes.PageNumber} onClick={()=>props.loadPage(number)}>{number}</span>
+                    <span className={Classes.pageNumber} onClick={()=>props.loadPage(number)}>{number}</span>
                 )
             })}
         </div>

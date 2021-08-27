@@ -1,6 +1,7 @@
 import React,{ useState} from 'react';
 import classes from './homePage.css';
 import {Route,Switch,withRouter,Redirect,useParams,useHistory } from 'react-router-dom';
+import PageNumber from './pageNumber';
 
 const HomePage = props =>{
 
@@ -28,6 +29,11 @@ const HomePage = props =>{
               <img className={classes.largePic} src={require('../Content/HomePage/vminipreorder.jpg').default} />
               <img className={classes.smallPic} src={require('../Content/HomePage/M8-dual-arm.jpg').default} />
               <img className={classes.smallPic} src={require('../Content/HomePage/bluetooth-speaker-web-banner.jpg').default} />
+         
+              <br/>
+              
+              <div> <PageNumber/> </div>
+             
           </div>
         );
     } 

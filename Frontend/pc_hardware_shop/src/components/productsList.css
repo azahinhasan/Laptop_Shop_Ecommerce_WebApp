@@ -105,7 +105,33 @@
 
 
 
+.pageNumber{
+    display: inline-block;
+    position: relative;
+    border:2px black solid;
+    margin: 5px;
+    padding: 3px;
+    width:23px;
+    border-radius:2px;
+    font-weight: bold;
+    
+}
 
+.pageNumberSelected{
+  border:2px black solid;
+  background-color: black;
+  color: white;
+  margin: 5px;
+  padding: 3px;
+  width:10px;
+  border-radius:2px;
+  font-weight: bold;
+}
+
+.pageNumber:hover{
+
+  background-color:rgb(226, 226, 226);
+}
 
 .productLists{
   /* margin-left: auto;
