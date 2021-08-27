@@ -207,8 +207,8 @@ C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin
 C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Web.Http.xml
 C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\System.Web.Http.WebHost.xml
 C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\obj\Debug\PCHardwareShop.csprojAssemblyReference.cache
 C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\obj\Debug\PCHardwareShop.csproj.CoreCompileInputs.cache
 C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\obj\Debug\PCHardwareShop.csproj.CopyComplete
 C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\obj\Debug\PCHardwareShop.dll
 C:\Users\zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\obj\Debug\PCHardwareShop.pdb
+C:\Users\Zahin\Desktop\IDE\SelfProject\PcHardwareShop\Backend\PCHardwareShop\obj\Debug\PCHardwareShop.csproj.AssemblyReference.cache
