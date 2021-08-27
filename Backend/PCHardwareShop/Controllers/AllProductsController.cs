@@ -36,9 +36,10 @@ namespace PCHardwareShop.Controllers
         }
 
         [Route("api/products/{category}"), HttpGet]
-        public IHttpActionResult productList([FromUri] string category)
+        public IHttpActionResult productList([FromUri]string category)
         {
-            var data = context.ProductCategoryLinks.Where(x => x.Category.cName == category).OrderBy(x => x.Product.pName).Skip(5).Take(2).ToList();
+           // var data = context.ProductCategoryLinks.Where(x => x.Category.cName == category).OrderBy(x => x.Product.pName).Skip(5).Take(2).ToList();
+            var data = context.ProductCategoryLinks.Where(x => x.Category.cName == category).ToList();
             //have to call orderBy before Skip
 
             return Ok(data);

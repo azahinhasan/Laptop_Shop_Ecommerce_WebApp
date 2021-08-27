@@ -14,6 +14,8 @@ const ProductsList = props =>{
         const [filterByStatus, setFilterByStatus] = useState('ALL');
         const [filterByMaxPrice, setFilterByMaxPrice] = useState(500000);
         const [filterByMinPrice, setFilterByMinPrice] = useState(0);
+        const [pageNumber, setPageNumber] = useState(5);
+
         const {category} = useParams();
         const history = useHistory();
         
@@ -191,6 +193,16 @@ const ProductsList = props =>{
             {/* <Link to={{pathname:'/info/'+'SSD'+'/'+storeId}}>  */}
               {pageData}
             {/* </Link> */}
+
+
+            <div>
+
+            return tbody(
+            for (var i = 0; i < 20; i++) {
+              
+            } 
+)  
+            </div>
            
           </div>
         );
