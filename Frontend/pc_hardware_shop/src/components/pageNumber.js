@@ -19,14 +19,21 @@ const PageNumber = props => {
         
         },[]);
 
+        useEffect(() => {
+            axios.post('/pagenumber/'+category).then(result =>{
+                console.log(result.data);
+                setData(result.data);
+            });
+        },[category]);
 
-        for(let i=1;i<(data)/letmsInSnglePage;i++){
+
+        for(let i=0;i<(data);i++){
             pageNumbers.push(i);
         }
 
-        if((pageNumbers[pageNumbers.length - 1]*letmsInSnglePage)-data!=0){
-            pageNumbers.push(pageNumbers.length+1);
-        }
+        // if((pageNumbers[pageNumbers.length - 1]*letmsInSnglePage)-data!=0){
+        //     pageNumbers.push(pageNumbers.length);
+        // }
 
 
         return (

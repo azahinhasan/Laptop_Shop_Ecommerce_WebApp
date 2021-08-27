@@ -35,11 +35,12 @@ namespace PCHardwareShop.Controllers
             return Ok(context.ProductCategoryLinks.Where(x => x.ID == id && x.Category.cName == category).ToList());
         }
 
-        [Route("api/products/{category}"), HttpGet]
-        public IHttpActionResult productList([FromUri]string category)
+        
+        [Route("api/productslist/{category}/{pageNumber}"), HttpGet]
+        public IHttpActionResult productList([FromUri]string category,[FromUri] int pageNumber)
         {
-           // var data = context.ProductCategoryLinks.Where(x => x.Category.cName == category).OrderBy(x => x.Product.pName).Skip(5).Take(2).ToList();
-            var data = context.ProductCategoryLinks.Where(x => x.Category.cName == category).ToList();
+            var data = context.ProductCategoryLinks.Where(x => x.Category.cName == category).OrderBy(x => x.Product.pName).Skip(pageNumber*4).Take(4).ToList();
+            //var data = context.ProductCategoryLinks.Where(x => x.Category.cName == category).ToList();
             //have to call orderBy before Skip
 
             return Ok(data);
@@ -50,7 +51,13 @@ namespace PCHardwareShop.Controllers
         public IHttpActionResult pageNumber([FromUri] string category)
         {
            var data = context.ProductCategoryLinks.Where(x => x.Category.cName == category);
-            return Ok(data.Count());
+
+            var pageNum = data.Count() / 4;
+            if (data.Count()-(pageNum*4)>0)
+            {
+                pageNum = pageNum + 1;
+            }
+            return Ok(pageNum);
         }
 
         [Route("api/products/laptop/{id}")]

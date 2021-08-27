@@ -27,15 +27,15 @@ const ProductsList = props =>{
           //     setData(result.data);
           // });
 
-          loadData();
+          loadData(0);
           
       },[]);
 
       
       const loadData=(page)=>{
         console.log(page,'Page Number');
-        
-        axios.get('/products/'+category).then(result =>{
+
+        axios.get('/productslist/'+category+'/'+page).then(result =>{
           //console.log(result);
           setData(result.data);
 
@@ -52,12 +52,7 @@ const ProductsList = props =>{
       }
 
       useEffect(() => {
-        console.log(category,' category');
-        axios.get('/products/'+category).then(result =>{
-          //console.log(result);
-          setData(result.data);
-      });
-      
+          loadData(0);
       },[category]);
 
 
