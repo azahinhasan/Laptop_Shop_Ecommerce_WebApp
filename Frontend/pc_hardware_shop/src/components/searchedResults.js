@@ -158,6 +158,7 @@ const SearchPage = props =>{
         <div className="">
             <h2>Result of : {search.replace(/\s{2,}/g, ' ')} </h2>
 
+    
         <div className={classes.FilterLIst}>
             <div>Filter</div>
             <span>Brand </span>
@@ -176,7 +177,7 @@ const SearchPage = props =>{
             <option value="Antec">Antec</option>
             </select>
 
-            
+            <br/>
             <span>Status </span>
             <select name="Brand" id="Brand" onChange={(event)=>FinterByStatus(event.target.value)}>
             <option value="ALL">ALL</option>

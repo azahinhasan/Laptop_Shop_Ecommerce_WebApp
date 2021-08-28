@@ -50,7 +50,7 @@ const ProductsInfo = props =>{
         setSucessMsg("Product Is Added");
         try{
           let val=[...JSON.parse(localStorage.getItem("CartData"))];
-          console.log(val);
+         // console.log(val);
           
           //var index = val.indexOf(null);
 

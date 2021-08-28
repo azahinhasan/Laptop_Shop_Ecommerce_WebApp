@@ -139,7 +139,7 @@
   display: flex;
   flex-flow: row wrap;
   width: 70%;
-  margin-left: 320px;
+  margin-left: 420px;
   /* border: 2px black solid; */
   
 }
@@ -166,12 +166,12 @@
 .FilterLIst{
   text-align: left;
   border: 2px solid black;
-  width: 280px;
+  width: 300px;
   height:40%;
   font-size: 20px;
   padding: 5px 5px;
   position: fixed;
-  margin-top: 13px;
+  margin-top: 50px;
   
 }
 
@@ -189,6 +189,7 @@
   font-weight: bold;
   margin: 5% 0;
   margin-bottom: 12%;
+  width: 72px;
 }
 
 .FilterLIst input{

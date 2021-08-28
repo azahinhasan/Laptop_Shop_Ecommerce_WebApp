@@ -159,7 +159,7 @@ const ProductsList = props =>{
           <div className="">
               <h2>Result of : {category} </h2>
 
-            <div className={classes.FilterLIst}>
+            {/* <div className={classes.FilterLIst}>
               <div>Filter</div>
               <span>Brand </span>
               <select name="Brand" id="Brand" onChange={(event)=>FinterByBrand(event.target.value)}>
@@ -189,7 +189,7 @@ const ProductsList = props =>{
               <span>Price Range </span>
               <input type="number" placeholder='Min'  onChange={(event)=>FinterByMinPrice(event.target.value)}/>-
               <input type="number" placeholder='Max'  onChange={(event)=>FinterByMaxPrice(event.target.value)}/>
-            </div>
+            </div> */}
 
 
             {/* <Link to={{pathname:'/info/'+'SSD'+'/'+storeId}}>  */}
@@ -200,7 +200,7 @@ const ProductsList = props =>{
             <div>
                 <PageNumber loadPage={loadData}/>
             </div>
-           
+            <br/>  <br/>
           </div>
         );
     } 

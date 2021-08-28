@@ -40,11 +40,9 @@ namespace PCHardwareShop.Controllers
         public IHttpActionResult productList([FromUri]string category,[FromUri] int pageNumber)
         {
             var data = context.ProductCategoryLinks.Where(x => x.Category.cName == category).OrderBy(x => x.Product.pName).Skip(pageNumber*4).Take(4).ToList();
-            //var data = context.ProductCategoryLinks.Where(x => x.Category.cName == category).ToList();
             //have to call orderBy before Skip
 
             return Ok(data);
-            //return Ok(context.ProductCategoryLinks.Where(x => x.Category.cName == "Laptop").ToList());
         }
 
         [Route("api/pagenumber/{category}"), HttpPost]
